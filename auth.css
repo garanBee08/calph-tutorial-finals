@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.left-bg-container {
+  height: 100%;
+  width: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 3px 10px 12px rgba(0, 0, 0, 0.4);
+  font-family: "Roboto Flex", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.bg-blur {
+  height: 80%;
+  width: 80%;
+  padding: 40px;
+  background: rgba(22, 28, 48, 0.7);
+  backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  color: #ffffff;
+  border-radius: 20px;
+}
+
+.logo-pic-auth {
+  width: 50px;
+  margin-bottom: 50px;
+}
+
+.auth-mid {
+  flex-grow: 1;
+}
+
+.auth-mid h1 {
+  font-weight: 100;
+  width: 400px;
+  line-height: 36px;
+  margin: 0;
+  font-weight: 200;
+  margin-bottom: 8PX;
+}
+
+.auth-mid p {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  font-weight: 100;
+  margin: 0;
+}
+
+.auth-mid span {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  font-weight: 300;
+}
+
+.auth-bot h1 {
+  font-size: 18px;
+  font-weight: 100;
+  letter-spacing: 0.2px;
+  font-style: italic;
+  margin: 0px;
+  font-family: "Roboto Flex", sans-serif;
+}
+
+.right-bg-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  font-family: "Roboto Flex", sans-serif;
+}
+
+.auth-container {
+  width: 400px;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  background-color: inherit;
+}
+
+.auth-form { margin-top: 6px; }
+
+.auth-form h2 { 
+  margin: 8px 0 14px; 
+  font-size: 40px; 
+  color: #333; 
+  text-align: left;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 14px 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  font-size: 14px;
+}
+
+.password-field { position: relative; }
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+  cursor: pointer;
+  user-select: none;
+  color: #666;
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+}
+
+button {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #111b3a;
+  color: white;
+  border-radius: 20px;
+}
+
+.divider {
+  margin: 22px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.divider span { background: transparent; padding: 0 10px; font-size: 13px; }
+
+.oauth-buttons { display: flex; justify-content: center; gap: 10px; }
+.oauth { 
+  padding: 12px 14px; 
+  border-radius: 8px; 
+  border: 1px solid #ddd; 
+  font-weight: 600; 
+  background: inherit; 
+  color: #222; 
+  cursor: pointer; 
+  border: 2px solid #253774;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oauth.google { 
+  background: inherit; 
+  color: #222; 
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04); 
+  font-weight: 500;
+  font-family: "Roboto Flex", sans-serif;
+}
+
+.google-logo {
+  width: 22px;
+  margin-right: 8px;
+}
+
+.small { 
+  margin-top: 18px; 
+  font-size: 13px; 
+  color: #555; 
+}
+
+a { 
+  color: #253774; 
+  text-decoration: none; 
+  font-weight: 600; 
+}
+
+a:hover { text-decoration: underline; }
+
+.hidden { display: none; }
