@@ -49,7 +49,7 @@ document.querySelectorAll(".toggle-password").forEach((el) => {
   const { data } = await supabase.auth.getSession();
   if (data?.session) {
     // Already logged in
-    window.location.href = "mainDashboard.html";
+    window.location.href = "/mainDashboard.html";
   }
 })();
 
