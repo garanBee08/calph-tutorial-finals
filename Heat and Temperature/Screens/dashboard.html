@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>    
+    <link rel="stylesheet" href="/Heat and Temperature/Styles/dashboard.css">
+    <link rel="stylesheet" href="/Heat and Temperature/Styles/navbar.css">
+    <link rel="icon" type="image/png" href="/Heat and Temperature/Images/fireTabLogo.png">
+    <link rel="apple-touch-icon" href="/Heat and Temperature/Images/fireTabLogo.png">
+
+    <title>Dashboard</title>
+</head>
+<body>
+    <nav class = "navbar">
+        <div class = "left">
+            <div class="logoImage">
+                <img id = "logoPic" src = "/Heat and Temperature/Images/gr3_Logo.png">
+            </div>
+            <div class="teamName">
+                <p>Luminara</p>
+            </div>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <ul>
+                <li class="items"><a href = "/Heat and Temperature/Screens/dashboard.html"><span class="material-symbols-outlined">home</span></a></li>
+                <li class="items"><a href = "/Heat and Temperature/Screens/mainContent.html"><span class="material-symbols-outlined">lightbulb_2</span></a></li>
+                <li class="items"><a href = "/Heat and Temperature/Screens/devs.html"><span class="material-symbols-outlined">diversity_3</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="mainContainer">
+        <div class="part1">
+
+                <div class = "dbItem" id="video">
+                    <div class="basicInfo">
+                        <div class="header">
+                            <p>The Science Behind Warmth</p>
+                        </div>
+                        <div class="description">
+                            <p>Every movement of atoms creates energy that we feel as heat. Temperature shows how intense that motion is. Together, the two explain how energy transfers differently through conductors that let heat pass and insulators that resist it.</p>
+                        </div>
+                        <div class="playButton">
+                            <div class="actualButton">
+                                <span class="material-symbols-outlined">play_circle</span>
+                                <p>Play Now</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="person">
+                        <img src = "/Heat and Temperature/Images/samplePerson.png">
+                    </div>
+                </div>
+  
+            <div id="blank">
+                <a href = "/Heat and Temperature/Screens/thermalTool.html">
+                    <div class = "dbItem" id="tool">
+                        <div class="leftImag">
+                            <img src="/Heat and Temperature/Images/simulator.png">
+                        </div>
+                        <div class="rightInfo">
+                            <div class="simulatorTitle">
+                                <p>Thermal<br>Simulation Tool</p>
+                            </div>
+                            <div class="simulatorDesc">
+                                <p>An interactive tool that demonstrates how temperature changes over time, showing the rise and fall of heat energy through a dynamic thermometer display.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href = "/Heat and Temperature/Screens/mainCalculator.html">
+                    <div class = "dbItem" id="calculator">
+                        <div class="operationContainer">
+                            <img src = "/Heat and Temperature/Images/operations.png">
+                        </div>
+                        <div class="operationInfo">
+                            <div class="operationTitle">
+                                <p>Thermal Calculator</p>
+                            </div>
+                            <div class="operationDesc">
+                                <p>Experiment with formulas! Enter values to calculate heat energy, material expansion, or convert between Celsius, Fahrenheit, and Kelvin instantly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="part2">
+            <a href = "/Heat and Temperature/Screens/mainBot.html">
+                <div class = "dbItem" id="chatbot">
+                    <div class="robot">
+                        <img src = "/Heat and Temperature/Images/Robot.png">
+                    </div>
+                    <div class="robot2">
+                        <div class="robotTitle">
+                            <p>Knowledge Check</p>
+                        </div>
+                        <div class="robotDescription">
+                            <p>Assess your understanding of heat and temperature concepts through our interactive QuizBot. Each question reinforces what you’ve learned and helps you identify areas for improvement.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+
+
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <video id="lessonVideo" controls>
+                <source src="/Heat and Temperature/Musics/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+<script>
+const modal = document.getElementById("videoModal");
+const openBtn = document.querySelector("#video .actualButton");
+const closeBtn = document.querySelector(".closeBtn");
+const video = document.getElementById("lessonVideo");
+
+// Open modal (NO AUTOPLAY — video starts paused at beginning)
+openBtn.addEventListener("click", () => {
+    modal.style.display = "flex";
+    video.pause();
+    video.currentTime = 0; // reset to start
+});
+
+// Close modal
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    video.pause();
+});
+
+// Close if clicking outside modal
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+        video.pause();
+    }
+});
+</script>
+
+</body>
+</html>

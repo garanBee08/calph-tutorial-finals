@@ -1,0 +1,1249 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Thermometer Dashboard - Luminara</title>
+    <link rel="icon" type="image/png" href="/Heat and Temperature/Images/fireTabLogo.png">
+    <link rel="apple-touch-icon" href="/Heat and Temperature/Images/fireTabLogo.png">
+
+    <!-- Fonts & icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="/Heat and Temperature/Styles/navbar.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <style>
+    :root{
+        --bg: rgba(88,31,16,1);
+        --grad-start: #731A2E;
+        --grad-end: #F38612;
+        --panel: rgba(255,255,255,0.06);
+        --accent: #F38612;
+        --glass: rgba(255,255,255,0.04);
+        --muted: rgba(255,255,255,0.72);
+        --muted-2: rgba(255,255,255,0.56);
+        --radius: 12px;
+        --gap: 16px;
+        --card-padding: 14px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+        margin:0;
+        font-family: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        background: var(--bg);
+        color: #fff;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+    }
+
+
+    /* Main layout */
+    main{
+        width: 100%;
+        justify-content: center;
+        margin-top: 0%;
+        padding: 90px 20px 20px 20px;
+        display:grid;
+        grid-template-columns: 360px 1fr;
+        gap: 28px;
+        align-items:start;
+    }
+    @media (max-width: 980px){
+        main{
+            grid-template-columns: 1fr; 
+        }
+    }
+
+
+    /* Left: Thermometer block */
+    .thermo-card{
+        background: linear-gradient(to bottom, rgb(169, 0, 0), rgb(255, 140, 0));
+        margin-top: 2%;
+        border-radius: 20px;
+        padding: var(--card-padding);
+        box-shadow: inset 2px 2px 9px 1px rgb(0, 0, 0);
+        min-height: 420px;
+        height: 590px ;
+        
+    }
+    .thermo-title{
+        font-weight:700; 
+        font-size:1.2rem; 
+        color:#ffd7a6; 
+        margin-bottom:10px;
+        display: flex;
+        justify-content: center;
+    }
+    .thermo-visual{
+        position:relative;
+        height:260px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .tube{
+        width: 110px;
+        height: 260px;
+        background: linear-gradient(180deg,#2c140f,#100705);
+        border-radius: 60px;
+        position: relative;
+        box-shadow: inset 0 8px 20px rgba(0,0,0,0.6);
+        overflow: hidden;
+    }
+    .mercury{
+        position:absolute;
+        bottom: 16px;
+        left: 16px;
+        width: 78px;
+        height: 20%;
+        border-radius: 40px;
+        background: linear-gradient(to top, #ff4b2b, #ffaf6b);
+        transition: height .25s linear;
+        box-shadow: 0 6px 18px rgba(255,100,60,0.12) inset;
+    }
+    .bulb{
+        position:absolute;
+        bottom:-28px;
+        left:50%;
+        transform:translateX(-50%);
+        width: 140px;
+        height: 140px;
+        border-radius:50%;
+        background: radial-gradient(circle at 35% 30%, #fff3 0%, transparent 30%), linear-gradient(180deg,#ff8a50,#ff4b2b);
+        box-shadow:0 10px 30px rgba(0,0,0,0.6), 0 0 40px rgba(255,120,50,0.08);
+    }
+
+
+
+    /* slider (horizontal) below tube - looks integrated */
+    .slider-row{margin-top:18px; display:flex; flex-direction:column; gap:6px; align-items:center}
+    .slider{
+        -webkit-appearance:none;
+        appearance:none;
+        width: 84%;
+        height: 12px;
+        border-radius:10px;
+        background: linear-gradient(90deg, rgba(255,130,70,0.12), rgba(243,196,83,0.12));
+        outline:none;
+        position:relative;
+        box-shadow: inset 0 2px 8px rgba(0,0,0,0.45);
+    }
+    .slider::-webkit-slider-thumb{
+        -webkit-appearance:none;
+        appearance:none;
+        width:26px;height:26px;border-radius:50%;
+        background:#fff;border:3px solid var(--accent); cursor:pointer;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.45);
+    }
+    .temp-read{font-size:1.6rem;font-weight:700;margin-top:6px}
+
+
+    /* Right: info grid 3x2 */
+    .grid-right{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* set consistent row height and gaps */
+        grid-auto-rows: 285px;
+        gap: 20px;
+        padding: 10px 0;
+    }
+    @media (max-width:980px){
+        .grid-right{grid-template-columns: repeat(2,1fr)}
+    }
+    @media (max-width:580px){
+        .grid-right{
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 8px 0;
+        }
+    }
+
+
+    .card{
+        /* remove individual margins, let grid control spacing */
+        margin: 0;
+        background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.08));
+        border-radius: calc(var(--radius) + 2px);
+        padding: 24px; /* balanced padding for content */
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        position:relative;
+        border: 5px solid rgb(68, 54, 54);
+        box-shadow: inset 2px 2px 13px 1px rgba(0, 0, 0, 0.611);
+        overflow:hidden;
+    }
+
+    /* card--top and card--bottom allow you to adjust top-row vs bottom-row cards separately */
+    .card--top{
+        border: 0px solid #fd900165;
+        background-color: rgba(12, 7, 4, 0.482);
+        border-radius: 20px;
+        /* let grid control spacing instead of individual margins */
+    }
+    .card--bottom{
+        border: 0px solid #fd900165;
+        background-color: rgba(12, 7, 4, 0.482);
+        border-radius: 20px;
+    }
+    .card .top{
+        display:flex;
+        align-items:flex-start;
+        gap:12px;
+        margin-bottom: 14px;
+    }
+    .card h4{
+        margin:0;
+        font-size:1.15rem;
+        color:var(--muted);
+        display:flex;
+        align-items:center;
+        gap:8px;
+    }
+    .card p{
+        margin:6px 0 0;
+        font-size:0.95rem;
+        color:var(--muted-2);
+        line-height:1.4;
+    }
+
+
+    /* card value styles */
+    .card .value{font-weight:700;color:#fff;font-size:1.05rem}
+    .card .subtle{font-size:0.88rem;color:var(--muted-2);line-height:1.4}
+
+    /* images and icons inside cards */
+    .card .icon{
+        font-size:2.4rem;color:#ffd7a6;
+        min-width:48px;text-align:center;
+        margin-top: 2px;
+    }
+    .card img.small{
+        width:56px;height:56px;border-radius:8px;object-fit:cover;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+
+    /* heat gauge */
+    .gauge{
+        height:85px;
+        border-radius:8px;
+        background:linear-gradient(180deg,#1b0f0d,#2f130f);
+        display:flex;
+        align-items:flex-end;
+        padding:6px;
+        gap:6px;
+        margin:16px 0 12px;
+    }
+    .gauge .stripe{
+        flex:1;
+        border-radius:6px;
+        background: linear-gradient(180deg,#4cffb6,#ffef6b);
+        transition:height .25s;
+        box-shadow: inset 0 -6px 14px rgba(0,0,0,0.25)
+    }
+
+    /* chart card canvas */
+    .chart-wrap{
+        height:95px;
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:16px 0 12px;
+    }
+    canvas{max-height:95px !important; width:100% !important;}
+
+    /* hydration image & suggestion */
+    .hydration .big{
+        font-size:1.12rem;
+        font-weight:600;
+        margin-top:16px;
+        color:#fff;
+    }
+
+    /* tips scrolling */
+    .tip{
+        font-size:1rem;
+        color:#fff9;
+        padding:10px 6px;
+        line-height:1.4;
+        margin:16px 0 8px;
+    }
+    .tip.pulse{animation:tipPulse 1s ease both}
+    @keyframes tipPulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.02);opacity:1}100%{transform:scale(1);opacity:1}}
+    .energy-bars{display:flex;align-items:flex-end;gap:8px;height:70px}
+    .energy-bars{display:flex;align-items:flex-end;gap:8px;height:70px}
+    .energy-bars .bar{flex:1;border-radius:6px;background:linear-gradient(180deg,#ffd166,#ff6b6b);height:40%;box-shadow: 0 6px 14px rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.04)}
+    .energy-meta{font-size:.85rem;color:var(--muted-2);margin-top:8px}
+    .energy-perc{font-size:1.6rem;font-weight:700;color:#fff;margin-top:6px}
+    .info-btn{background:rgba(255,255,255,0.04);border:0;color:var(--muted);padding:4px 6px;border-radius:6px;font-size:.85rem;cursor:help}
+
+
+    /* small footer note inside page */
+    .note{font-size:0.82rem;color:#fff6;margin-top:10px;text-align:center}
+
+    /* ===== custom temp-log UI ===== */
+    .log-header{
+        font-size:.85rem;
+        color:var(--muted-2);
+        margin-top:8px;
+        margin-bottom:6px;
+        padding-left:6px;
+    }
+
+
+    /* custom scrollbar and fade overlays for temp log */
+    .temp-log{
+        position:relative;
+        padding-right:6px; /* leave space for thumb */
+        margin-top: 5px;
+        background:rgba(255,255,255,0.02);
+        border-radius:8px;
+        padding:8px;
+        max-height: 100px;
+        overflow:auto;
+        border:1px solid rgba(255,255,255,0.02);
+        scrollbar-width:thin; /* firefox */
+        scrollbar-color: rgba(255,255,255,0.14) transparent;
+    }
+
+
+    /* WebKit scrollbar */
+    .temp-log::-webkit-scrollbar{width:10px;height:10px}
+    .temp-log::-webkit-scrollbar-track{background:transparent}
+    .temp-log::-webkit-scrollbar-thumb{
+        background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.14));
+        border-radius:8px;
+        border:2px solid rgba(0,0,0,0.0);
+    }
+
+
+    /* entry look */
+    .temp-log-entry{
+        font-size:.80rem;
+        color:var(--muted);
+        padding:6px;
+        border-bottom:1px dashed rgba(255,255,255,0.02);
+    }
+
+
+    /* top/bottom fade indicators to imply more content */
+    .temp-log::before, .temp-log::after{
+        content:'';
+        position:absolute;
+        left:0;
+        right:0;
+        height:18px;
+        pointer-events:none;
+        opacity:0;
+        transition:opacity .18s;
+        z-index:2;
+    }
+    .temp-log::before{top:0;background:linear-gradient(180deg,rgba(0,0,0,0.6),transparent)}
+    .temp-log::after{bottom:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.6))}
+
+    /* show fades only when scrollable */
+    .temp-log.scrollable::before,
+    .temp-log.scrollable::after{opacity:1}
+
+    /* hide top fade if at top, hide bottom fade if at bottom */
+    .temp-log[data-attop="true"]::before{opacity:0}
+    .temp-log[data-atbottom="true"]::after{opacity:0}
+
+
+    /* toast notification */
+    .temp-toast{position:absolute;right:12px;top:12px;background:linear-gradient(90deg,#ffb86b,#ff6b6b);color:#2b0b00;padding:8px 10px;border-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,0.45);font-weight:700;transform:translateY(-6px);opacity:0;transition:opacity .3s,transform .3s}
+    .temp-toast.show{opacity:1;transform:translateY(0)}
+    /* small responsive tweaks */
+    @media (max-width:980px){
+        .teamName p{font-size:1.5rem}
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="left">
+            <div class="logoImage">
+                <img id="logoPic" src="/Heat and Temperature/Images/gr3_Logo.png">
+            </div>
+            <div class="teamName">
+                <p>Luminara</p>
+            </div>
+        </div>
+        <div class="middle"></div>
+        <div class="right">
+            <ul>
+                <li class="items"><a href="/Heat and Temperature/Screens/dashboard.html"><span class="material-symbols-outlined">home</span></a></li>
+                <li class="items"><a href="/Heat and Temperature/Screens/mainContent.html"><span class="material-symbols-outlined">lightbulb_2</span></a></li>
+                <li class="items"><a href="/Heat and Temperature/Screens/devs.html"><span class="material-symbols-outlined">diversity_3</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+    <!-- Left: Thermometer -->
+    <section class="thermo-card" aria-label="Thermometer control">
+        <div class="thermo-title">Thermometer</div>
+        <div class="thermo-visual" aria-hidden="true">
+            <div class="tube">
+                <div class="mercury" id="mercury"></div>
+                <div class="bulb" aria-hidden="true"></div>
+            </div>
+        </div>
+
+        <div class="slider-row" aria-hidden="false">
+            <!-- slider is horizontal; left = lower temp, right = higher temp -->
+            <input id="tempSlider" class="slider" type="range" min="0" max="50" step="0.5" value="25" aria-label="Temperature slider (left low, right high)">
+            <div class="temp-read" id="tempRead">25.0 °C</div>
+        </div>
+
+
+        <div class="note">Drag the white knob left/right to change temperature. Weather below pulls Batangas current data.</div>
+            <!-- temp change log (reports each time temp crosses the bucket boundary) -->
+        <div style="display:flex;align-items:center;gap:8px;justify-content:space-between">
+            <div class="log-header">History</div>
+            <div style="display:flex;gap:8px;align-items:center">
+                <button id="clearTempBtn" class="info-btn" aria-label="Clear history">Clear</button>
+            </div>
+        </div>
+        <div id="tempLog" class="temp-log" aria-live="polite" data-attop="true" data-atbottom="false">
+            <div class="temp-log-entry">Initial: 25.0 °C</div>
+        </div>
+    </section>
+
+  <!-- Right: 6 cards -->
+    <section class="grid-right" aria-label="Data panels">
+
+        <!-- 1: Weather (live Batangas) -->
+        <article class="card card--top" id="card-weather">
+            <div class="top">
+                <div class="icon">
+                    <span class="material-symbols-outlined">sunny</span>
+                </div>
+                <div>
+                    <h4>Weather — Batangas</h4>
+                    <p id="weather-desc">Loading...</p>
+                </div>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+                <div style="display:flex;gap:8px;align-items:center">
+                    <img id="weatherIcon" class="small" src="" alt="weather icon" style="display:none">
+                    <div>
+                        <div style="font-weight:700;font-size:1.1rem" id="weather-temp">-- °C</div>
+                        <div style="font-size:.88rem;color:#fff7" id="weather-hum">Humidity: --%</div>
+                    </div>
+                </div>
+                <div style="text-align:right">
+                    <div style="font-size:.9rem;color:#fff9">Local time</div>
+                    <div id="weather-localtime" style="font-weight:600"></div>
+                </div>
+            </div>
+        </article>
+
+
+        <!-- 2: Heat Index (gauge stripes) -->
+        <article class="card card--top" id="card-heat">
+            <div class="top">
+                <div class="icon"><span class="material-symbols-outlined">device_thermostat</span></div>
+                <div>
+                    <h4>Heat Index</h4>
+                    <p id="hi-desc">Calculating...</p>
+                </div>
+            </div>
+            <div class="gauge" aria-hidden="true" style="margin-top:10px">
+                <!-- will fill via JS with stripes heights -->
+                <div class="stripe" id="s1" style="background:linear-gradient(180deg,#7af3ff,#2bb1ff)"></div>
+                <div class="stripe" id="s2" style="background:linear-gradient(180deg,#8bffac,#4bdc7e)"></div>
+                <div class="stripe" id="s3" style="background:linear-gradient(180deg,#fff07a,#ffb84a)"></div>
+                <div class="stripe" id="s4" style="background:linear-gradient(180deg,#ffd1a8,#ff8a5e)"></div>
+                <div class="stripe" id="s5" style="background:linear-gradient(180deg,#ff9e9e,#ff4b4b)"></div>
+            </div>
+            <div id="hi-value" style="font-weight:700;margin-top:8px;font-size:1.05rem">-- °C</div>
+        </article>
+
+        <!-- 3: Hydration -->
+        <article class="card hydration card--top" id="card-hydration">
+            <div class="top">
+                <div class="icon">
+                    <span class="material-symbols-outlined">local_drink</span>
+                </div>
+                <div>
+                    <h4>Hydration</h4>
+                    <p id="hydration-sub">Keeping you refreshed</p>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:center;margin-top:8px;">
+                <img id="drink-img" style="box-shadow: none; filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.549));" class="small" src="https://cdn-icons-png.flaticon.com/512/728/728089.png" alt="drink">
+                <div>
+                    <div class="big" id="hydration-msg">--</div>
+                    <div style="font-size:.86rem;color:#fff7;margin-top:6px" id="hydration-detail">Tip: --</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 4: Temperature Chart -->
+        <article class="card card--bottom" id="card-chart">
+            <div class="top"><div class="icon"><span class="material-symbols-outlined">show_chart</span></div>
+                <div>
+                    <h4>Temperature Trend</h4>
+                    <p id="chart-sub">Recent simulated temps</p>
+                </div>
+            </div>
+            <div class="chart-wrap" style="margin-top:8px">
+                <canvas id="tempsChart" aria-label="Temperature chart" role="img"></canvas>
+            </div>
+        </article>
+
+        <!-- 5: Daily Tip -->
+        <article class="card card--bottom" id="card-tip">
+            <div class="top"><div class="icon">
+                <span class="material-symbols-outlined">emoji_objects</span>
+            </div>
+                <div>
+                    <h4>Daily Tip</h4>
+                    <p id="tip-sub">Smart heat advice</p>
+                </div>
+            </div>
+            <div class="tip" id="tip-text" style="margin-top:8px">Loading tips...</div>
+        </article>
+
+        <!-- 6: Energy Level (bars) -->
+        <article class="card card--bottom" id="card-energy">
+            <div class="top"><div class="icon"><span class="material-symbols-outlined">battery_full</span></div>
+                <div>
+                    <h4>Energy Level</h4>
+                    <p id="energy-sub">Estimated</p>
+                </div>
+            </div>
+            <div class="energy-bars" style="margin-top:8px">
+                <div class="bar" id="e1"></div>
+                <div class="bar" id="e2"></div>
+                <div class="bar" id="e3"></div>
+                <div class="bar" id="e4"></div>
+                <div class="bar" id="e5"></div>
+            </div>
+            <div class="energy-meta" id="energy-meta">--</div>
+        </article>
+
+    </section>
+</main>
+
+<script>
+/* =========================
+   Weather Helper Functions
+   ========================= */
+/* Weather code to description mapping for Open-Meteo API */
+function getWeatherDescription(code) {
+  const weatherCodes = {
+    0: "Clear sky",
+    1: "Mainly clear",
+    2: "Partly cloudy",
+    3: "Overcast",
+    45: "Foggy",
+    48: "Depositing rime fog",
+    51: "Light drizzle",
+    53: "Moderate drizzle",
+    55: "Dense drizzle",
+    56: "Light freezing drizzle",
+    57: "Dense freezing drizzle",
+    61: "Slight rain",
+    63: "Moderate rain",
+    65: "Heavy rain",
+    66: "Light freezing rain",
+    67: "Heavy freezing rain",
+    71: "Slight snow fall",
+    73: "Moderate snow fall",
+    75: "Heavy snow fall",
+    77: "Snow grains",
+    80: "Slight rain showers",
+    81: "Moderate rain showers",
+    82: "Violent rain showers",
+    85: "Slight snow showers",
+    86: "Heavy snow showers",
+    95: "Thunderstorm",
+    96: "Thunderstorm with slight hail",
+    99: "Thunderstorm with heavy hail"
+  };
+  return weatherCodes[code] || "Unknown";
+}
+
+
+
+
+/* Get weather icon based on code and time */
+function getWeatherIcon(code) {
+  // Is it night time? (6PM - 6AM)
+  const hour = new Date().getHours();
+  const isNight = hour < 6 || hour >= 18;
+
+
+
+
+  // Map weather codes to Material Icons
+  const iconMap = {
+    0: isNight ? "clear_night" : "clear_day",
+    1: isNight ? "clear_night" : "clear_day",
+    2: "partly_cloudy_day",
+    3: "cloud",
+    45: "foggy",
+    48: "foggy",
+    51: "rainy",
+    53: "rainy",
+    55: "rainy",
+    61: "rainy",
+    63: "rainy",
+    65: "rainy",
+    71: "weather_snowy",
+    73: "weather_snowy",
+    75: "weather_snowy",
+    77: "weather_snowy",
+    80: "rainy",
+    81: "rainy",
+    82: "rainy",
+    95: "thunderstorm",
+    96: "thunderstorm",
+    99: "thunderstorm"
+  };
+ 
+  return iconMap[code] || "question_mark";
+}
+
+
+
+
+/* ===========================
+   Helper & DOM references
+   =========================== */
+const slider = document.getElementById('tempSlider');
+const tempRead = document.getElementById('tempRead');
+const mercury = document.getElementById('mercury');
+// Bucket reporting now uses a variable size based on health guidance (HI-driven).
+// We'll choose bucket sizes as follows (adjustable):
+// - low HI (<27°C): 6°C buckets (coarser)
+// - moderate HI (27–34.9°C): 4°C buckets
+// - high HI (>=35°C): 4°C buckets (still granular for safety)
+function getBucketSizeByHI(hi){
+  if (typeof hi !== 'number' || isNaN(hi)) return 6;
+  if (hi >= 35) return 4;
+  if (hi >= 27) return 4;
+  return 6;
+}
+
+
+
+
+// Initialize lastTempBucket using current slider value and computed HI
+const initialSliderVal = parseFloat(document.getElementById('tempSlider').value);
+const initialHi = computeHeatIndexC(initialSliderVal, null);
+const initialBucketSize = getBucketSizeByHI(initialHi);
+let lastTempBucket = Math.floor(initialSliderVal / initialBucketSize);
+
+
+
+
+const wDesc = document.getElementById('weather-desc');
+const wTemp = document.getElementById('weather-temp');
+const wHum  = document.getElementById('weather-hum');
+const wIconImg = document.getElementById('weatherIcon');
+const wLocalTime = document.getElementById('weather-localtime');
+
+
+
+
+const hiDesc = document.getElementById('hi-desc');
+const hiValue = document.getElementById('hi-value');
+const stripes = [document.getElementById('s1'),document.getElementById('s2'),document.getElementById('s3'),document.getElementById('s4'),document.getElementById('s5')];
+
+
+
+
+const hydrationMsg = document.getElementById('hydration-msg');
+const hydrationDetail = document.getElementById('hydration-detail');
+
+
+
+
+const tipText = document.getElementById('tip-text');
+
+
+
+
+const energyBars = [document.getElementById('e1'),document.getElementById('e2'),document.getElementById('e3'),document.getElementById('e4'),document.getElementById('e5')];
+const energyMeta = document.getElementById('energy-meta');
+
+
+
+
+const tempLog = document.getElementById('tempLog');
+const clearTempBtn = document.getElementById('clearTempBtn');
+
+
+
+
+// Update temp-log UI: add .scrollable and set data attributes for fades
+function updateTempLogUI(){
+  if(!tempLog) return;
+  const isScrollable = tempLog.scrollHeight > tempLog.clientHeight + 2;
+  tempLog.classList.toggle('scrollable', isScrollable);
+  // at top?
+  tempLog.setAttribute('data-attop', (tempLog.scrollTop <= 2).toString());
+  // at bottom?
+  tempLog.setAttribute('data-atbottom', ((tempLog.scrollTop + tempLog.clientHeight) >= (tempLog.scrollHeight - 2)).toString());
+}
+
+
+
+
+if (tempLog) {
+  tempLog.addEventListener('scroll', updateTempLogUI);
+  setTimeout(updateTempLogUI, 20);
+}
+
+
+
+
+function clearTempInfo(){
+  try{
+    if(!tempLog) return;
+    // remove existing entries
+    while(tempLog.firstChild) tempLog.removeChild(tempLog.firstChild);
+    const clr = document.createElement('div');
+    clr.className = 'temp-log-entry';
+    clr.textContent = `${new Date().toLocaleTimeString()} — Cleared history by user`;
+    tempLog.appendChild(clr);
+    // reset toast
+    updateTempLogUI();
+  }catch(e){console.warn('clearTempInfo failed', e)}
+}
+
+
+
+
+if (clearTempBtn) clearTempBtn.addEventListener('click', clearTempInfo);
+
+
+
+
+/* Chart.js setup */
+const ctx = document.getElementById('tempsChart').getContext('2d');
+const tempsDataset = {
+  labels: [],
+  datasets: [
+    {
+      label: 'Simulated °C',
+      data: [],
+      fill: true,
+      backgroundColor: function(context) {
+        const ctx = context.chart.ctx;
+        const gradient = ctx.createLinearGradient(0,0,0,120);
+        gradient.addColorStop(0, 'rgba(255,165,80,0.45)');
+        gradient.addColorStop(1, 'rgba(255,165,80,0.06)');
+        return gradient;
+      },
+      borderColor: '#ffd3a0',
+      tension: 0.4,
+      pointRadius: 2,
+      pointBackgroundColor: '#fff'
+    },
+    {
+      label: 'Live Batangas °C',
+      data: [],
+      fill: false,
+      borderColor: '#8be4ff',
+      tension: 0.2,
+      pointRadius: 3,
+      pointBackgroundColor: '#8be4ff'
+    }
+  ]
+};
+const tempsChart = new Chart(ctx, {
+  type: 'line',
+  data: tempsDataset,
+  options: {
+    responsive:true,
+    maintainAspectRatio:false,
+    scales:{
+      x:{ display:false },
+      y:{
+        suggestedMin: -5,
+        suggestedMax: 50,
+        ticks:{ color:'#fff' },
+        grid:{ color:'rgba(255,255,255,0.06)' }
+      }
+    },
+    plugins:{ legend:{ labels:{ color:'#fff' } } }
+  }
+});
+
+
+
+
+/* Recent simulated temps queue for chart */
+let recentTemps = []; // push from slider
+const MAX_POINTS = 20;
+let liveWeatherTemp = null;
+let liveHumidity = null;
+
+
+
+
+/* Tips pool */
+const tips = [
+  "If you're outside, take breaks in the shade every 20 minutes.",
+  "Wear lightweight and light-colored clothing on hot days.",
+  "Sip water regularly — small frequent sips help more than gulping.",
+  "Avoid strenuous exercise during peak heat (11am–3pm).",
+  "Use fans combined with cool cloths for quick cooling relief."
+];
+
+
+
+
+/* Utility: compute heat index (approx) */
+/* Convert Celsius to Fahrenheit, apply NOAA formula, convert back */
+function computeHeatIndexC(tempC, humidity){
+  // Only apply the NOAA Rothfusz heat-index regression when it's applicable.
+  // The NOAA formula is designed for warmer conditions (roughly T >= 80°F / 26.7°C
+  // and relative humidity >= ~40%). For lower temperatures or unknown/low
+  // humidity we should return the air temperature (heat index ~= actual temp)
+  const RH = (typeof humidity === 'number') ? humidity : null;
+  const T = tempC * 9/5 + 32; // Fahrenheit
+
+
+
+
+  // If conditions where HI isn't meaningful, return the air temperature.
+  if (T < 80 || RH === null || RH < 40) {
+    return Math.round(tempC * 10) / 10;
+  }
+
+
+
+
+  // NOAA Rothfusz regression (applicable range guarded above)
+  const HI = -42.379 + 2.04901523 * T + 10.14333127 * RH - 0.22475541 * T * RH - 6.83783e-3 * T * T - 5.481717e-2 * RH * RH + 1.22874e-3 * T * T * RH + 8.5282e-4 * T * RH * RH - 1.99e-6 * T * T * RH * RH;
+  const hiF = isNaN(HI) ? T : HI;
+  const hiC = (hiF - 32) * 5/9;
+  return Math.round(hiC * 10) / 10;
+}
+
+
+
+
+/*
+  Compute an "energy" estimate (0-100) based on temperature and humidity.
+  - Ideal temperature is about 22°C (comfortable energy peak).
+  - Deviations from ideal reduce energy linearly.
+  - High humidity (>60%) imposes an additional penalty.
+  This is a simple, deterministic heuristic meant to be explainable to users.
+*/
+function computeEnergyLevel(tempC, humidity){
+  const idealTemp = 22; // °C where energy is assumed maximal
+  const tempDiff = Math.abs(tempC - idealTemp);
+
+
+
+
+  // Temperature penalty: each °C away from ideal reduces energy by 3 points
+  const tempPenalty = tempDiff * 3;
+
+
+
+
+  // Humidity penalty: only penalize when humidity is high (above 60%)
+  let humPenalty = 0;
+  if (typeof humidity === 'number'){
+    humPenalty = Math.max(0, (humidity - 60) * 0.5); // each % above 60 subtracts 0.5 pts
+  }
+
+
+
+
+  // Base energy starts at 100, subtract penalties, clamp to [5,100]
+  const raw = 100 - tempPenalty - humPenalty;
+  return Math.max(5, Math.min(100, Math.round(raw)));
+}
+
+
+
+
+/* Report temperature crossing of 2°C buckets.
+   We use floor(temp/2) as the bucket index so every time the slider
+   crosses the next 2°C range (0-1.99 -> 2-3.99 -> ...) we fire a report.
+*/
+function reportTempChange(tempC, bucketSize, hi){
+  try{
+    const ts = new Date().toLocaleTimeString();
+    const size = bucketSize || getBucketSizeByHI(hi || computeHeatIndexC(tempC, liveHumidity));
+    const bucketIndex = Math.floor(tempC / size);
+    const bucketLow = bucketIndex * size;
+    const bucketHigh = (bucketLow + size) - 0.01;
+    const entry = document.createElement('div');
+    entry.className = 'temp-log-entry';
+    entry.textContent = `${ts} — crossed ${bucketLow}°C–${bucketHigh.toFixed(2)}°C bucket (current ${tempC.toFixed(1)} °C; bucket size ${size}°C)`;
+    // prepend
+    if (tempLog && tempLog.firstChild){
+      tempLog.insertBefore(entry, tempLog.firstChild);
+    } else if (tempLog){
+      tempLog.appendChild(entry);
+    }
+
+
+
+
+ 
+  }catch(e){console.warn('reportTempChange failed', e)}
+}
+
+
+
+
+/* Update UI from slider change (simulated temp) */
+function applySimulatedTemp(t){
+  const val = Number(t);
+  // set mercury height (mapping 0..50°C to 6%..92% for good visuals)
+  const minH = 6, maxH = 92;
+  const pct = minH + (val/50) * (maxH - minH);
+  mercury.style.height = pct + "%";
+
+
+
+
+  tempRead.textContent = val.toFixed(1) + " °C";
+
+
+
+
+  // update heat index & gauge: use slider temp + live humidity if available
+  const hi = computeHeatIndexC(val, liveHumidity);
+  hiValue.textContent = `${hi} °C`;
+  // Use the computed heat-index (hi) for description thresholds so the label
+  // matches the displayed HI value instead of the raw slider temperature.
+  hiDesc.textContent = hi >= 35 ? "High — caution" : hi >= 27 ? "Moderate" : "Low";
+
+
+
+
+  // set gauge stripes heights by mapping hi to 0..100
+  const hiPct = Math.max(0, Math.min(100, (hi / 50) * 100));
+  stripes.forEach((s,i)=>{
+    // create stepped fill: lower stripes fill first
+    const step = (i+1) * 20;
+    const h = Math.max(6, Math.min(100, (hiPct - (i*20)) * 0.9));
+    s.style.height = (hiPct >= step-19 ? `${h}%` : "6%");
+    s.style.transition = "height .35s";
+  });
+
+
+
+
+  // hydration suggestions
+  if(val >= 38){
+    hydrationMsg.textContent = "Drink lots of water! 💦";
+    hydrationDetail.textContent = "Electrolytes may help if sweating heavily.";
+  } else if(val >= 30){
+    hydrationMsg.textContent = "Increase water intake.";
+    hydrationDetail.textContent = "Stay hydrated — carry a bottle.";
+  } else if(val >= 22){
+    hydrationMsg.textContent = "Normal hydration.";
+    hydrationDetail.textContent = "Drink as usual.";
+  } else {
+    hydrationMsg.textContent = "Warm drinks recommended.";
+    hydrationDetail.textContent = "A hot beverage keeps you cozy.";
+  }
+
+
+
+
+  // energy bars change — use deterministic, explainable mapping based on temp & humidity
+  const energy = computeEnergyLevel(val, liveHumidity);
+  // Provide a short explanatory note as well as the numeric estimate
+  energyMeta.innerHTML = `Energy estimate: ${energy}%<div style="font-size:.75rem;color:#fff6;margin-top:6px">Based on temperature (ideal ≈ 22°C)${liveHumidity !== null ? ' and humidity' : ''}.</div>`;
+
+
+
+
+  // Convert the single energy percentage into five descending bar heights so
+  // the visual shows a gradient from left (highest) to right (lowest).
+  energyBars.forEach((b, idx)=> {
+    // linear step down per bar (12 points) to create a descending column look
+    const step = 12 * idx;
+    const h = Math.max(6, Math.min(100, Math.round(energy - step)));
+    b.style.height = h + '%';
+    b.style.transition = 'height .4s';
+  });
+
+
+
+
+  // push to chart
+  pushTempToChart(val);
+
+
+
+
+  // Determine HI-driven bucket size and report when crossing those buckets
+  try{
+    const bucketSize = getBucketSizeByHI(hi);
+    const currentBucket = Math.floor(val / bucketSize);
+    if (currentBucket !== lastTempBucket){
+      lastTempBucket = currentBucket;
+      reportTempChange(val, bucketSize, hi);
+    }
+  }catch(e){/* ignore */}
+
+
+
+
+  // Update the daily tip based on the computed heat-index (hi)
+  try{ rotateTip(hi); }catch(e){ /* if rotateTip not yet available, ignore */ }
+}
+
+
+
+
+/* push value to chart dataset and redraw */
+function pushTempToChart(val){
+  // limit
+  if(recentTemps.length >= MAX_POINTS) recentTemps.shift();
+  recentTemps.push(parseFloat(val.toFixed(1)));
+
+
+
+
+  tempsChart.data.datasets[0].data = recentTemps.slice();
+  // ensure labels array
+  tempsChart.data.labels = recentTemps.map((_,i) => "");
+  // also update live weather series point if we have it (plot last point as live)
+  if(liveWeatherTemp !== null){
+    // create same-length array for live series (blank except last)
+    const liveArr = new Array(recentTemps.length-1).fill(null).concat([liveWeatherTemp]);
+    tempsChart.data.datasets[1].data = liveArr;
+  }
+  tempsChart.update();
+}
+
+
+
+
+/* Fetch weather from Open-Meteo API */
+async function fetchWeather(){
+  try {
+    // Batangas coordinates (13.7565, 121.0583)
+    const response = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=13.7565&longitude=121.0583&current=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia/Manila`
+    );
+   
+    if (!response.ok) {
+      throw new Error("Weather fetch failed");
+    }
+
+
+
+
+    const data = await response.json();
+    const current = data.current;
+   
+    // Update weather info in the UI
+    wDesc.textContent = "Batangas — " + getWeatherDescription(current.weather_code);
+    wTemp.textContent = Math.round(current.temperature_2m) + "°C";
+    wHum.textContent = `Humidity: ${current.relative_humidity_2m}%`;
+   
+    // Update weather icon (using Material Icons)
+    const weatherIconSpan = document.querySelector('#card-weather .icon .material-symbols-outlined');
+    if (weatherIconSpan) {
+      weatherIconSpan.textContent = getWeatherIcon(current.weather_code);
+    }
+   
+    // Update local time
+    wLocalTime.textContent = new Date().toLocaleTimeString();
+   
+    // Store live weather data for heat index calculations
+    liveWeatherTemp = current.temperature_2m;
+    liveHumidity = current.relative_humidity_2m;
+   
+    // Add weather data to chart
+    if (recentTemps.length < 1) recentTemps.push(current.temperature_2m);
+    tempsChart.data.datasets[1].data = new Array(recentTemps.length-1).fill(null).concat([current.temperature_2m]);
+    tempsChart.update();
+   
+    // Update heat index using current slider value and live humidity
+    applySimulatedTemp(parseFloat(slider.value));
+   
+  } catch (error) {
+    console.error("Error fetching weather:", error);
+    // Hide weather info on error
+    wDesc.textContent = "Live weather unavailable";
+    wTemp.textContent = "-- °C";
+    wHum.textContent = "Humidity: --";
+  }
+}
+
+
+
+
+/* rotating daily tips */
+// Tip pools tailored to heat-index categories
+const tipPools = {
+  low: [
+    "Enjoy the comfortable weather — a short outdoor walk is great.",
+    "Light exercise is fine; stay hydrated as usual.",
+    "A warm drink can be pleasant when it's cool outside."
+  ],
+  moderate: [
+    "Take frequent shade breaks when outdoors and wear breathable clothing.",
+    "Sip water regularly; consider a light snack with electrolytes if active.",
+    "Avoid vigorous exercise during peak sun hours (11am–3pm)."
+  ],
+  high: [
+    "High heat index — stay in cool/shaded spaces and limit activity.",
+    "Drink water frequently and consider electrolyte replacement if sweating heavily.",
+    "Watch for signs of heat exhaustion: dizziness, nausea, heavy sweating."
+  ]
+};
+
+
+
+
+let lastHiCategory = null;
+let lastTempBucketForTip = Math.floor(parseFloat(slider.value) / 3); // Track 3°C buckets
+
+
+
+
+function rotateTip(hi){
+  // Get current temperature from slider
+  const currentTemp = parseFloat(slider.value);
+  const currentBucket = Math.floor(currentTemp / 3); // Using 3°C buckets
+ 
+  // Only rotate tip if we've crossed a 3°C boundary
+  if (currentBucket === lastTempBucketForTip) {
+    return; // Exit if we haven't crossed a 3°C boundary
+  }
+  lastTempBucketForTip = currentBucket;
+
+
+
+
+  // Determine category by HI value. Match thresholds used elsewhere.
+  const category = (hi >= 35) ? 'high' : (hi >= 27) ? 'moderate' : 'low';
+
+
+
+
+  // Pick a pool based on category; fallback to generic tips if needed
+  const pool = tipPools[category] || tips;
+
+
+
+
+  // Pick a random tip and allow simple interpolation of values
+  let chosen = pool[Math.floor(Math.random() * pool.length)];
+  chosen = chosen.replace('{T}', (typeof hi === 'number' ? hi.toFixed(1) : '--'));
+  chosen = chosen.replace('{H}', (liveHumidity !== null ? liveHumidity : '--'));
+
+
+
+
+  tipText.textContent = chosen;
+
+
+
+
+  // Add highlight to draw attention to the tip change
+  tipText.classList.add('pulse');
+  setTimeout(()=> tipText.classList.remove('pulse'), 1000);
+ 
+  // Also update category tracking
+  lastHiCategory = category;
+}
+
+
+
+
+/* Initial wiring */
+slider.addEventListener('input', e => {
+  applySimulatedTemp(parseFloat(e.target.value));
+});
+
+
+
+
+/* start with default slider value */
+applySimulatedTemp(parseFloat(slider.value));
+
+
+
+
+// Update initial temp log entry to include the computed bucket size
+try{
+  if (tempLog && tempLog.firstChild){
+    const currVal = parseFloat(slider.value);
+    const size = getBucketSizeByHI(computeHeatIndexC(currVal, liveHumidity));
+    tempLog.firstChild.textContent = `Initial: ${currVal.toFixed(1)} °C (bucket size ${size}°C)`;
+  }
+}catch(e){/* ignore */}
+
+
+/* initial tip */
+// Ensure an initial tip is shown using current slider/weather
+rotateTip(computeHeatIndexC(parseFloat(slider.value), liveHumidity));
+
+
+/* fetch weather immediately and then every 5 minutes */
+fetchWeather();
+setInterval(fetchWeather, 5 * 60 * 1000);
+/* rotate tip every 16s using current heat-index */
+setInterval(()=>{
+  const hiNow = computeHeatIndexC(parseFloat(slider.value), liveHumidity);
+  rotateTip(hiNow);
+}, 16000);
+const card = document.querySelector(".thermo-card");
+
+function updateThermoColor() {
+    const temp = parseFloat(slider.value);
+
+    if (temp <= 16) {
+        // Cold: Light blue to dark blue
+
+        card.style.background = "linear-gradient(to top, rgba(0, 140, 255, 0.55), rgba(0, 70, 160, 0.7))";
+    } else {
+
+        // Hot: Red to Orange
+        card.style.background = "linear-gradient(to top, rgba(255, 0, 0, 0.7), rgba(255, 165, 0, 0.7))";
+    }
+}
+
+// Update when slider moves
+slider.addEventListener("input", updateThermoColor);
+
+// Run once at start
+updateThermoColor();
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
