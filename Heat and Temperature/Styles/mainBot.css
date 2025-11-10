@@ -160,6 +160,149 @@ body{
     }
     
 }
+
+.leaderboardModal{
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    background: rgba(0,0,0,0.55);
+    z-index: 999;
+}
+
+.leaderboardContent{
+    background: linear-gradient(to bottom right, #D66515, #9B4029);
+    width: 80%;
+    max-width: 750px;
+    padding: 30px;
+    border-radius: 25px;
+    border: 3px solid rgba(244, 237, 205, 0.8);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.484);
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.closeLeaderboard{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #fff2df;
+}
+
+.leaderTitle{
+        color: #ffcb9b;
+    font-family: "Passion One";
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.topThree{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1.5rem;
+}
+
+.topUser{
+    text-align: center;
+}
+
+.topUser img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #fff2df;
+    box-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+.first img{ width: 120px; height: 120px; }
+.second img{ width: 100px; height: 100px; }
+.third img{ width: 100px; height: 100px; }
+
+.userName{ font-family: "Passion One"; font-size: 1.4rem; }
+.userScore{ font-family: "Comic Relief"; font-size: 0.9rem; opacity: 0.9; }
+
+.rankList{
+    margin-top: 25px;
+    list-style: none;
+    padding: 0;
+    font-family: "Comic Relief";
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+.rankList li{
+    margin: 6px 0;
+}
+
+/* Confetti Canvas */
+#confettiCanvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+/* ===== COMPACT RANK LIST DESIGN ===== */
+.rankList {
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px; /* smaller gap between items */
+    font-family: "Comic Relief", sans-serif;
+    font-size: 1rem; /* slightly smaller text */
+}
+
+.rankList li {
+    width: 90%;
+    max-width: 600px;
+    background: rgba(255, 235, 215, 0.15); /* soft glass effect */
+    padding: 8px 15px; /* reduced padding */
+    border-radius: 12px; /* slightly smaller radius */
+    border: 2px solid rgba(244, 237, 205, 0.7);
+    color: #fff2df;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); /* smaller shadow */
+    backdrop-filter: blur(4px);
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+/* Hover Pop & Glow Effect */
+.rankList li:hover {
+    transform: scale(1.03); /* smaller pop effect */
+    background: rgba(255, 235, 215, 0.25);
+    box-shadow: 0 0 10px rgba(255, 242, 223, 0.6);
+}
+
+/* Small screens: mobile phones ≤480px */
+@media (max-width: 480px) {
+    .topThree {
+        justify-content: center;   /* center the circles */
+        gap: 0.5rem;
+    }
+
+    .topUser {
+        flex: 0 1 30%;             /* shrink and grow with a base width */
+        margin-bottom: 10px;       /* spacing for wrapped rows */
+    }
+
+    .first img { width: 90px; height: 90px; }
+    .second img, .third img { width: 70px; height: 70px; }
+
+    .userName { font-size: 1rem; }
+    .userScore { font-size: 0.8rem; }
+}
+
+
 /* Extra small: phones < 480px */
 @media (max-width: 479px) {
     .mainContainer {
