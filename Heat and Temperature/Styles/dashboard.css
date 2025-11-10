@@ -15,6 +15,117 @@ body{
     grid-template-columns: 2fr 0.7fr;
     gap: 2.6rem;
 }
+/* Logout Button */
+#logoutBtn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 238, 213, 0.741);
+    background: linear-gradient(to left, red, orange);
+    color: white;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: transform 0.2s, background-color 0.2s;
+}
+#logoutBtn span:hover{
+    color: white;
+}
+#logoutBtn:hover {
+    color: white;
+    transform: scale(1.1);
+    background-color: #ff5959;
+}
+
+/* Logout Modal */
+#logoutModal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left:0; top:0;
+    width:100%;
+    height:100%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+#logoutModal .modal-content {
+    background-color:#1c0b0b; 
+    color:#fff; 
+    justify-content: center;
+    padding:25px 30px; 
+    border-radius:12px; 
+    text-align:center; 
+    max-width: 500px;
+    height: 25%; 
+    width:90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(255, 149, 0);
+    font-family:'Passion One', cursive;
+}
+
+#logoutModal .modal-content p {
+    font-size:2rem; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.33);
+    margin-bottom:20px;
+}
+
+#logoutModal .modal-content button {
+    padding:10px 16px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:'Comic Relief', cursive;
+    font-weight:bold;
+    width: 21%;
+    transition:0.2s;
+}
+
+#logoutModal #confirmLogout {
+    height: 45px;
+    width: 100%;
+    padding: 10px 30px;
+    font-size: 1.3rem;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.545);
+    background-color:#ff820d;
+    color:white;
+}
+
+#logoutModal #confirmLogout:hover {
+    background-color:#dd6b00;
+}
+
+#logoutModal #cancelLogout {
+    font-size: 1.3rem;
+        width: 100%;
+    padding: 10px 15px;
+
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.545);
+    background-color:#6c0000;
+    color:white;
+}
+
+#logoutModal #cancelLogout:hover {
+    background-color:#a90000;
+}
+
+#logoutModal .button-container {
+    display:flex; 
+    justify-content: center;
+    gap: 2rem;
+}
+
 .part1, .part2{
     width: 100%;
     height: 100%;
