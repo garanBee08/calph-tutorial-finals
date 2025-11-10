@@ -27,62 +27,86 @@ const questions = [
 let index = 0;
 let score = 0;
 
+// DOM elements
 const questionText = document.querySelector(".actualQuestion");
 const inputField = document.querySelector(".answerField input");
 const sendButton = document.querySelector(".send");
 const robotImg = document.querySelector(".roboPapa img");
-
 const bgMusic = document.querySelector("audio");
 const correctSound = new Audio("/Heat and Temperature/Musics/correctAns.mp3");
 const wrongSound = new Audio("/Heat and Temperature/Musics/wrongAns.mp3");
 const noAnsSound = new Audio("/Heat and Temperature/Musics/missingAns.mp3");
 
-// Show current question
+// --- Save score to Supabase ---
+async function saveScore(finalScore) {
+  try {
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      console.warn("User not authenticated! Skipping score save.");
+      return; // Prevent using invalid UUID
+    }
+
+    const userId = user.id;
+
+    // Check if row exists
+    const { data: existing, error: fetchError } = await supabase
+      .from("heatTemp_leaderboard")
+      .select("*")
+      .eq("user_id", userId)
+      .single();
+
+    if (fetchError && fetchError.code !== "PGRST116") {
+      console.error("Error fetching leaderboard:", fetchError.message);
+      return;
+    }
+
+    if (!existing) {
+      const { error: insertError } = await supabase
+        .from("heatTemp_leaderboard")
+        .insert([{ user_id: userId, score_quiz1: finalScore, score_quiz2: 0 }]);
+      if (insertError) console.error("Error inserting leaderboard row:", insertError.message);
+      else console.log("Leaderboard row created with Quiz 1 score!");
+    } else if (finalScore > existing.score_quiz1) {
+      const { error: updateError } = await supabase
+        .from("heatTemp_leaderboard")
+        .update({ score_quiz1: finalScore })
+        .eq("user_id", userId);
+      if (updateError) console.error("Error updating Quiz 1 score:", updateError.message);
+      else console.log("Quiz 1 score updated successfully!");
+    } else {
+      console.log("New score is not higher. Score retained.");
+    }
+  } catch (err) {
+    console.error("Unexpected error:", err.message);
+  }
+}
+
+// --- Show current question ---
 async function showQuestion() {
   if (index >= questions.length) {
     questionText.textContent = `Quiz Completed! Score: ${score}/${questions.length}`;
     inputField.disabled = true;
-
-    // Store score in Supabase
-    const { data: user, error: userError } = await supabase.auth.getUser();
-    if (user && user.user) {
-      const userId = user.user.id;
-
-      const { error } = await supabase
-        .from('heatTemp_leaderboard')
-        .insert([{ user_id: userId, score: score }]);
-
-      if (error) {
-        console.error("Error storing score:", error.message);
-      } else {
-        console.log("Score saved successfully!");
-      }
-    } else if(userError) {
-      console.error("Error getting user:", userError.message);
-    }
-
+    await saveScore(score);
     return;
   }
   questionText.textContent = questions[index].q;
 }
 
-// Check user's answer
+// --- Check answer ---
 function checkAnswer() {
+  if (index >= questions.length) return; // Prevent errors after quiz ends
+
   const userAnswer = inputField.value.trim().toLowerCase();
   const correctAnswer = questions[index].a.toLowerCase();
   const oldImg = robotImg.src;
 
-  // If input is empty
-  if (userAnswer === "") {
+  if (!userAnswer) {
     bgMusic.volume = 0;
     robotImg.src = "/Heat and Temperature/Images/noAnsBot.png";
     noAnsSound.play();
-
-    setTimeout(() => {
-      robotImg.src = oldImg;
-      bgMusic.volume = 1;
-    }, 2000);
-    return; // Do not proceed
+    setTimeout(() => { robotImg.src = oldImg; bgMusic.volume = 1; }, 2000);
+    return;
   }
 
   bgMusic.volume = 0;
@@ -91,34 +115,19 @@ function checkAnswer() {
     score++;
     robotImg.src = "/Heat and Temperature/Images/correctBot.png";
     correctSound.play();
-
-    setTimeout(() => {
-      robotImg.src = oldImg;
-      bgMusic.volume = 1;
-      index++;
-      showQuestion();
-    }, 2000);
-
+    setTimeout(() => { robotImg.src = oldImg; bgMusic.volume = 1; index++; showQuestion(); }, 2000);
   } else {
     robotImg.src = "/Heat and Temperature/Images/wrongBot.png";
     wrongSound.play();
-
-    setTimeout(() => {
-      robotImg.src = oldImg;
-      bgMusic.volume = 1;
-      index++;
-      showQuestion();
-    }, 4100);
+    setTimeout(() => { robotImg.src = oldImg; bgMusic.volume = 1; index++; showQuestion(); }, 4100);
   }
 
   inputField.value = "";
 }
 
-// Event listeners
+// --- Event listeners ---
 sendButton.addEventListener("click", checkAnswer);
-inputField.addEventListener("keydown", e => {
-  if (e.key === "Enter") checkAnswer();
-});
+inputField.addEventListener("keydown", e => { if (e.key === "Enter") checkAnswer(); });
 
-// Start quiz
+// --- Start quiz ---
 showQuestion();
