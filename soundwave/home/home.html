@@ -9,6 +9,22 @@
   <link rel="stylesheet" href="../waves/waves-bg.css" />
 </head>
 
+  <!-- 🔹 Fixed Logout Button -->
+  <button id="logoutBtn" class="logout-btn">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+  </button>
+
+  <!-- 🔹 Custom Logout Confirmation Popup -->
+  <div id="logoutModal" class="logout-modal">
+    <div class="logout-modal-content">
+      <h2>Are you sure you want to log out?</h2>
+      <div class="logout-modal-buttons">
+        <button id="confirmLogout" class="confirm-btn">Yes</button>
+        <button id="cancelLogout" class="cancel-btn">No</button>
+      </div>
+    </div>
+  </div>
+  
 <body>
   <video autoplay muted loop playsinline id="wave-video">
     <source src="home.mp4" type="video/mp4">
