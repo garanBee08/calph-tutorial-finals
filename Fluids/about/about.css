@@ -9,7 +9,7 @@
 }
 
 body {
-  background: url('/image/CALPH-bg.gif') center/cover no-repeat fixed;
+  background: url('../image/CALPH-bg.gif') center/cover no-repeat fixed;
   color: white;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
@@ -83,7 +83,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-image: url('/FINAL/image/Tortue.gif'); /* replace with your radiant background path */
+  background-image: url('../FINAL/image/Tortue.gif'); /* replace with your radiant background path */
   background-size: cover;
   background-position: center;
 }
