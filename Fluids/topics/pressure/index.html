@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluid Pressure - Fluids</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  
+<a href="javascript:history.back()" class="back-button">← Back</a>
+
+<main class="topic-container">
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="topic-title">Fluid Pressure</h1>
+      <p class="topic-subtitle">Understanding Hydrostatic Pressure and Depth</p>
+      <p class="topic-description">
+        Hydrostatic pressure is the pressure applied when the fluid at rest is a result of gravity. It is caused by 
+        the mass of the fluid pushing onto a particular point in the fluid and grows with depth beneath the surface. 
+        As depth increases, the underlying fluid produces an increased downward force, causing greater pressure at 
+        the bottom.
+      </p>
+    </div>
+  </section>
+
+  <!-- Visual Section -->
+  <section class="visual-section">
+    <div class="content-grid">
+      <div class="visual-box">
+        <img src="../asset-topics/fluids-pressure.png" alt="Fluid Pressure Diagram">
+      </div>
+      <div class="info-box">
+        <h2>Key Concepts</h2>
+        <ul class="concept-list">
+          <li><strong>Hydrostatic Pressure:</strong> Pressure due to fluid weight</li>
+          <li><strong>Depth Dependency:</strong> Pressure increases with depth</li>
+          <li><strong>Pascal's Law:</strong> Pressure transmitted equally in all directions</li>
+          <li><strong>Density Effect:</strong> Denser fluids create more pressure</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+    <!-- Basic Fluid Pressure Section -->
+  <section class="basic-pressure-section">
+    <div class="formula-container">
+      <h2>Fluid Pressure</h2>
+      <p class="topic-description" style="max-width:800px; margin: 0 auto 30px; text-align:center;">
+        <strong>Fluid Pressure</strong> is the amount of force exerted by a fluid on a surface per unit area. 
+        It determines how strongly a fluid pushes against walls or objects in contact with it.
+      </p>
+
+      <div class="formula-display">
+        <div id="typedFormulaBasic" class="formula-main"></div>
+      </div>
+
+      <div class="formula-variables">
+        <div class="variable">
+          <span class="var-symbol">P</span>
+          <span class="var-desc">Pressure (Pascal, Pa)</span>
+        </div>
+        <div class="variable">
+          <span class="var-symbol">F</span>
+          <span class="var-desc">Force applied (Newton, N)</span>
+        </div>
+        <div class="variable">
+          <span class="var-symbol">A</span>
+          <span class="var-desc">Surface area (m²)</span>
+        </div>
+      </div>
+
+      <div class="example-box" style="margin-top:40px;">
+        <h3>Example</h3>
+        <p>If a force of 100 N acts on an area of 2 m²:</p>
+        <p class="example-calc">P = 100 / 2 = 50 Pa</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fluid Pressure Calculator Section -->
+<section class="calculator-section">
+  <div class="calc-interact-layout">
+    
+    <!-- Calculator -->
+    <div class="calculator-wrapper">
+      <h2>Calculate Fluid Pressure (P = F / A)</h2>
+
+      <div class="calculator">
+        <div class="input-group">
+          <label for="force">Force (F)</label>
+          <input type="number" id="force" placeholder="e.g., 200" step="0.01">
+          <span class="unit">N</span>
+        </div>
+
+        <div class="input-group">
+          <label for="area">Area (A)</label>
+          <input type="number" id="area" placeholder="e.g., 4" step="0.01">
+          <span class="unit">m²</span>
+        </div>
+
+        <button onclick="calculateBasicPressure()" class="calc-button">Calculate Pressure</button>
+
+        <div class="result-display" id="resultBoxBasic">
+          <div class="result-label">Fluid Pressure:</div>
+          <div class="result-value" id="resultBasic">—</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <h3>Try it Yourself</h3>
+        <p>Enter a force and area to find the resulting fluid pressure using <strong>P = F / A</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Interactive Model for Basic Fluid Pressure -->
+    <div class="pressure-visual-container">
+      <h3>Interactive Model</h3>
+      <div class="pressure-chamber">
+        <div id="piston"></div>
+        <div id="fluid"></div>
+      </div>
+      <div id="pressureLabel">Pressure level: —</div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Hydrostatic Pressure Formula Section -->
+  <section class="formula-section">
+    <div class="formula-container">
+      <h2>Hydrostatic Pressure</h2>
+      <p class="topic-description" style="max-width:800px; margin: 0 auto 30px; text-align:center;">
+        <strong>Hydrostatic Pressure</strong> is the pressure exerted by a fluid at rest due to the force of gravity. 
+        It increases with depth because the weight of the fluid above exerts a greater downward force on the fluid below. 
+        The deeper you go, the greater the pressure.
+      </p>
+
+      <div class="formula-display">
+        <div id="typedFormula" class="formula-main"></div>
+      </div>
+
+      <div class="formula-variables">
+        <div class="variable">
+          <span class="var-symbol">P</span>
+          <span class="var-desc">Pressure (Pascal, Pa)</span>
+        </div>
+        <div class="variable">
+          <span class="var-symbol">ρ</span>
+          <span class="var-desc">Fluid Density (kg/m³)</span>
+        </div>
+        <div class="variable">
+          <span class="var-symbol">g</span>
+          <span class="var-desc">Acceleration due to Gravity (9.81 m/s²)</span>
+        </div>
+        <div class="variable">
+          <span class="var-symbol">h</span>
+          <span class="var-desc">Depth or Height (m)</span>
+        </div>
+      </div>
+
+      <div class="example-box" style="margin-top:40px;">
+        <h3>Example</h3>
+        <p>Calculate the hydrostatic pressure 10 meters below the surface of water (ρ = 1000 kg/m³):</p>
+        <p class="example-calc">P = 1000 × 9.81 × 10 = 98,100 Pa</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator + Interactive Section -->
+  <section class="calculator-section">
+    <div class="calc-interact-layout">
+
+      <!-- Calculator -->
+      <div class="calculator-wrapper">
+        <h2>Calculate Hydrostatic Pressure</h2>
+        <div class="calculator">
+          <div class="input-group">
+            <label for="density">Fluid Density (ρ)</label>
+            <input type="number" id="density" placeholder="e.g., 1000" step="0.01">
+            <span class="unit">kg/m³</span>
+          </div>
+          
+          <div class="input-group">
+            <label for="height">Depth/Height (h)</label>
+            <input type="number" id="height" placeholder="e.g., 10" step="0.01" oninput="updateWaterLevel()">
+            <span class="unit">m</span>
+          </div>
+          
+          <div class="input-group">
+            <label for="gravity">Gravity (g)</label>
+            <input type="number" id="gravity" value="9.8" placeholder="9.8" step="0.01">
+            <span class="unit">m/s²</span>
+          </div>
+          
+          <button onclick="calculatePressure()" class="calc-button">Calculate Pressure</button>
+          
+          <div class="result-display" id="resultBox">
+            <div class="result-label">Hydrostatic Pressure:</div>
+            <div class="result-value" id="result">—</div>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <h3>Example</h3>
+          <p>Calculate pressure at 10 meters depth in water (density = 1000 kg/m³):</p>
+          <p class="example-calc">P = 1000 × 9.81 × 10 = 98,100 Pa</p>
+        </div>
+      </div>
+
+      <!-- Interactive Model -->
+      <div class="pressure-model">
+        <h3>Pressure Visualization</h3>
+        <div class="tank">
+          <div id="waterLevel"></div>
+        </div>
+        <div class="pressure-bar">
+          <div id="pressureIndicator"></div>
+        </div>
+        <p class="model-note">Pressure increases as depth increases</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Toggle Button for Real Life Examples -->
+<h2 id="exampleToggle" class="example-toggle">Real Life Example of Pressure</h2>
+  <!-- EXAMPLES CARDS SECTION -->
+<section class="examples-section">
+  <div class="examples-wrapper">
+    <!-- CARD 1 -->
+    <div class="app-card">
+      <div class="card-inner">
+        <div class="card-front fluid-bg">
+          <img src="../asset-topics/dam.png" alt="Dam Icon" class="card-icon">
+        </div>
+        <div class="card-back">
+          <h3>Pressure in Dams</h3>
+          <p>Dams are built thicker at the bottom because water pressure increases with depth, pushing harder on the lower parts of the structure.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- CARD 2 -->
+    <div class="app-card">
+      <div class="card-inner">
+        <div class="card-front fluid-bg">
+          <img src="../asset-topics/straw.png" alt="Straw Icon" class="card-icon">
+        </div>
+        <div class="card-back">
+          <h3>Pressure Difference</h3>
+          <p>When you suck through a straw, air pressure outside the glass pushes the liquid up into your mouth — that’s fluid pressure at work!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="app-card">
+      <div class="card-inner">
+        <div class="card-front fluid-bg">
+          <img src="../asset-topics/syringe.png" alt="Syringe Icon" class="card-icon">
+        </div>
+        <div class="card-back">
+          <h3>Pressure Application</h3>
+          <p>When you push the plunger, you increase the pressure inside, forcing the liquid out through the needle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

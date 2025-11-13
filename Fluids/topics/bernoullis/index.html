@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bernoulli's Principle - Fluids</title>
+
+   <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<a href="javascript:history.back()" class="back-button">← Back</a>
+
+<main class="topic-container">
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="topic-title">Bernoulli's Principle</h1>
+      <p class="topic-subtitle">Understanding Fluid Dynamics and Pressure</p>
+      <p class="topic-description">
+        Bernoulli's Principle states that as the velocity of a fluid increases,
+        its pressure decreases. This principle explains airplane lift,
+        fluid flow in pipes, and blood circulation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Visual Section -->
+  <section class="visual-section">
+    <div class="content-grid">
+      <div class="visual-box">
+        <img src="../asset-topics/bernoullis diadram.png" alt="Bernoulli Diagram">
+      </div>
+      <div class="info-box">
+        <h2>Key Concepts</h2>
+        <ul class="concept-list">
+          <li><strong>Pressure Energy:</strong> Stored due to fluid pressure</li>
+          <li><strong>Kinetic Energy:</strong> Energy from fluid motion (½ρv²)</li>
+          <li><strong>Potential Energy:</strong> Energy due to elevation (ρgh)</li>
+          <li><strong>Conservation:</strong> Total energy remains constant along flow</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formula Section -->
+  <section class="formula-section">
+    <div class="formula-container">
+      <h2>Bernoulli's Equation</h2>
+      <div class="formula-display">
+        <div class="formula-main">P + ½ρv² + ρgh = constant</div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Real-Life Examples Section -->
+  <section class="examples-section">
+    <h2 class="examples-title">Real-Life Examples</h2>
+    <div class="examples-grid">
+
+      <div class="example-card">
+        <div class="example-front">
+          <h3>Airplane Wings ✈️</h3>
+        </div>
+        <div class="example-back">
+          <p>
+            Airplane wings are designed so that air flows faster over the curved top surface,
+            reducing pressure and creating lift — allowing the plane to fly.
+          </p>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <div class="example-front">
+          <h3>Shower Curtain Effect 🚿</h3>
+        </div>
+        <div class="example-back">
+          <p>
+            When water flows from a shower, air moves faster, creating lower pressure.
+            The higher pressure outside pushes the curtain inward toward you.
+          </p>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <div class="example-front">
+          <h3>Venturi Effect 💨</h3>
+        </div>
+        <div class="example-back">
+          <p>
+            In a narrowed pipe, fluid speeds up, reducing pressure — this effect is used
+            in carburetors and spray bottles for suction.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive + Calculator Section -->
+  <section class="interactive-section">
+
+    <!-- CURVED HOSE VISUAL -->
+    <div class="hose-visual">
+      <svg id="hoseSVG" width="260" height="160" viewBox="0 0 260 160">
+        <path id="pipePath" d="M 20 120 C 80 20, 180 20, 240 120"
+              fill="none" stroke="#d9d9d9" stroke-width="42" stroke-linecap="round"/>
+
+        <path id="fluidPath" d="M 20 120 C 80 20, 180 20, 240 120"
+              fill="none" stroke="#4ea8ff" stroke-width="30" stroke-linecap="round"
+              stroke-linejoin="round" />
+      </svg>
+      <p class="visual-label">Fluid flow changes with velocity</p>
+    </div>
+
+    <!-- CALCULATOR -->
+    <div class="calculator-wrapper">
+      <h2>Calculate Total Energy</h2>
+
+      <div class="calculator">
+        <div class="input-group">
+          <label for="pressure">Pressure (P)</label>
+          <input type="number" id="pressure" placeholder="e.g., 101325">
+          <span class="unit">Pa</span>
+        </div>
+
+        <div class="input-group">
+          <label for="density">Fluid Density (ρ)</label>
+          <input type="number" id="density" placeholder="e.g., 1000">
+          <span class="unit">kg/m³</span>
+        </div>
+
+        <div class="input-group">
+          <label for="velocity">Velocity (v)</label>
+          <input type="number" id="velocity" placeholder="e.g., 5">
+          <span class="unit">m/s</span>
+        </div>
+
+        <div class="input-group">
+          <label for="height">Height (h)</label>
+          <input type="number" id="height" placeholder="e.g., 10">
+          <span class="unit">m</span>
+        </div>
+
+        <button onclick="calculateBernoulli()" class="calc-button">Calculate Total Energy</button>
+
+        <div class="result-display" id="resultBox">
+          <div class="result-label">Total Energy per Unit Volume:</div>
+          <div class="result-value" id="result">—</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

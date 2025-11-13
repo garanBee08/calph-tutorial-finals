@@ -1,0 +1,497 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* === Background === */
+body {
+  margin: 0;
+  height: 100vh;
+  background: url('../image/CALPH-bg.gif') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+/* === Navbar === */
+.navbar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 90%;
+  max-width: 700px;
+}
+
+.navbar-content {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-logo:hover {
+  color: #0066cc;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+}
+
+.navbar-links a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #0066cc;
+}
+
+.navbar-links a.active { 
+  color: #0066cc; 
+  font-weight: 600;
+}
+
+/* === Quiz Wrapper (centered) === */
+.quiz-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Blue tilted layers === */
+.layer {
+  position: absolute;
+  border-radius: 22px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: transform 1s ease, opacity 0.8s ease;
+}
+
+.layer.dark {
+  background-color: #0A2859;
+  transform: rotate(-6deg);
+  top: 25px;
+  left: -15px;
+}
+
+.layer.light {
+  background-color: #007BFF;
+  transform: rotate(4deg);
+  top: -10px;
+  left: 15px;
+}
+
+/* === White container === */
+.quiz-container {
+  position: absolute;
+  z-index: 3;
+  background-color: #fff;
+  border-radius: 18px;
+  width: 94%;
+  height: 94%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 25px 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+/* === Intro Text === */
+.intro-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0A2859;
+  margin-bottom: 25px;
+}
+
+/* === Start Button === */
+#start-btn {
+  background-color: transparent;
+  color: #007BFF;
+  border: 2px solid #007BFF;
+  padding: 10px 35px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#start-btn:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+/* === Username Input Box === */
+#username-input {
+  width: 75%;
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 2px solid #007BFF;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 18px;
+  outline: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.3s ease;
+}
+
+#username-input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.45);
+}
+
+/* === Continue Button === */
+#continue-btn {
+  background-color: transparent;
+  color: #007BFF;
+  border: 2px solid #007BFF;
+  padding: 10px 35px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#continue-btn:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+/* === Question === */
+.question {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* === Options === */
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.option {
+  background-color: transparent;
+  color: #007BFF;
+  border: 2px solid #007BFF;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+.option.correct {
+  background-color: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+.option.wrong {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+.option.disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* === Bottom Bar === */
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.nav-btn {
+  background: transparent;
+  color: #007BFF;
+  border: 2px solid #007BFF;
+  padding: 5px 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+.progress {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* === Result Screen === */
+#result-wrapper .quiz-container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* === Score Rectangle === */
+.score-card {
+  background: white;
+  border: 3px solid #0A2859;
+  border-radius: 18px;
+  width: 80%;
+  margin: 15px auto 0;
+  padding: 30px 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.score-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0A2859;
+  margin-bottom: 8px;
+}
+
+.message-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* === Restart Button (match size of Review Quiz) === */
+#restart-btn {
+  background-color: transparent;
+  color: #007BFF;
+  border: 2px solid #007BFF;
+  padding: 10px 30px;   /* SAME padding as Review button */
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+#restart-btn:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+/* === Animations === */
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Animation Enhancements === */
+@keyframes pop {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.option.correct { animation: pop 0.3s ease; }
+.option.wrong { animation: shake 0.4s ease; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.review-container {
+  justify-content: flex-start;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+#review-content {
+  flex-grow: 1;
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(0, 123, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 2px solid #007BFF;
+  overflow-y: scroll;
+}
+
+.review-item {
+  text-align: left;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.review-item p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+}
+
+.correct-text {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.wrong-text {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;       /* spacing between buttons */
+  margin-top: 5px; /* moves buttons slightly upward */
+}
+
+.result-buttons .nav-btn {
+  background: transparent;
+  color: #007BFF;
+  border: 2px solid #007BFF;
+  padding: 10px 30px;           /* equal size buttons */
+  border-radius: 50px;
+  font-size: 1rem;              /* same font size */
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;          /* prevents text breaking line */
+}
+
+.result-buttons .nav-btn:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+/* --- Fix misalignment of Review & Restart buttons --- */
+#restart-btn {
+  width: auto !important;      /* removes 50% width */
+  margin: 0 !important;        /* removes auto-centering + pushes up */
+  display: inline-flex !important; /* lets it align inline */
+}
+
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;   /* keeps spacing clean */
+}
+
+/* === Blue Layer Split Animation === */
+.layer {
+  animation: layerSplit 3.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes layerSplit {
+  0%, 100% {
+    transform: translate(0,0) rotate(var(--rotate));
+  }
+  50% {
+    transform: translate(var(--move-x), var(--move-y)) rotate(var(--rotate));
+  }
+}
+
+/* Custom movement for each layer */
+.layer.dark {
+  --rotate: -6deg;
+  --move-x: -30px;
+  --move-y: 15px;
+}
+
+.layer.light {
+  --rotate: 4deg;
+  --move-x: 30px;
+  --move-y: -15px;
+}
+
+/* Style the Enter Username text (placeholder) */
+#username-input::placeholder {
+  color: #0A2859;      /* deep blue color */
+  font-weight: 600;    /* thicker font */
+  opacity: 1;          /* ensures visible */
+}
+
+/* Style the actual text typed by the user */
+#username-input {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0c1f4e;       /* matches theme */
+  margin-top: 10px;    /* moves input slightly upward */
+}
+
+/* === Progress Bar === */
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(0, 123, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #007BFF 0%, #0056b3 100%);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
