@@ -1,0 +1,117 @@
+/* Overview Section */
+.overview {
+  padding: 6rem 3rem 8rem;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overview-content {
+  max-width: 1100px;
+  width: min(100%, 960px);
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+  text-align: left;
+  align-items: flex-start;
+  margin-left: clamp(1.5rem, 8vw, 6rem);
+  color: #f5f8ff;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.overview-title {
+  flex: 1 1 45%;
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: left;
+  background: #ffffff;
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s infinite linear;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes shimmer {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+
+.overview-text {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  line-height: 1.7;
+  margin-left: 0;
+  max-width: 540px;
+  color: rgba(219, 226, 255, 0.9);
+  text-align: justify;
+  font-family: "Sempione Grotesk M", sans-serif;
+}
+
+.overview-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 2rem;
+  width: 100%;
+}
+
+.overview-card {
+  padding: 2.1rem 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08); /* subtle transparency */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  color: #f8f9ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+/* Optional hover effect for interactivity */
+.overview-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.45);
+}
+
+
+.card-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.8;
+  margin-bottom: 0.9rem;
+}
+
+.card-heading {
+  font-size: 1.45rem;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+}
+
+.card-note {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: rgba(222, 229, 255, 0.85);
+}
+
+@media (max-width: 680px) {
+  .overview {
+    padding: 5rem 1.5rem 6.5rem;
+  }
+
+  .overview-content {
+    margin-left: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .overview-card {
+    padding: 1.9rem 1.65rem;
+  }
+}
+

@@ -1,0 +1,403 @@
+@font-face {
+  font-family: "SF Pro";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYBOLD.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Medium";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Light";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYLIGHT.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Reg";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("truetype");
+}
+
+.back-btn {
+  margin-top: 5%;
+  margin-left: 0%;
+  position: absolute;
+  top: 33px;
+  left: 22px;
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(120, 150, 255, 0.35);
+}
+
+/* Background video styling */
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.6; 
+  filter: brightness(1.2) saturate(1.1); 
+  pointer-events: none; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; 
+  background: var(--bg-gradient);
+}
+
+/* Remove the extra padding on the main hero section */
+.sounds-hero {
+  padding: 0; 
+}
+
+:root {
+  --hero-accent: #123a8f;
+  --bg-gradient: radial-gradient(circle at top right, rgba(47,87,225,0.3), rgba(10,20,60,0.9));
+  --card-bg-top: linear-gradient(180deg, rgba(47,87,225,0.55), rgba(47,87,225,0.25));
+  --card-bg-bottom: linear-gradient(180deg, rgba(31,80,210,0.55), rgba(31,80,210,0.28));
+  --pill-bg: linear-gradient(180deg, #dde3f7, #adb7d3);
+  --ink: #dfe4ff;
+  --ink-dim: #c3c8e2;
+}
+
+.sounds-grid, .intro, .cards {
+  position: relative;
+  z-index: 2;
+}
+
+/* Overall hero section */
+.sounds-hero {
+  min-height: 100vh;
+  display: flex;
+
+  /* font-family: "SF Reg", sans-serif; */
+  align-items: center;
+  justify-content: center;
+  
+  background: var(--bg-gradient);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--ink);
+  padding: 80px 5%;
+
+  overflow: hidden;
+  position: relative;
+}
+
+/* Soft blur light (background accent) */
+.sounds-hero::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  right: -20%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(120,180,255,0.3), transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.sounds-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,30,0.4), rgba(0,0,30,0.7));
+  z-index: 1;
+}
+
+/* Grid Layout */
+.sounds-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  padding: 3%;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Visible glassy box for intro section */
+.intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Align height with cards section */
+  height: 80%;
+  min-height: 520px;
+  padding: 40px 50px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  z-index: 2;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.title {
+  font-family: "SF Pro", sans-serif;
+  font-size: 5rem;
+  font-weight:800;
+  margin-bottom: 12px;
+  text-shadow: 0 0 8px #8391da;
+  color: #ffffff;
+}
+
+.title span {
+  color: #91a4ff;
+}
+
+.copy {
+  max-width: 93%;
+  color: var(--ink-dim);
+
+  font-size: 1.1rem;
+  text-align: left;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Typewriter animation */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255,255,255,0.7); /* blinking cursor */
+  width: 0;
+  animation: typing 10s steps(80, end) forwards, blink 0.8s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: rgba(255,255,255,0.7) }
+}
+
+/* Cards section */
+.cards {
+  display: grid;
+  gap: 32px;
+  justify-items: center;
+}
+
+/* Individual card */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px 32px;
+  min-height: 240px;
+  border-radius: 20px;
+
+  /* 🧊 Glassmorphism effect (no violet) */
+  background: rgba(238, 237, 237, 0.197);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(18px);
+
+  /* Subtle border and shadow */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  color: var(--ink);
+  transition: all 0.4s ease;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  overflow: hidden;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(6px) scale(1.03);
+  box-shadow: 0 10px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Card title */
+.card__title {
+  font-family: "SF Pro", sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 20px;
+
+  color: #bfc7f8; /* base text color */
+  text-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.2),  /* subtle top highlight */
+    inset 0 -2px 6px rgba(0, 0, 0, 0.6),   /* deeper inner bottom shadow */
+    0 1px 2px rgba(0, 0, 0, 0.6);              /* outer shadow for contrast */
+
+  /* background: linear-gradient(to bottom, #8d9df1 0%, #4456ae 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+
+  /* simulate "engraved" depth */
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5));
+}
+
+.card__title {
+  margin-bottom: 20px;
+}
+
+.card button {
+  margin-top: 10px;
+}
+
+
+/* Reusable button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  font-family: "SF Medium", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+
+  padding: 12px 32px;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px; 
+  transition: all 0.3s ease;
+}
+
+/* Variant — primary gradient look */
+.btn--primary {
+  color: #000000;
+  background: linear-gradient(90deg, #c7c7c9, #c8c9cd);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #7a9aff, #5373e0);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn--primary:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+/* Responsive layout */
+@media (max-width: 900px) {
+  .sounds-hero {
+    padding: 40px 80px;
+  }
+
+  .sounds-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .btn {
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
+  }
+
+  .title{
+    font-size: 4rem;
+    text-align: center;
+  }
+
+
+  .intro {
+    background: none;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .copy {
+    margin: 0 auto;
+    text-align: justify;
+  }
+  .cards {
+    gap: 28px;
+  }
+  .card {
+    width: 90%;
+    max-width: 90%;
+    padding: 40px 24px;
+  }
+  .card__title {
+    font-size: clamp(2.4rem, 7vw, 3.2rem);
+  }
+  .pill {
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
+  }
+}
+

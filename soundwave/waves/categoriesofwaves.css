@@ -1,0 +1,435 @@
+/* ===============================
+   BACK BUTTON DESIGN
+   =============================== */
+.back-btn {
+  margin-top: 5%;
+  margin-left: 0%;
+  position: absolute;
+  top: 33px;
+  left: 22px;
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(120, 150, 255, 0.35);
+}
+
+/* BACK TO TOP BUTTON */
+/* 🔼 Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 50%;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(100, 150, 255, 0.35),
+              inset 0 0 10px rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Visible state */
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hover effect */
+#backToTop:hover {
+  background: rgba(140, 170, 255, 0.3);
+  box-shadow: 0 0 20px rgba(140, 170, 255, 0.8),
+              inset 0 0 10px rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+/* BUTTON (same glass look) */
+.see-more {
+  margin-top: 1.05rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.see-more::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: buttonShimmer 3s infinite;
+}
+
+@keyframes buttonShimmer {
+  0% { left: -100%; }
+  100% { left: 150%; }
+}
+
+.see-more:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 25px rgba(130, 150, 255, 0.6);
+}
+
+/* ==========================
+   GLOBAL STYLES
+   ========================== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: #0d1430;
+}
+
+/* ==========================
+   CATEGORIES SECTION (TOP)
+   ========================== */
+.categories-section {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2vh 10%;
+  text-align: center;
+  position: relative;
+  background: url("../images/categoriesbg.png") no-repeat center center/cover;
+  padding-top: 8vh;
+}
+
+/* Content container */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 5vw;
+  flex-wrap: wrap;
+}
+
+/* Left side wave graphics */
+.wave-graphic {
+  position: relative;
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle-bg {
+  position: absolute;
+  width: 25vw;
+  height: 25vw;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #a9baff 0%, #d6e0ff 50%, #a9baff 100%);
+  box-shadow: 0 0 12vw 6vw rgba(169,186,255,0.5), 0 0 20vw 10vw rgba(214,224,255,0.3);
+  z-index: 0;
+  animation: slowGlow 8s ease-in-out infinite alternate, circleShimmer 6s linear infinite;
+}
+@keyframes slowGlow { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.08); opacity: 1; } }
+@keyframes circleShimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+/* Waves in top section */
+.wave-line { width: 90%; max-width: 650px; position: absolute; z-index: 2; }
+.wave1 { animation: waveMove1 6s linear infinite; }
+.wave2 { animation: waveMove2 8s linear infinite; }
+.wave3 { animation: waveMove3 10s linear infinite; }
+
+@keyframes waveMove1 { 0% { transform: translateX(0) translateY(0); } 50% { transform: translateX(-50px) translateY(10px); } 100% { transform: translateX(0) translateY(0); } }
+@keyframes waveMove2 { 0% { transform: translateX(0) translateY(0); } 50% { transform: translateX(-70px) translateY(8px); } 100% { transform: translateX(0) translateY(0); } }
+@keyframes waveMove3 { 0% { transform: translateX(0) translateY(0); } 50% { transform: translateX(-90px) translateY(12px); } 100% { transform: translateX(0) translateY(0); } }
+
+/* Gradient stops for top waves */
+#waveGradient1 stop:nth-child(1) { stop-color: rgba(77,90,158,0.8); }
+#waveGradient1 stop:nth-child(2) { stop-color: rgba(169,186,255,0.6); }
+#waveGradient1 stop:nth-child(3) { stop-color: rgba(77,90,158,0.8); }
+
+#waveGradient2 stop:nth-child(1) { stop-color: rgba(60,70,133,0.7); }
+#waveGradient2 stop:nth-child(2) { stop-color: rgba(214,224,255,0.4); }
+#waveGradient2 stop:nth-child(3) { stop-color: rgba(60,70,133,0.7); }
+
+#waveGradient3 stop:nth-child(1) { stop-color: rgba(77,90,158,0.6); }
+#waveGradient3 stop:nth-child(2) { stop-color: rgba(214,224,255,0.3); }
+#waveGradient3 stop:nth-child(3) { stop-color: rgba(77,90,158,0.6); }
+
+/* Text box */
+.text-box {
+  flex: 1 1 45%; /* slightly smaller than 50% */
+  max-width: 450px; /* smaller than 500px */
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  padding: 2.5vw; /* slightly smaller padding */
+  border-radius: 2vw;
+  border: 0.2vw solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 3.5vw rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.text-box:hover { 
+ transform: translateY(-0.7vw);
+  box-shadow: 0 0.7vw 2.5vw rgba(0,0,0,0.45);
+}
+
+.gradient-text {
+  font-size: clamp(1.6rem, 3vw, 2.2rem); /* smaller font */
+  font-weight: 900;
+  background: linear-gradient(90deg, #a9baff, #d6e0ff, #a9baff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+@keyframes shimmer { 0%{background-position:0% center;}50%{background-position:100% center;}100%{background-position:0% center;} }
+.text-box p { 
+    font-size: 0.95rem;
+  color: #d8dcff;
+  line-height: 1.5;
+  margin-top: 1vh;
+}
+
+/* ==========================
+   RESPONSIVE
+   ========================== */
+
+   /* Tablets & small desktops */
+@media (max-width: 768px) {
+  .text-box { max-width: 80%; padding: 2.5vw; }
+  .gradient-text { font-size: clamp(1.4rem, 4.5vw, 2rem); margin-bottom: 1.2rem; }
+  .text-box p { font-size: 0.9rem; line-height: 1.4; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .text-box { max-width: 90%; padding: 2vw; }
+  .gradient-text { font-size: clamp(1.2rem, 5.5vw, 1.8rem); margin-bottom: 1rem; }
+  .text-box p { font-size: 0.85rem; line-height: 1.3; }
+}
+@media (max-width: 1024px) {
+  .content { gap: 4vw; }
+}
+
+@media (max-width: 768px) {
+  .content { flex-direction: column; text-align: center; gap: 4vw; }
+  .wave-graphic { order: -1; }
+  .text-box { max-width: 90%; padding: 4vw; }
+  .gradient-text { font-size: clamp(2rem, 6vw, 2.8rem); }
+  .circle-bg { width: 25vw; height: 25vw; }
+}
+
+@media (max-width: 600px) {
+  .text-box { padding: 3vw; }
+}
+
+@media (max-width: 480px) {
+  .categories-section { padding: 5vh 5%; }
+  .text-box p { font-size: 0.95rem; }
+  .see-more { width: 50px; height: 50px; font-size: 1.5rem; }
+  .circle-bg { width: 30vw; height: 30vw; }
+}
+
+/* === Pages Setup === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: url("../images/background.png") no-repeat center center/cover;
+  background-attachment: fixed;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+section.page-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2rem;
+}
+
+/* ==========================
+   PAGES 1–3 SMALLER & RESPONSIVE
+   ========================== */
+
+/* Page content container */
+.page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  max-width: 1100px; /* smaller than 1300px */
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Blurred container boxes */
+.info-blur-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  width: 85%;
+  max-width: 800px;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* Main box inside blur box */
+.info-blur-box .main-box {
+  position: relative;
+  background: rgba(40, 50, 110, 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  width: 100%;
+  max-width: 600px; /* smaller than 700px */
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(108,130,255,0.4), inset 0 0 20px rgba(180,200,255,0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.info-blur-box .main-box::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #c77dff, #ff9cee, #c77dff);
+  z-index: -1;
+  animation: glowShift 6s linear infinite;
+}
+
+#page3 .info-blur-box .main-box::before {
+  background: linear-gradient(120deg, #7fa4ff, #a8b9ff, #7fa4ff);
+}
+
+.info-blur-box .main-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(108,130,255,0.6), inset 0 0 30px rgba(180,200,255,0.3);
+}
+
+/* Titles */
+.info-blur-box .main-box h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem); /* smaller and responsive */
+  font-weight: 800;
+  background: linear-gradient(90deg, #bfcaff, #ffffff, #bfcaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1rem;
+}
+
+/* Wave content boxes */
+.info-blur-box .wave-box {
+  background: rgba(60, 70, 150, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  color: #fff;
+  text-align: left;
+  line-height: 1.6;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.info-blur-box .wave-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(100,120,255,0.4);
+}
+
+.info-blur-box .wave-box h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  color: #d6e0ff;
+  margin-bottom: 0.8rem;
+}
+
+/* Responsive adjustments */
+
+/* Laptops/Tablets */
+@media (max-width: 1024px) {
+  .page-content { max-width: 95%; padding: 1.2rem; gap: 1rem; }
+  .info-blur-box { width: 90%; padding: 1.5rem 1rem; gap: 1rem; }
+  .info-blur-box .main-box { max-width: 550px; padding: 1.2rem 1.8rem; }
+  .info-blur-box .wave-box { padding: 1rem 1.5rem; }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 768px) {
+  .page-content { padding: 1rem 1rem; gap: 0.8rem; }
+  .info-blur-box { width: 95%; padding: 1.2rem 1rem; gap: 0.8rem; }
+  .info-blur-box .main-box { max-width: 100%; padding: 1rem 1.5rem; }
+  .info-blur-box .main-box h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+  .info-blur-box .wave-box { padding: 0.8rem 1rem; font-size: 0.9rem; line-height: 1.4; }
+}
+
+/* Small phones portrait */
+@media (max-width: 480px) {
+  .page-content { padding: 0.8rem 0.8rem; gap: 0.6rem; }
+  .info-blur-box { padding: 1rem 0.8rem; gap: 0.6rem; }
+  .info-blur-box .main-box { padding: 0.8rem 1rem; }
+  .info-blur-box .main-box h2 { font-size: clamp(1.2rem, 6vw, 1.6rem); }
+  .info-blur-box .wave-box { padding: 0.6rem 0.8rem; font-size: 0.85rem; line-height: 1.3; }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+  .page-content { padding: 0.5rem 0.5rem; gap: 0.5rem; }
+  .info-blur-box { padding: 0.6rem 0.5rem; gap: 0.5rem; }
+  .info-blur-box .main-box { padding: 0.5rem 0.6rem; }
+  .info-blur-box .main-box h2 { font-size: 1.2rem; }
+  .info-blur-box .wave-box { padding: 0.5rem 0.6rem; font-size: 0.8rem; line-height: 1.2; }
+}

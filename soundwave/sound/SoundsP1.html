@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wavound | Nature of Sounds</title>
+  <link rel="stylesheet" href="SoundsP1.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+      <!-- BACK BUTTON -->
+  <a href="../home/home.html#topics" class="back-btn">← Back</a>
+  
+  <main class="sounds-hero">
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="imgs/bganimation.mp4" type="video/mp4">
+    </video>
+
+    <section class="sounds-grid">
+      <div class="intro">
+        <h2 class="title"><span>Nature of</span> Sounds</h2>
+        <p id="copyText" class="copy">
+          Learn how waves move, how sound travels, and how both reveal the beauty of physics in motion. 
+          Interactive lessons and tools allow you to explore, calculate, and experiment as you uncover 
+          how vibrations bring the world to life through sound and movement.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card card--top">
+          <h3 class="card__title">Sounds</h3>
+          <button class="btn btn--primary" onclick="location.href='SoundsDetail.html'">→</button>
+        </div>
+        <div class="card card--bottom">
+          <h3 class="card__title">Doppler effect</h3>
+          <button class="btn btn--primary" onclick="location.href='Doppler1P.html'">→</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- NAVBAR LOADER -->
+  <script>
+    // Load navbar dynamically
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+
+  <!-- Typewriter effect for intro text -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const textEl = document.getElementById("copyText");
+      const fullText = textEl.textContent.trim();
+      textEl.textContent = "";
+
+      let i = 0;
+      function type() {
+        if (i < fullText.length) {
+          textEl.textContent += fullText.charAt(i);
+          i++;
+          setTimeout(type, 25); // adjust typing speed
+        }
+      }
+
+      type();
+    });
+  </script>
+
+
+</body>
+</html>
+
+

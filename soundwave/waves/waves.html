@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wavound | Wave</title>
+  <link rel="stylesheet" href="waves.css" />
+</head>
+
+<body>
+
+  <!-- ✅ Navbar container -->
+  <div id="navbar"></div>
+
+  
+    <!-- BACK BUTTON -->
+  <a href="../home/home.html#topics" class="back-btn">← Back</a>
+
+  <!-- 🌊 Background Video (Full Page) -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="Images/globalbg.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Gradient overlay to restore color theme -->
+  <div id="video-overlay"></div>
+
+  <!-- 🌫 Overlay Video (wave elements, light effects, etc.) -->
+  <video autoplay muted loop playsinline id="overlay-video">
+    <source src="sound.mp4" type="video/mp4" />
+  </video>
+
+  <!-- 🌊 HERO SECTION -->
+  <section class="wave-hero">
+    <div class="wave-grid">
+
+      <!-- LEFT PANEL -->
+      <div class="wave-intro">
+        <h1><span>Nature of</span> Waves</h1>
+        <p id="waveText" class="typewriter-text">
+          Understand how waves transfer energy without moving matter — explore mechanical and electromagnetic waves,
+          and see how vibration and motion create the foundation of sound and light.
+        </p>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="wave-cards">
+        <div class="wave-card">
+          <h2>Wave Simulator</h2>
+          <button class="btn" onclick="location.href='wave-simulator.html'">→</button>
+        </div>
+
+        <div class="wave-card">
+          <h2>Wave Properties</h2>
+          <button class="btn" onclick="location.href='PropertiesOfWaves.html'">→</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ✨ MORE TOPICS SECTION -->
+   <div class="more-topics">
+
+  <section class="next-lessons" id="next-lessons">
+    <p class="next-lessons__sub typing-active">
+      Continue learning how waves interact and shape the physical world.
+    </p>
+
+    <div class="next-lessons__scroll">
+      <div class="next-lessons__grid">
+
+        <article class="next-lessons__card">
+          <h3>Categories of Waves</h3>
+          <p>Understanding the main types of waves according to their medium, motion, and nature of propagation.</p>
+          <a class="next-lessons__link" href="categoriesofwaves.html">→</a>
+        </article>
+
+        <article class="next-lessons__card">
+          <h3>Periodic Waves</h3>
+          <p>Learn more about waves that move in continuous, repeating cycles defined by frequency, wavelength, and amplitude.</p>
+          <a class="next-lessons__link" href="periodic-waves.html">→</a>
+        </article>
+
+        <article class="next-lessons__card">
+          <h3>Wave on a String</h3>
+          <p>Discover how a simple vibration creates traveling waves along a stretched string.</p>
+          <a class="next-lessons__link" href="waves-on-a-string.html">→</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+  </div>
+  <!-- TYPE WRITING -->
+   <script>
+      const textElement = document.getElementById("waveText");
+      const fullText = textElement.textContent.trim();
+      textElement.textContent = "";
+
+      let index = 0;
+      const speed = 40; // typing speed (ms per character)
+
+      function typeEffect() {
+        if (index < fullText.length) {
+          textElement.textContent += fullText.charAt(index);
+          index++;
+          setTimeout(typeEffect, speed);
+        } else {
+          textElement.style.borderRight = "2px solid transparent"; // remove cursor at end
+        }
+      }
+
+      textElement.style.animation = "blinkCursor 0.8s step-end infinite";
+      typeEffect();
+
+      window.addEventListener("load", () => {
+        document.querySelector(".next-lessons__sub").classList.add("typing");
+      });
+    </script>
+
+    <!-- NAV BAR Script -->
+    <script>
+    // Load navbar dynamically
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+
+        // Load the navbar JS after it's inserted
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    // Load navbar CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+
+</body>
+</html>

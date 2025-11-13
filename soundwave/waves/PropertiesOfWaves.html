@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties of Waves</title>
+  <link rel="stylesheet" href="waves-bg.css" />
+  <link rel="stylesheet" href="PropertiesOfWaves.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Load shared background -->
+  <script>
+    fetch('waves-bg.html')
+      .then(res => res.text())
+      .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+      });
+  </script>
+
+  <!-- BACK BUTTON -->
+  <a href="waves.html" class="back-btn">← Back</a>
+
+  <div class="container">
+    <!-- ✨ Light Neon Typing Title -->
+    <h1 class="gradient-title">PROPERTIES OF WAVE</h1>
+
+    <p class="description">
+      Waves have characteristics that describe how they move and transfer energy. 
+      These include wavelength, frequency, amplitude, and speed, 
+      which help us understand their behavior in different mediums.
+    </p>
+    
+    <!-- 🌫️ Frosted Glass Outer Card Wrapper -->
+    <div class="cards-wrapper">
+      <div class="cards">
+        <div class="card">
+          <div class="symbol">A</div>
+          <div class="info">
+            <h2>Amplitude (A)</h2>
+            <p>The maximum displacement from equilibrium. A larger amplitude means higher energy.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="symbol">λ</div>
+          <div class="info">
+            <h2>Wavelength (λ)</h2>
+            <p>The distance between two identical points on consecutive cycles (e.g., crest to crest).</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="symbol">f</div>
+          <div class="info">
+            <h2>Frequency (f)</h2>
+            <p>The number of oscillations or cycles per second, measured in hertz (Hz).</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="symbol">T</div>
+          <div class="info">
+            <h2>Period (T)</h2>
+            <p>The time it takes for one full cycle to occur; related by f = 1/T.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="symbol">v</div>
+          <div class="info">
+            <h2>Velocity (v)</h2>
+            <p>Wave speed depends on the medium — for instance, sound moves faster in solids than in gases.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="symbol">Rest</div>
+          <div class="info">
+            <h2>Rest Position</h2>
+            <p>The undisturbed position of the medium when there’s no wave passing through.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="symbol">Crest</div>
+          <div class="info">
+            <h2>Crest</h2>
+            <p>The highest point of the wave above the rest position (maximum positive displacement).</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="symbol">Trough</div>
+          <div class="info">
+            <h2>Trough</h2>
+            <p>The lowest point of the wave below the rest position (maximum negative displacement).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Navbar -->
+  <script>
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+
+  <script src="wave-simulator.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Periodic Waves | Wavound</title>
+  <link rel="stylesheet" href="periodic-waves.css" />
+  <link rel="stylesheet" href="waves-bg.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- BACKGROUND -->
+  <script>
+    fetch('waves-bg.html')
+      .then(res => res.text())
+      .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+      });
+  </script>
+
+  <!-- BACK BUTTON -->
+  <a href="waves.html" class="back-btn">← Back</a>
+
+  <!-- HERO SECTION -->
+  <section class="wave-header">
+    <div class="header-content">
+      <h1 class="title">PERIODIC WAVES</h1>
+
+      <div class="desc-box">
+        <p>
+          A periodic wave is a wave that repeats itself at regular intervals of time and space.
+          These waves are produced when the source of the disturbance is repetitive, such as a
+          vibrating tuning fork or a continuous oscillation. They help us study wave properties
+          like frequency, wavelength, and amplitude more clearly.
+        </p>
+        <button class="see-more" id="scrollToFormulas">See more</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE FORMULAS SECTION -->
+  <section class="wave-formulas" id="formulas-section">
+    <canvas id="waveCanvas"></canvas>
+
+    <div class="formula-wrapper">
+      <div class="section-title">
+        <h2 class="sounds-heading" style="font-size:4rem;">WAVE FORMULAS</h2>
+        <p class="sounds-summary" style="text-align:center;">
+          Explore the key equations that describe wave motion.
+        </p>
+      </div>
+
+      <!-- ✅ FIXED: Added .formula-cards container -->
+      <div class="formula-cards">
+        <!-- Card 1 -->
+        <div class="formula-card">
+          <div class="formula-icon">f</div>
+          <h3>Frequency Formula</h3>
+          <p class="formula-equation">f = 1 / T</p>
+          <div class="formula-info">
+            <p><strong>Frequency (f):</strong> number of wave cycles per second (Hz).</p>
+            <p><strong><br>Period (T):</strong> time for one complete wave cycle (s).</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=ys0mQbJYQjY" class="yt-btn">Watch Tutorial</a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="formula-card">
+          <div class="formula-icon">v</div>
+          <h3>Wave Speed Formula</h3>
+          <p class="formula-equation">v = fλ = λ / T</p>
+          <div class="formula-info">
+            <p><strong>Wave speed (v):</strong> how fast the wave travels (m/s).</p>
+            <p><strong><br>Frequency (f):</strong> number of cycles per second.</p>
+            <p><strong><br>Wavelength (λ):</strong> distance between two crests (m).</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=Zj8JQJtVl0c" class="yt-btn">Watch Tutorial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Smooth scroll
+    document.getElementById('scrollToFormulas').addEventListener('click', () => {
+      document.getElementById('formulas-section').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Navbar
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+
+    // Wave canvas
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, t = 0;
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = document.querySelector('.wave-formulas').offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let pulse = 0, pulseDir = 1;
+    function drawWave() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.beginPath();
+      ctx.moveTo(0, height / 2);
+
+      for (let x = 0; x < width; x++) {
+        const y = height / 2 + Math.sin(x * 0.015 + t) * (20 + pulse * 2);
+        ctx.lineTo(x, y);
+      }
+
+      const alpha = 0.2 + pulse * 0.03;
+      ctx.strokeStyle = `rgba(150,180,255,${alpha})`;
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      pulse += pulseDir * 0.02;
+      if (pulse > 3 || pulse < 0) pulseDir *= -1;
+      t += 0.03;
+      requestAnimationFrame(drawWave);
+    }
+    drawWave();
+
+    // Fade animation
+    const cards = document.querySelectorAll('.formula-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>

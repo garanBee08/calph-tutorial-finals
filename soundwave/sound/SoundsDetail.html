@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wavound | Sounds </title>
+  <link rel="stylesheet" href="SoundsDetail.css" />
+</head>
+
+<body>
+  <!-- NAV BAR -->
+  <div id="navbar"></div>
+  <!--===============  -->
+
+  <div class="background-art"></div> 
+  <main class="detail-wrap">
+    <!-- BACK BUTTON -->
+    <a href="SoundsP1.html" class="back-btn">
+      ← Back
+    </a>
+
+  <script>
+    fetch('waves-bg.html')
+      .then(res => res.text())
+      .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+      });
+  </script>
+
+  <div class="background-art"></div>
+
+<script>
+  fetch('sound-bg.html') // adjust path if needed
+    .then(res => res.text())
+    .then(data => {
+      const bg = document.querySelector('.background-art');
+      if(bg) bg.innerHTML = data;
+    })
+    .catch(err => console.error("Failed to load background:", err));
+</script>
+
+    <!-- TITLE AND SUBTEXTS -->
+    <section class="sounds-hero-2">
+
+      <div class="sounds-hero__left">
+        <h1 class="sounds-heading">SOUNDS</h1>
+        <p class="sounds-summary">Sound is a mechanical longitudinal wave produced by the vibration of an object. When an object vibrates, it causes the surrounding medium (like air, water, or solids) to vibrate as well, creating a pattern of compressions (high-pressure regions) and rarefactions (low-pressure regions) that move outward from the source.</p>
+      </div>
+    
+    </section>
+
+
+    <!-- FACTS SECTION (3CARDS) -->
+    <section class="sounds-facts">
+
+      <article class="fact">
+        <h3>Sound requires a medium to travel.</h3>
+        <ul>
+          <li>Solid</li>
+          <li>Liquid</li>
+          <li>Gas</li>
+        </ul>
+      </article>
+
+      <article class="fact">
+        <p>A sound propagates in a medium because there are particles that transmit the vibration.</p>
+      </article>
+
+      <article class="fact">
+        <p>The speed, pitch, and loudness of sound depend on the properties of the medium and the source of vibration.</p>
+      </article>
+    </section>
+
+
+    <!-- NEXT LESSON CARDS -->
+    <section class="next-lessons" id="next-lessons">
+      <p class="next-lessons__sub typing-active">
+        Continue exploring how sound behaves across different contexts and applications.
+      </p>
+
+      <div class="next-lessons__scroll">
+        <div class="next-lessons__grid">
+          <article class="next-lessons__card">
+            <h3>Classification of Sound</h3>
+            <p>
+              Discover how frequency groups sounds into infrasound, audible sound, and ultrasound.
+              See where everyday examples fall within each category.
+            </p>
+            <a class="next-lessons__link" href="ClassificationSounds.html">→</a>
+          </article>
+
+          <article class="next-lessons__card">
+            <h3>Characteristic of Sound</h3>
+            <p>
+              Break down the properties that shape what we hear—loudness, intensity, pitch, and quality—and explore how instruments craft unique tones.
+            </p>
+            <a class="next-lessons__link" href="Loudness.html">→</a>
+          </article>
+
+          <article class="next-lessons__card">
+            <h3>Speed of Sound</h3>
+            <p>
+              Track the speed of sound in air, water, and solids, and learn why temperature and medium density change how fast waves travel.
+            </p>
+            <a class="next-lessons__link" href="SpeedOfSound.html">→</a>
+          </article>
+
+          <article class="next-lessons__card">
+            <h3>Sound Terminologies</h3>
+            <p>
+              Build a vocabulary for analysing sound—from amplitude and wavelength to resonance—so you can describe and measure audio precisely.
+            </p>
+            <a class="next-lessons__link" href="SoundTerminologies.html">→</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- TYPE SCRIPT -->
+   <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const subText = document.querySelector(".next-lessons__sub");
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              subText.classList.add("typing-active");
+              observer.unobserve(subText); // play only once
+            }
+          });
+        }, { threshold: 0.6 });
+
+        if (subText) observer.observe(subText);
+      });
+    </script>
+
+  <!-- NAV BAR Script -->
+  <script>
+    // Load navbar dynamically
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+
+        // Load the navbar JS after it's inserted
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    // Load navbar CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+
+  
+</body>
+</html>
+
+

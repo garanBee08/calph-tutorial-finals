@@ -1,0 +1,246 @@
+/* ===============================
+   BACK BUTTON DESIGN
+   =============================== */
+.back-btn {
+  margin-top: 5%;
+  margin-left: 0%;
+  position: absolute;
+  top: 33px;
+  left: 22px;
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(120, 150, 255, 0.35);
+}
+
+/* ===============================
+   WAVE SIMULATOR STYLES
+   =============================== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #0D1D7A, #1A237E 60%, #0A0F3D);
+  background-image: url('Images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  overflow: hidden; /* ⬅️ Prevent scrolling */
+  height: 100vh; /* ⬅️ Ensure full viewport height */
+}
+
+/* Main Layout */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  padding-top: 80px; 
+  box-sizing: border-box;
+  margin-top: 2%;
+}
+
+.simulator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: flex-start;
+  height: calc(100vh - 100px); 
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.gradient-title { 
+  font-size: 3.8rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 8px #b0c4ff,
+    0 0 10px #6f9dff;
+  animation: typing 3.5s steps(30, end) 1s 1 normal both,
+             blinkCursor 0.8s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0; /* typing starts hidden */
+  margin: 0.5rem 0 0.8rem 0;
+  border-right: 2px solid rgba(255, 255, 255, 0.8); /* cursor effect */
+}
+
+/* ⌨️ Typewriting animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 58% }
+}
+
+/* 💡 Blinking cursor effect */
+@keyframes blinkCursor {
+  50% { border-color: transparent; }
+}
+
+/* Wave Display Box */
+.wave-display {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.866), rgba(13,29,122,0.6));
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  width: 95%;
+  max-width: 1100px;
+  height: 400px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  margin-bottom: 1.5rem;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Controls Section */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  width: 90%;
+  max-width: 900px;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  backdrop-filter: blur(6px);
+  box-shadow: inset 2px 2px 8px rgba(0,0,0,0.4);
+  flex: 1 1 250px;
+}
+
+
+/* Responsive - make button smaller on mobile */
+@media (max-width: 600px) {
+  .exit-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Sliders + Inputs */
+.slider-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+input[type="range"] {
+  width: 100px;
+  accent-color: #8391DA;
+}
+
+input[type="number"] {
+  width: 60px;
+  border: none;
+  border-radius: 8px;
+  padding: 0.3rem;
+  text-align: center;
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+span {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .gradient-title {
+    font-size: 2.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .wave-display {
+    height: 300px;
+  }
+
+  .controls {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .gradient-title {
+    font-size: 2rem;
+  }
+
+  .wave-display {
+    height: 250px;
+  }
+
+  .control {
+    flex: 1 1 100%;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Extra safety for very short mobile screens */
+@media (max-height: 600px) {
+  main {
+    height: auto; /* allow slight flexibility */
+    min-height: 100vh;
+    overflow-y: auto; /* only allow scroll if screen is very small */
+  }
+
+  .simulator {
+    height: auto;
+    padding-bottom: 1.5rem; /* space for controls */
+  }
+
+  .wave-display {
+    height: 220px; /* slightly smaller to fit */
+  }
+
+  .gradient-title {
+    font-size: 1.8rem;
+  }
+}
+
