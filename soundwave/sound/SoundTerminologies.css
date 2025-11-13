@@ -1,0 +1,433 @@
+@import url('OvSv.css');
+/* ===============================
+   FONT IMPORTS
+   =============================== */
+@font-face {
+  font-family: "Sempione Grotesk B";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-bold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sempione Grotesk M";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sempione Grotesk L";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sempione Grotesk R";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ===============================
+   BACK BUTTON DESIGN
+   =============================== */
+.back-btn {
+  margin-top: 5%;
+  margin-left: 0%;
+  position: absolute;
+  top: 33px;
+  left: 22px;
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(120, 150, 255, 0.35);
+}
+
+
+
+/* ===============================
+   SOUND TERMINOLOGIES FINAL STYLES
+   =============================== */
+
+/* Background (same style as classification) */
+body {
+  position: relative;
+  overflow-x: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 18, 49, 0.95) 0%,
+    rgba(8, 24, 62, 0.92) 100%
+  );
+}
+
+.background-art video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -10;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+#video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -9;
+  background: radial-gradient(circle at top right,
+              rgba(47, 87, 225, 0.2),
+              rgba(10, 20, 60, 0.75));
+  pointer-events: none;
+}
+
+/* Wrapper */
+.terminologies-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 20px 6rem;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Title Section */
+.main-content {
+  padding-top: 3rem; /* so it clears navbar */
+  text-align: center;
+}
+
+
+.gradient-title {
+font-size: clamp(3rem, 5vw, 3.8rem);
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 8px #b0c4ff,
+    0 0 10px #6f9dff;
+  animation: typing 3.5s steps(30, end) 1s 1 normal both,
+             blinkCursor 0.8s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  margin: 2rem auto 0rem auto;
+  border-right: 2px solid rgba(255, 255, 255, 0.8);
+
+  /* Typewriter effect */
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #bbaaff; /* typing cursor */
+  width: 0;
+  animation: typing 5s steps(30, end) forwards, blink 0.7s step-end infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 70%; }
+}
+
+/* Cursor blink (will stop after typing) */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Stop cursor blinking after typing */
+.gradient-title {
+  animation: typing 6s steps(30, end) forwards, blink 0.7s step-end infinite;
+  animation-fill-mode: forwards;
+  animation-delay: 0s, 0s;
+}
+
+
+.gradient-title.typing-done {
+  border-right: none;
+}
+
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes glassflow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Section Background (blurry panel) */
+.terminologies-section {
+  width: 100%;
+  max-width: 1200px;
+  padding: 3rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.45);
+  transition: all 0.4s ease;
+}
+
+/* Horizontal Scroll Area */
+.terminologies-scroll {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 2rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(163, 187, 255, 0.6) transparent;
+}
+
+.terminologies-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.terminologies-scroll::-webkit-scrollbar-thumb {
+  background: rgba(163, 187, 255, 0.5);
+  border-radius: 4px;
+}
+/* CARD STYLES */
+.terminology-card {
+  flex: 0 0 340px;
+  min-width: 340px;
+  height: 300px;
+
+  border-radius: 1.8rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  opacity: 0.9;
+  transform: scale(0.96);
+  padding: 2rem 1rem;
+}
+
+/* Hover animation for the card */
+.terminology-card:hover {
+  opacity: 1;
+  transform: scale(1);
+  background: linear-gradient(135deg, rgba(40, 85, 180, 0.75), rgba(20, 50, 120, 0.7));
+  box-shadow: 0 0 25px rgba(163, 187, 255, 0.5);
+}
+
+/* Title — centered initially like classification card */
+.card-title {
+  font-family: "Sempione Grotesk B", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #e8ddff;
+  text-shadow: 0 0 12px #f8f8f8;
+  margin: 0;
+  text-align: center;
+  padding-bottom: 5px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.5s ease;
+}
+
+/* Hover: move title up with a bit of space from the top */
+.terminology-card:hover .card-title {
+  top: 15px; /* add a little offset from the very top */
+  transform: translateY(0);
+  text-shadow: 0 0 0 #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* Hidden text (definition & example) */
+.card-definition,
+.card-example {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.5s ease;
+  max-height: 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.6;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Reveal text smoothly with space from title */
+.terminology-card:hover .card-definition,
+.terminology-card:hover .card-example {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 300px;
+  margin-top: 1.8rem; /* this adds space above the revealed content */
+}
+
+.card-example {
+  font-style: italic;
+  color: rgba(230, 230, 255, 0.9);
+}
+
+
+/* ===============================
+   RESPONSIVE DESIGN (Keeps original laptop/PC size)
+   =============================== */
+
+/* Tablet screens (768px–1023px) */
+@media (max-width: 1023px) {
+  .main-title {
+    font-size: 3rem;
+  }
+
+  .terminologies-wrapper {
+    padding: 5rem 24px;
+    gap: 50px;
+  }
+
+  .terminologies-section {
+    padding: 2.5rem;
+    border-radius: 1.6rem;
+  }
+
+  .terminologies-scroll {
+    gap: 1.5rem;
+    overflow-x: auto;
+  }
+
+  .terminology-card {
+    flex: 0 0 300px;
+    min-width: 300px;
+    height: auto;
+    padding: 1.8rem 1rem;
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+  }
+
+  .card-definition,
+  .card-example {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile screens (below 768px) */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    border: none; /* remove typing border for clarity */
+    animation: none; /* disable typing animation for better fit */
+    white-space: normal; /* prevent text from overflowing */
+  }
+
+  .back-btn {
+    top: 20px;
+    left: 15px;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+  .terminologies-wrapper {
+    padding: 4rem 18px;
+    gap: 40px;
+  }
+
+  .terminologies-section {
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+  }
+
+  .terminologies-scroll {
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-x: visible;
+  }
+
+  .terminology-card {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    padding: 1.5rem;
+    transform: none;
+  }
+
+  .terminology-card:hover {
+    transform: none; /* disable hover zoom for mobile */
+  }
+
+  .card-title {
+    font-size: 1.6rem;
+    top: auto;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+
+  .card-definition,
+  .card-example {
+    opacity: 1;
+    max-height: none;
+    margin-top: 1rem;
+    transform: none;
+  }
+}
+
+/* Small mobile screens (below 480px) */
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .terminology-card {
+    padding: 1.2rem;
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+  }
+
+  .card-definition,
+  .card-example {
+    font-size: 0.9rem;
+  }
+}

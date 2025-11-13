@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doppler Effect | Wavound</title>
+
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="Doppler1P.css" />
+  <link rel="stylesheet" href="DopplerOverview.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- FETCHED VIDEO BACKGROUND -->
+  <div class="background-art"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('sound-bg.html')
+        .then(res => res.text())
+        .then(data => {
+          const background = document.querySelector('.background-art');
+          background.innerHTML = data;
+
+          // Ensure background video is always behind all elements
+          const video = background.querySelector('video');
+          if (video) {
+            Object.assign(video.style, {
+              position: 'fixed',
+              inset: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: '-10',
+              pointerEvents: 'none'
+            });
+          }
+        })
+        .catch(err => console.error('Error loading background:', err));
+    });
+  </script>
+
+  <!-- Dynamic Navbar -->
+  <div id="navbar"></div>
+
+        <!-- BACK BUTTON -->
+  <a href="SoundsP1.html" class="back-btn">← Back</a>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-header">
+      <h1> <span class="title">Doppler Effect</span></h1>
+      <img class="title-image" src="imgs/DP.png" alt="Doppler effect illustration">
+    </div>
+    <p class="subtitle">
+      Exploring How the Movement of a Sound or Light Source Affects the Frequency and Pitch We Perceive
+    </p>
+    <div class="scroll-down" id="scrollTrigger">
+      <img src="imgs/dp arrow.png" alt="Scroll down arrow">
+    </div>
+  </section>
+
+  <!-- OVERVIEW SECTION -->
+  <section class="overview" id="overview">
+    <div class="overview-content">
+      <h2 class="overview-title">What is the Doppler Effect?</h2>
+      <p class="overview-text">
+        The Doppler Effect is the apparent change in frequency or pitch of a sound due to the relative motion between the sound source and the observer.
+      </p>
+
+      <div class="overview-cards">
+        <div class="overview-card">
+          <p class="card-label">When</p>
+          <p class="card-heading">Source Approaches, <br>Frequency increases</p>
+          <p class="card-note">( Higher Pitch )</p>
+        </div>
+        <div class="overview-card">
+          <p class="card-label">When</p>
+          <p class="card-heading">Source Moves Away, <br>Frequency decreases</p>
+          <p class="card-note">( Lower Pitch )</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- DOPPLER SIMULATION SECTION -->
+<section class="doppler-sim">
+  <h2 class="doppler-title">Doppler Effect Simulation</h2>
+
+  <div class="sim-container">
+    <!-- Left (Car / Sound Source) -->
+    <div class="entity car-entity">
+      <div class="arrow-controls">
+        <button class="arrow-btn left" data-action="car-left" disabled>←</button>
+        <button class="arrow-btn right" data-action="car-right" disabled>→</button>
+      </div>
+      <img src="imgs/car.png" alt="Moving Car" class="car" />
+    </div>
+
+    <!-- Center Area -->
+    <div class="center-space">
+      <img src="imgs/house.svg" alt="Stationary Point" class="stationary-icon" />
+    </div>
+
+    <!-- Right (Person / Observer) -->
+    <div class="entity person-entity">
+      <div class="arrow-controls">
+        <button class="arrow-btn left" data-action="person-left" disabled>←</button>
+        <button class="arrow-btn right" data-action="person-right" disabled>→</button>
+      </div>
+      <img src="imgs/standing.png" alt="Person Observer" class="person" />
+    </div>
+  </div>
+
+  <div class="control-buttons">
+    <button id="startSim" class="start-btn">Start</button>
+      <button id="both-approach" class="both-btn">Both Moving Toward</button>
+        <button id="both-away" class="both-btn">Both Moving Away</button>
+    <button id="stopSim" class="stop-btn">Stop</button>
+  </div>
+
+
+  <p class="doppler-desc">
+    Press <b>Start</b> to begin. Use the arrows to simulate how the observed
+    frequency changes when the <b>source</b> or <b>observer</b> moves toward or away.
+  </p>
+
+  <p class="doppler-add">
+    <i>For the best experience, please use headphones.</i>
+  </p>
+
+<!-- DYNAMIC DOPPLER EXPLANATION -->
+<div class="doppler-info hidden" id="dopplerInfo">
+  <h3 id="motionTitle">Source and Observer Status</h3>
+  <p id="motionExplanation">Click any arrow to start observing the Doppler Effect.</p>
+  <div class="motion-formula" id="motionFormula">f′ = f ( (v ± v₀) / (v ± vₛ) )</div>
+</div>
+
+  
+</section>
+
+
+
+  <!-- Smooth scroll script -->
+  <script>
+    const scrollTrigger = document.getElementById('scrollTrigger');
+    const overviewSection = document.getElementById('overview');
+    if (scrollTrigger) {
+      scrollTrigger.addEventListener('click', () => {
+        if (overviewSection) {
+          overviewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollBy({
+            top: window.innerHeight,
+            behavior: 'smooth'
+          });
+        }
+      });
+    }
+  </script>
+
+  <!-- Load navbar dynamically -->
+  <script>
+    // Load navbar HTML
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+
+        // Load navbar JS after it's inserted
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    // Load navbar CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+
+<script>
+  const car = document.querySelector('.car');
+  const person = document.querySelector('.person');
+  const arrowButtons = document.querySelectorAll('.arrow-btn');
+  const startBtn = document.getElementById('startSim');
+  const stopBtn = document.getElementById('stopSim');
+  const dopplerInfo = document.getElementById('dopplerInfo');
+  const motionTitle = document.getElementById('motionTitle');
+  const motionExplanation = document.getElementById('motionExplanation');
+  const motionFormula = document.getElementById('motionFormula');
+  const bothApproachBtn = document.getElementById('both-approach');
+  const bothAwayBtn = document.getElementById('both-away');
+
+  // 🎵 Sounds (same folder)
+  const sounds = {
+    sourceAway: new Audio('source_away.wav'),
+    sourceApproach: new Audio('source_approach.wav'),
+    observerApproach: new Audio('observer_approach.wav'),
+    observerAway: new Audio('observer_away.wav'),
+    bothAway: new Audio('both_away.wav'),
+    bothApproach: new Audio('both_approach.wav')
+  };
+
+  // 🎧 Helper: safe play
+  function playSound(audio) {
+    if (!audio) return;
+    stopAllSounds();
+    audio.currentTime = 0;
+    audio.play().catch(err => console.warn('Audio play blocked:', err));
+  }
+
+  // 🧹 Stop all current sounds
+  function stopAllSounds() {
+    Object.values(sounds).forEach(s => {
+      s.pause();
+      s.currentTime = 0;
+    });
+  }
+
+  // 🚫 Disable buttons initially
+  arrowButtons.forEach(btn => btn.disabled = true);
+  bothApproachBtn.disabled = true;
+  bothAwayBtn.disabled = true;
+  bothApproachBtn.style.opacity = "0.5";
+  bothAwayBtn.style.opacity = "0.5";
+
+  // ▶️ Start simulation
+  startBtn.addEventListener('click', () => {
+    arrowButtons.forEach(btn => btn.disabled = false);
+    bothApproachBtn.disabled = false;
+    bothAwayBtn.disabled = false;
+    bothApproachBtn.style.opacity = "1";
+    bothAwayBtn.style.opacity = "1";
+    startBtn.disabled = true;
+    startBtn.textContent = "Running...";
+  });
+
+  // 📘 Show Doppler info
+  function showDopplerInfo(title, text, formula) {
+    motionTitle.textContent = title;
+    motionExplanation.textContent = text;
+    motionFormula.textContent = formula;
+    dopplerInfo.classList.add('visible');
+  }
+
+  // 🚗 Handle movements
+  arrowButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      car.style.transform = '';
+      person.style.transform = '';
+      const action = btn.dataset.action;
+
+      stopAllSounds(); // stop before new play
+
+      switch (action) {
+        case 'car-right':
+          car.style.transform = 'translateX(15vw)';
+          playSound(sounds.sourceApproach);
+          showDopplerInfo(
+            "Source Moving Toward Observer",
+            "Sound waves compress, increasing perceived frequency (higher pitch).",
+            "f′ = f × (v / (v - vₛ))"
+          );
+          break;
+
+        case 'car-left':
+          car.style.transform = 'translateX(-15vw)';
+          playSound(sounds.sourceAway);
+          showDopplerInfo(
+            "Source Moving Away from Observer",
+            "Sound waves stretch, decreasing perceived frequency (lower pitch).",
+            "f′ = f × (v / (v + vₛ))"
+          );
+          break;
+
+        case 'person-left':
+          person.style.transform = 'translateX(-15vw)';
+          playSound(sounds.observerApproach);
+          showDopplerInfo(
+            "Observer Moving Toward Source",
+            "Observer encounters waves more frequently (higher pitch).",
+            "f′ = f × ((v + v₀) / v)"
+          );
+          break;
+
+        case 'person-right':
+          person.style.transform = 'translateX(15vw)';
+          playSound(sounds.observerAway);
+          showDopplerInfo(
+            "Observer Moving Away from Source",
+            "Observer receives waves less frequently (lower pitch).",
+            "f′ = f × ((v - v₀) / v)"
+          );
+          break;
+      }
+
+      // Reset after 2.5s
+      setTimeout(() => {
+        car.style.transform = '';
+        person.style.transform = '';
+        stopAllSounds();
+      }, 2500);
+    });
+  });
+
+  // ⚙️ Both moving
+  bothApproachBtn.addEventListener('click', () => {
+    stopAllSounds();
+    car.style.transform = 'translateX(10vw)';
+    person.style.transform = 'translateX(-10vw)';
+    playSound(sounds.bothApproach);
+    showDopplerInfo(
+      "Both Moving Toward Each Other",
+      "Waves are highly compressed — very high pitch.",
+      "f′ = f × ((v + v₀) / (v - vₛ))"
+    );
+    setTimeout(() => {
+      car.style.transform = '';
+      person.style.transform = '';
+      stopAllSounds();
+    }, 2500);
+  });
+
+  bothAwayBtn.addEventListener('click', () => {
+    stopAllSounds();
+    car.style.transform = 'translateX(-10vw)';
+    person.style.transform = 'translateX(10vw)';
+    playSound(sounds.bothAway);
+    showDopplerInfo(
+      "Both Moving Away",
+      "Waves are stretched — very low pitch.",
+      "f′ = f × ((v - v₀) / (v + vₛ))"
+    );
+    setTimeout(() => {
+      car.style.transform = '';
+      person.style.transform = '';
+      stopAllSounds();
+    }, 2500);
+  });
+
+  // ⏹ Stop Simulation
+  stopBtn.addEventListener('click', () => {
+    stopAllSounds();
+    car.style.transform = '';
+    person.style.transform = '';
+    dopplerInfo.classList.remove('visible'); // hide formula/info
+    startBtn.disabled = false;
+    startBtn.textContent = "Start";
+    arrowButtons.forEach(btn => btn.disabled = true);
+    bothApproachBtn.disabled = true;
+    bothAwayBtn.disabled = true;
+    bothApproachBtn.style.opacity = "0.5";
+    bothAwayBtn.style.opacity = "0.5";
+  });
+</script>
+
+
+
+
+
+
+<!-- DOPPLER FORMULA SECTION -->
+<section class="doppler-formula">
+  <div class="formula-container">
+    
+    <!-- LEFT FORMULA CARD -->
+    <div class="formula-card left">
+      <div class="formula-symbol">f′</div>
+      <div class="formula-equation">
+        Doppler Effect Formula:<br>
+        <span class="math">f′ = f ( (v ± v₀) / (v ± vₛ) )</span>
+      </div>
+      <p class="formula-desc">
+        The Doppler Effect shows how motion changes the frequency of waves—higher when approaching and lower when moving away.
+      </p>
+    </div>
+
+    <!-- RIGHT EXPLANATION CARD -->
+    <div class="formula-card right">
+      <h3>where:</h3>
+      <ul>
+        <li><span>f′</span> = observed frequency</li>
+        <li><span>f</span> = actual frequency</li>
+        <li><span>v</span> = speed of sound in medium</li>
+        <li><span>v₀</span> = speed of observer</li>
+        <li><span>vₛ</span> = speed of source</li>
+        <li>(+) for approaching, (–) for receding</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>

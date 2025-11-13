@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sound Terminologies</title>
+  <link rel="stylesheet" href="SoundTerminologies.css" />
+</head>
+
+<body>
+   <!-- FETCHED VIDEO BACKGROUND -->
+  <div class="background-art"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('sound-bg.html')
+        .then(res => res.text())
+        .then(data => {
+          const background = document.querySelector('.background-art');
+          background.innerHTML = data;
+
+          // Ensure background video is always behind all elements
+          const video = background.querySelector('video');
+          if (video) {
+            Object.assign(video.style, {
+              position: 'fixed',
+              inset: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: '-10',
+              pointerEvents: 'none'
+            });
+          }
+        })
+        .catch(err => console.error('Error loading background:', err));
+    });
+  </script>
+  
+  <!-- NAV BAR -->
+  <div id="navbar"></div>
+
+  <main class="terminologies-wrapper">
+    <!-- BACK BUTTON -->
+    <a href="SoundsDetail.html" class="back-btn">← Back</a>
+
+    <!-- Main Content Area -->
+    <section class="main-content">
+     <h1 class="gradient-title">SOUND TERMINOLOGIES</h1>
+    </section>
+
+    <!-- Terminologies Cards Section -->
+    <section class="terminologies-section">
+      <div class="terminologies-scroll">
+        <article class="terminology-card">
+          <h3 class="card-title">ECHO</h3>
+          <p class="card-definition">Reflection of sound that returns after some time delay.</p>
+          <p class="card-example">Example: Sound bouncing off a mountain.</p>
+        </article>
+
+        <article class="terminology-card">
+          <h3 class="card-title">REVERBERATION</h3>
+          <p class="card-definition">Persistence of sound due to multiple reflections in a closed space.</p>
+          <p class="card-example">Example: Sound in a concert hall.</p>
+        </article>
+
+        <article class="terminology-card">
+          <h3 class="card-title">INTERFERENCE</h3>
+          <p class="card-definition">Interaction between two or more sound waves that can amplify or cancel each other.</p>
+          <p class="card-example">Example: Beats in music.</p>
+        </article>
+
+        <article class="terminology-card">
+          <h3 class="card-title">RESONANCE</h3>
+          <p class="card-definition">When an object vibrates at its natural frequency due to another vibrating source.</p>
+          <p class="card-example">Example: Breaking glass with loud sound.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- NAV BAR Script -->
+  <script>
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+
+  <script>
+    const title = document.querySelector('.main-title.typewriter');
+    setTimeout(() => {
+      title.classList.add('typing-done');
+    }, 5000);
+  </script>
+</body>
+</html>

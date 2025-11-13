@@ -1,0 +1,26 @@
+<svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="arrowGradient" x1="10" y1="6" x2="70" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D4DCFF"/>
+      <stop offset="0.52" stop-color="#A6B6FF"/>
+      <stop offset="1" stop-color="#6D7CFF"/>
+    </linearGradient>
+    <linearGradient id="arrowStroke" x1="10" y1="6" x2="70" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E3E8FF" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#5061FF" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="arrowShadow" x="-8" y="-8" width="96" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dy="2"/>
+      <feComposite in2="SourceAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.180392 0 0 0 0 0.215686 0 0 0 0 0.517647 0 0 0 0.35 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="arrow_effect1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="arrow_effect1" result="shape"/>
+    </filter>
+  </defs>
+  <g filter="url(#arrowShadow)">
+    <path d="M8 18H48V9.5L72 20L48 30.5V22H8V18Z" fill="url(#arrowGradient)" stroke="url(#arrowStroke)" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+</svg>
+

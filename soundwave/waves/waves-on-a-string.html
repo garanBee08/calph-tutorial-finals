@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waves on a String | Wavound</title>
+  <link rel="stylesheet" href="waves-on-a-string.css" />
+  <link rel="stylesheet" href="waves-bg.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Dynamic Navbar -->
+  <div id="navbar"></div>
+
+  <!-- BACK BUTTON -->
+  <a href="waves.html" class="back-btn">← Back</a>
+
+  <!-- BACKGROUND -->
+  <script>
+    fetch('waves-bg.html')
+      .then(res => res.text())
+      .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+      });
+  </script>
+
+  <!-- HEADER SECTION -->
+  <section class="wave-header">
+    <div class="header-content">
+      <h1 class="title">WAVES ON A STRING</h1>
+
+      <div class="desc-box">
+        <p>
+          A wave on a string is a type of mechanical wave that travels along a stretched string
+          when a disturbance (such as plucking or striking) occurs. The disturbance moves
+          through the string as a transverse wave, meaning the particles of the string vibrate up
+          and down, while the wave itself travels horizontally along the string.
+        </p>
+
+        <button class="see-more" id="scrollToFormulas">See more</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Section -->
+  <!-- FORMULA SECTION -->
+  <section class="wave-formulas" id="formulas-section">
+    <div class="formula-wrapper">
+      <div class="section-title">
+        <h2>STRING WAVE FORMULAS</h2>
+        <p> The speed of a wave on a string increases with greater tension and decreases with higher linear mass density, meaning tighter strings allow faster waves while heavier strings slow them down.</p>
+      </div>
+
+      <div class="formula-cards">
+        <div class="formula-card">
+          <div class="formula-icon">μ</div>
+          <h3>Linear Mass Density</h3>
+          <p class="formula-equation">μ = m / L</p>
+          <div class="formula-info">
+            <p><strong>μ:</strong> mass per unit length (kg/m)</p>
+            <p><strong>m:</strong> total mass of the string (kg)</p>
+            <p><strong>L:</strong> length of the string (m)</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=-8nn8hb0H8o" class="yt-btn">Watch Tutorial</a>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-icon">v</div>
+          <h3>Wave Speed</h3>
+          <p class="formula-equation">v = √(T / μ)</p>
+          <div class="formula-info">
+            <p><strong>v:</strong> speed of the wave (m/s)</p>
+            <p><strong>T:</strong> tension in the string (N)</p>
+            <p><strong>μ:</strong> mass per unit length (kg/m)</p>
+          </div>
+          <a href="https://www.youtube.com/watch?v=TN_Qw9fXlyY" class="yt-btn">Watch Tutorial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Load Navbar Dynamically -->
+  <script>
+    // Load navbar dynamically
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+
+        // Load the navbar JS after it's inserted
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    // Load navbar CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+
+  <!-- SCROLL TO FORMULAS -->
+  <script>
+    document.getElementById('scrollToFormulas').addEventListener('click', () => {
+      document.getElementById('formulas-section').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Fade-in for cards
+    const cards = document.querySelectorAll('.formula-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>

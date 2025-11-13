@@ -1,0 +1,23 @@
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+  filter: brightness(1.05) contrast(1.05) saturate(1.15);
+  pointer-events: none;
+
+  opacity: 0.9;
+}
+
+#video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at top right,
+              rgba(47, 87, 225, 0.2),
+              rgba(10, 20, 60, 0.75));
+  pointer-events: none;
+}

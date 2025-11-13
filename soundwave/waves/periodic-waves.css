@@ -1,0 +1,595 @@
+@font-face {
+  font-family: "SF Pro";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYBOLD.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Medium";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Light";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYLIGHT.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Reg";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("truetype");
+}
+
+/* ===============================
+   BACK BUTTON DESIGN
+   =============================== */
+.back-btn {
+  margin-top: 5%;
+  margin-left: 0%;
+  position: absolute;
+  top: 33px;
+  left: 22px;
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(120, 150, 255, 0.35);
+}
+
+
+/* ===============================
+   PERIODIC WAVES PAGE STYLES
+   =============================== */
+
+/* BASIC RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background: url('../images/periodicbg.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ===============================
+   PERIODIC WAVES HEADER
+   =============================== */
+.wave-header {
+  position: relative;
+  padding: 8rem 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(90deg, rgba(6, 24, 74, 0.85) 30%, rgba(19, 44, 136, 0.55) 100%),
+              url('../sound/imgs/periodic-wave-bg.png') no-repeat center center/cover;
+  overflow: hidden;
+}
+
+.wave-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: radial-gradient(ellipse at center, rgba(120,150,255,0.2), transparent 70%);
+  opacity: 0.5;
+  animation: floatGlow 6s ease-in-out infinite;
+}
+
+@keyframes floatGlow {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-15px); opacity: 1; }
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap-reverse;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  flex: 1 1 45%;
+  font-size: 5rem;
+  font-weight: 800;
+  text-align: left;
+  background: linear-gradient(90deg, #a2b4ff, #5e7aff, #9cb8ff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s infinite linear;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes shimmer {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+.desc-box {
+  flex: 1 1 51%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 25px rgba(80, 120, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: pulseGlow 5s infinite ease-in-out;
+  color: #fff8f8;
+  line-height: 1.6;
+  font-family: "Sempione Grotesk L", sans-serif;
+  font-size: 1.2rem;
+  width: 80%;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(80, 120, 255, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(150, 180, 255, 0.6); }
+}
+
+/* BUTTON (same glass look) */
+.see-more {
+  margin-top: 1.05rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  backdrop-filter: blur(15px);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.see-more::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: buttonShimmer 3s infinite;
+}
+
+@keyframes buttonShimmer {
+  0% { left: -100%; }
+  100% { left: 150%; }
+}
+
+.see-more:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 25px rgba(130, 150, 255, 0.6);
+}
+
+
+/* -------------------------------
+   WAVE FORMULAS SECTION
+-------------------------------- */
+.wave-formulas {
+  position: relative;
+  min-height: 100vh;
+  padding: 2% 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+#waveCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+/* GLASS WRAPPER */
+.formula-wrapper {
+  position: relative;
+  z-index: 2;
+  margin-top: 3%;
+  width: 95%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem 2rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  
+}
+
+/* SECTION TITLE */
+.section-title h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #a6b4ff, #ffffff, #a6b4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title p {
+  color: #d0d6ff;
+  font-size: 1.1rem;
+}
+
+/* FORMULA CARDS CONTAINER */
+.formula-cards {
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+}
+
+/* FORMULA CARD */
+/* Each Card */
+.formula-card {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 55px 28px 40px;
+  width: 320px;
+  min-height: 380px;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;          /* ⬅ keeps content vertical */
+  justify-content: space-between;  /* ⬅ ensures button alignment */
+  transition: all 0.3s ease;
+  overflow: visible;
+}
+
+
+/* ICON ABOVE EACH CARD */
+.formula-icon {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #a7b3ff, #7486ff);
+  color: white;
+  font-size: 2.3rem;
+  font-family: 'SF Pro', sans-serif;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(120, 150, 255, 0.4);
+}
+
+
+/* Subtle glow on hover for icon */
+.formula-card:hover .formula-icon {
+  box-shadow: 0 0 25px rgba(150,170,255,0.7);
+}
+/* Visible animation state */
+.formula-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+
+@keyframes waveGlow {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Hover effects */
+.formula-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(130, 150, 255, 0.4);
+}
+
+
+/* TITLE (single clean line) */
+.formula-card h3 {
+  margin-top: 40px;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+
+/* EQUATION */
+.formula-equation {
+  font-size: 1.6rem;
+  color: #e0e6ff;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* INFO TEXTS */
+.formula-info {
+  flex-grow: 1; /* ⬅ ensures the info section expands and pushes button down evenly */
+  font-size: 0.9rem;
+  color: #d8ddff;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+/* WATCH TUTORIAL BUTTON */
+.formula-card .yt-btn {
+  display: inline-block;
+  align-self: center;
+  margin-top: auto;
+  font-size: 0.9rem;
+  padding: 9px 20px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(160deg, rgba(73, 89, 179, 0.832), rgba(230, 232, 238, 0.711));
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.formula-card .yt-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #8e9dff, #b0baff);
+}
+
+/* Glow Animation */
+@keyframes waveGlow {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Fade-in animation */
+.visible {
+  animation: fadeUp 0.8s ease forwards;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   RESPONSIVE DESIGN REFINEMENT
+   =============================== */
+
+/* 🖥️ Large Screens (Desktop 1440px+) */
+@media (min-width: 1440px) {
+  .title {
+    font-size: 5.5rem;
+  }
+
+  .desc-box {
+    max-width: 950px;
+    font-size: 1.3rem;
+  }
+
+  .formula-wrapper {
+    max-width: 1200px;
+  }
+
+  .formula-card {
+    width: 340px;
+  }
+}
+
+/* 💻 Laptops (1025px–1439px) */
+@media (max-width: 1439px) {
+  .wave-header {
+    padding: 6rem 6%;
+  }
+
+  .title {
+    font-size: 4.3rem;
+  }
+
+  .desc-box {
+    flex: 1 1 50%;
+    max-width: 700px;
+    font-size: 1.1rem;
+  }
+
+  .formula-card {
+    width: 300px;
+  }
+}
+
+/* 📒 Tablets (768px–1024px) */
+@media (max-width: 1024px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+    padding: 5rem 5%;
+  }
+
+  .title {
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  .desc-box {
+    width: 90%;
+    font-size: 1rem;
+    margin: 0 auto;
+    text-align: justify;
+  }
+
+  .see-more {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    padding: 0.9rem 2rem;
+  }
+
+  .formula-wrapper {
+    padding: 2rem;
+  }
+
+  .formula-cards {
+    gap: 30px;
+  }
+
+  .formula-card {
+    width: 80%;
+    max-width: 400px;
+  }
+
+  .formula-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    top: -30px;
+  }
+
+  .back-btn {
+    top: 20px;
+    left: 20px;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+/* 📱 Mobile Phones (≤768px) */
+@media (max-width: 768px) {
+  .wave-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 5rem 1.5rem;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .desc-box {
+    width: 95%;
+    font-size: 0.95rem;
+    padding: 1.2rem 1.5rem;
+  }
+
+  .see-more {
+    font-size: 0.95rem;
+    padding: 0.9rem 1.8rem;
+  }
+
+  .formula-card {
+    width: 100%;
+    padding: 1.5rem 1.2rem;
+  }
+
+  .formula-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .formula {
+    font-size: 1.8rem;
+  }
+
+  .formula-info {
+    font-size: 0.9rem;
+  }
+
+  .section-title h2 {
+    font-size: 2.3rem;
+  }
+
+  .section-title p {
+    font-size: 1rem;
+  }
+}
+
+/* 📲 Small Phones (≤480px) */
+@media (max-width: 480px) {
+  .wave-header {
+    padding: 4rem 1rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .desc-box {
+    width: 95%;
+    font-size: 0.9rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .see-more {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.6rem;
+  }
+
+  .formula-card {
+    width: 95%;
+    padding: 1.5rem 1rem;
+  }
+
+  .formula-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .formula-icon {
+    top: -25px;
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
+  }
+
+  .formula-info {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .back-btn {
+    top: 12px;
+    left: 12px;
+    font-size: 0.8rem;
+    padding: 7px 14px;
+  }
+}

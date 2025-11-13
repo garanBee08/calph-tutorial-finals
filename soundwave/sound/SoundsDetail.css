@@ -1,0 +1,408 @@
+/* ============================================
+   FONT IMPORTS
+   ============================================ */
+@font-face {
+  font-family: "Sempione Grotesk B";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-bold.otf") format("opentype");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "Sempione Grotesk M";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-medium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Sempione Grotesk L";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-light.otf") format("opentype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Sempione Grotesk R";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-regular.otf") format("opentype");
+  font-weight: 400;
+}
+
+/* ============================================
+   BODY & BACKGROUND
+   ============================================ */
+/* Animated Body Gradient */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Sempione Grotesk R', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  /* Gradient setup */
+  background: linear-gradient(135deg, #1e2a78, #0b1440);
+  background-size: 600% 600%; /* allows smooth animation */
+
+  /* Animation */
+  animation: gradientShift 20s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Background gradient animation */
+.background-art {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-size: 600% 600%;
+  animation: wavesMove 20s ease infinite;
+  opacity: 100;
+}
+
+/* Background video */
+.background-art video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+  filter: brightness(1.0) contrast(1.05) saturate(1.15);
+  pointer-events: none;
+
+  opacity: 0.9;
+}
+
+#video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at top right,
+              rgba(47, 87, 225, 0.2),
+              rgba(10, 20, 60, 0.75));
+  pointer-events: none;
+}
+
+/* Gradient animation */
+@keyframes wavesMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+   BACK BUTTON
+   ============================================ */
+.back-btn {
+  margin-top: 5%;
+  margin-left: 0%;
+  position: absolute;
+  top: 33px;
+  left: 22px;
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(120, 150, 255, 0.35);
+}
+
+
+
+/* ============================================
+   WRAPPER
+   ============================================ */
+.detail-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 8% 2%;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.sounds-hero-2 {
+  display: grid;
+  margin: 0% 3%;
+  max-width: 1100px;
+  
+}
+
+.sounds-heading {
+  flex: 1 1 45%;
+  font-size: 8rem;
+  font-weight: 800;
+  text-align: left;
+  background: linear-gradient(90deg, #a2b4ff, #5e7aff, #9cb8ff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s infinite linear;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.45);
+}
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.sounds-summary {
+  font-size: 1.2rem;
+  max-width: 850px;
+  color: #fff8f8;
+  line-height: 1.6;
+  margin: auto 0;
+  text-align: justify;
+}
+
+/* ============================================
+   FACTS SECTION
+   ============================================ */
+/* ============================================
+   FACTS SECTION (Updated for Periodic Waves look)
+   ============================================ */
+.sounds-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 4% auto;
+  max-width: 1100px;
+  justify-content: center;
+}
+
+/* Fact Cards */
+.fact {
+  border-radius: 18px;
+  padding: 26px 28px;
+  background: rgba(39, 39, 39, 0.4); /* deeper bluish tone */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35),
+              inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: #fff;
+  transition: all 0.4s ease;
+  overflow-y: auto;
+}
+
+.fact:hover {
+  transform: translateY(-6px) scale(1.03);
+  background: rgba(70, 75, 190, 0.45);
+  box-shadow: 0 10px 25px rgba(110, 130, 255, 0.4);
+}
+
+/* Headings */
+.fact h3 {
+  font-size: 1.2rem;
+  color: #dbe1ff;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Paragraphs and Lists */
+.fact p,
+.fact ul {
+  color: #f0f0ff;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Lists */
+.fact ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.fact li {
+  padding: 4px 0;
+}
+
+/* Scrollbar (facts) */
+.fact::-webkit-scrollbar {
+  width: 8px;
+}
+
+.fact::-webkit-scrollbar-thumb {
+  background: rgba(140, 130, 255, 0.5);
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(140, 130, 255, 0.7);
+}
+
+.fact::-webkit-scrollbar-track {
+  background: rgba(25, 25, 60, 0.2);
+  border-radius: 999px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sounds-facts {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 5%;
+  }
+}
+
+
+/* ===============================
+   NEXT LESSONS SECTION
+   =============================== */
+/* ===============================
+   NEXT LESSONS SECTION (Updated)
+   =============================== */
+.next-lessons {
+  width: 85%;
+  margin: 6% auto;
+  padding: 60px 40px;
+  border-radius: 28px;
+
+  /* Deep blue background similar to Periodic Waves page */
+  background:rgba(39, 39, 39, 0.151); /* deeper bluish tone */
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  position: relative;
+  opacity: 50;
+  z-index: 1;
+}
+
+.next-lessons::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: linear-gradient(
+
+    rgba(50, 40, 130, 0.15) 40%,
+  );
+  pointer-events: none;
+  opacity: 20;
+}
+
+/* Subtitle */
+.next-lessons__sub {
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.3rem;
+  max-width: 780px;
+  margin: 0 auto 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  width: 0;
+}
+
+.next-lessons__sub.typing-active {
+  animation: typing 4s steps(40, end) forwards,
+             blink 0.75s step-end infinite;
+}
+
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* Card Layout */
+.next-lessons__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* Cards */
+.next-lessons__card {
+  flex: 0 1 280px;
+  min-height: 320px;
+  border-radius: 22px;
+  padding: 32px 26px;
+
+  display: flex;
+  flex-direction: column; /* enables proper vertical alignment */
+  justify-content: space-between; /* pushes button to bottom */
+
+  background: rgba(39, 39, 39, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.next-lessons__card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: rgba(90, 80, 220, 0.35);
+  box-shadow: 0 15px 30px rgba(100, 120, 255, 0.35);
+}
+
+.next-lessons__card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: #d9dcff;
+}
+
+.next-lessons__card p {
+  flex-grow: 1; /* ensures text takes up available space */
+  font-size: 1rem;
+  color: #f1f1f1cc;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.next-lessons__link {
+  align-self: center;
+  display: inline-block;
+  padding: 10px 22px;
+  background: rgba(39, 39, 39, 0.55); /* same tone as section bg */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.next-lessons__link:hover {
+  background: rgba(70, 80, 190, 0.65); /* subtle blue glow on hover */
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 10px 24px rgba(100, 120, 255, 0.45);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .next-lessons {
+    width: 95%;
+    padding: 40px 20px;
+  }
+  .next-lessons__card {
+    flex: 0 1 90%;
+  }
+}

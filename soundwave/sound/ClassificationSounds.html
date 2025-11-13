@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Classification of Sound</title>
+  <link rel="stylesheet" href="ClassificationSounds.css" />
+</head>
+
+<body>
+  <!-- FETCHED VIDEO BACKGROUND -->
+  <div class="background-art"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('sound-bg.html')
+        .then(res => res.text())
+        .then(data => {
+          const background = document.querySelector('.background-art');
+          background.innerHTML = data;
+
+          // Ensure background video is always behind all elements
+          const video = background.querySelector('video');
+          if (video) {
+            Object.assign(video.style, {
+              position: 'fixed',
+              inset: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: '-10',
+              pointerEvents: 'none'
+            });
+          }
+        })
+        .catch(err => console.error('Error loading background:', err));
+    });
+  </script>
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+  <!-- BACK BUTTON -->
+  <a href="SoundsDetail.html" class="back-btn">← Back</a>
+
+  <!-- MAIN CONTENT -->
+  <section class="classification-hero">
+    <h1 class="gradient-title">CLASSIFICATION OF SOUNDS</h1>
+
+</div>
+
+    <div class="classification-hero__inner">
+      <!-- LEFT SIDE -->
+      <div class="classification-copy">
+        <h1>Based on Frequency</h1>
+        <p>
+          Sounds can be classified based on their frequency. Below are examples showing how
+          different frequencies relate to perception and natural sources.
+        </p>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="classification-cards">
+        <div class="classification-card">
+          <h2>Infrasonic</h2>
+          <div class="card-detail">
+            <p><span>Frequency:</span> Below 20 Hz</p>
+            <p><span>Description:</span> Too low for human hearing.</p>
+            <p><span>Example:</span> Earthquakes and elephant communication</p>
+          </div>
+        </div>
+
+        <div class="classification-card">
+          <h2>Audible</h2>
+          <div class="card-detail">
+            <p><span>Frequency:</span> 20 Hz - 20,000 Hz</p>
+            <p><span>Description:</span> Range humans can hear.</p>
+            <p><span>Example:</span> Music and speech</p>
+          </div>
+        </div>
+
+        <div class="classification-card">
+          <h2>Ultrasonic</h2>
+          <div class="card-detail">
+            <p><span>Frequency:</span> Above 20,000 Hz</p>
+            <p><span>Description:</span> Too high for human hearing.</p>
+            <p><span>Example:</span> Bats and medical imaging</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVBAR FETCH -->
+  <script>
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+
+  <!-- CARD INTERACTION SCRIPT -->
+  <script>
+    const cards = document.querySelectorAll('.classification-card');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => {
+          const isActive = c === card;
+          c.classList.toggle('active', isActive);
+          c.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+      });
+    });
+
+    const title = document.querySelector('.classification-title');
+    setTimeout(() => {
+      title.classList.add('typing-done');
+    }, 8000);
+  </script>
+</body>
+</html>

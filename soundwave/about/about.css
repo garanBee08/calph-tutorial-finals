@@ -1,0 +1,1417 @@
+@font-face {
+    font-family: "SF Pro";
+    src: url("../fonts/sf-pro-display/SFPRODISPLAYBOLD.OTF") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "SF Medium";
+    src: url("../fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "SF Reg";
+    src: url("../fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("truetype");
+  }
+  :root {
+  --text: #eaf1ff;
+  --muted: #b9c4ff;
+
+
+  /* Tagline alignment */
+  --tag-offset-ratio: 27.4%;
+  --tag-width-ratio: 72.6%;
+  --tag-offset-tweak: -3%;
+  --tag-top-tweak: 6px;
+
+
+  /* Right side proximity */
+  --about-shift-x: 20px;
+
+
+  /* Card target */
+  --card-width: 560px;
+  --card-height: 230px;
+}
+
+
+/* RESET */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: #02041a;
+  overflow-x: hidden;
+}
+
+
+/* Background */
+.bg-wrap { position: fixed; inset: 0; z-index: -1; }
+.bg-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  
+  /* Use RGBA instead of opacity */
+  background: rgba(0, 16, 36, 0.5); 
+  backdrop-filter: blur(6px);
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  padding: 1.2rem 3rem; /* taller navbar */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  font-size: 26px; /* larger hamburger */
+  font-family: "SF Medium", sans-serif;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem; /* slightly reduced padding on mobile */
+  }
+
+  .logo img {
+    width: 100%;
+    height: 40px;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 85%;
+    right: 5%;
+    
+    background: linear-gradient(180deg, #001024, #40648f);
+    opacity: 0.95;
+    flex-direction: column;
+    
+    width: 200px;
+    height: 0;
+    
+    border-radius: 5%;
+    overflow: hidden;
+    
+    transition: height 0.3s ease;
+    align-items: center;
+  }
+
+  .nav-links.open {
+    height: 230px;
+    padding: 1rem 0;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #ffffff;
+    border: 1px solid #000000;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Sections */
+.section {
+  height: 100vh;
+  padding-top: 100px; /* adjusted for taller navbar */
+  background: #f5f6fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+/* Hero layout */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* simpler & balanced layout */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 48px 5vw; /* relative padding for all screens */
+  gap: 24px; /* give more breathing space between left & right */
+}
+
+/* Left column (logo + tagline) */
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left-align logo and tagline */
+  justify-content: center;
+  margin: 0; /* remove old margin */
+  width: 100%; /* allow natural scaling */
+}
+
+/* Logo block */
+.hero-mark {
+  width: clamp(400px, 45vw, 640px); /* smaller for laptops */
+  filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5));
+  transition: width 0.3s ease;
+  margin-left: 2rem; /* adds breathing room from left edge */
+}
+
+/* Tagline */
+.tagline {
+  font-family: 'SF Pro Display', 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+  white-space: nowrap;
+  display: block;
+  text-align: left;
+  margin-left: 2rem; /* align with logo */
+  opacity: 0.95;
+}
+
+
+
+/* Right side (About + card + buttons) */
+.right{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:12px;
+  transform: translateX(var(--about-shift-x));
+  margin-left: 2rem;
+}
+.about-title{ margin:0 0 4px 0; text-align:center; font-size: clamp(42px, 7vw, 110px); }
+.about-title span{
+  background: radial-gradient(circle, #E5E9FF 55%, #7983BC 83%, #0D1D7A 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+
+/* Glass card */
+.glass{
+  width: 88vw;
+  max-width: 850px;
+  min-height: 320px;
+  padding: 48px 60px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  margin: 14px auto 0;
+  text-align: center;
+  overflow: hidden;
+  transition: max-height .35s ease, opacity .25s ease, padding .25s ease, width .3s ease;
+}
+.glass p{
+  font-size: 16px; line-height: 1.7; color: #ffffff;
+  margin: 0 auto; max-width: 900px;
+}
+.glass.is-open{ max-height:1000px; opacity:1; }
+.glass.is-collapsed{ max-height:0; opacity:0; padding-top:0; padding-bottom:0; margin-top:0; margin-bottom:0; border-color:transparent; pointer-events:none; }
+
+
+/* Buttons */
+a, .btn, .chip { text-decoration: none; }
+a:hover, .btn:hover, .chip:hover { text-decoration: none; }
+
+
+/* SEE MORE button */
+.btn-primary.see-more{
+  background: rgba(56,52,52,0.65);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  padding:12px 26px;
+  min-width:150px;
+  text-align:center;
+  backdrop-filter: blur(6px);
+  box-shadow: inset 0 -2px 0 rgba(255,255,255,.06), 0 8px 18px rgba(0,0,0,.35);
+  transition: transform .35s ease, margin .35s ease, opacity .25s ease;
+}
+
+
+/* === SEE MORE EXACTLY CENTERED BELOW GLASS CARD === */
+.cta-row {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -20px; /* adjust spacing between card and button */
+}
+
+
+/* See more button centered under card */
+.btn-primary.see-more {
+  position: absolute;
+  top: 100%; /* exactly below the card */
+  left: 50%;
+  transform: translate(-50%, 20px); /* center horizontally, small gap down */
+  background: rgba(56, 52, 52, 0.65);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 26px;
+  min-width: 150px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, opacity 0.25s ease;
+}
+
+
+/* Hover effect (optional) */
+.btn-primary.see-more:hover {
+  transform: translate(-50%, 15px) scale(1.05);
+}
+
+
+/* Responsive adjustment */
+@media (max-width: 980px) {
+  .cta-row {
+    margin-top: -16px;
+  }
+
+
+  .btn-primary.see-more {
+    transform: translate(-50%, 16px);
+    padding: 10px 22px;
+    min-width: 130px;
+  }
+}
+
+
+
+
+/* Hidden by default */
+.hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+
+/* Shown when active */
+.glass.show {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 48px 60px;
+  margin: 14px auto;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.6s ease;
+}
+
+
+/* Smooth transition for responsiveness */
+@media (max-width: 980px) {
+  .glass.show {
+    padding: 36px 28px;
+  }
+}
+
+
+/* --- CTA Row (See more + Chips inline) --- */
+.cta-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+
+/* See more button */
+.btn-primary.see-more {
+  position: relative;
+  top: -100px; /* move upward by 25px */
+  background: rgba(56, 52, 52, 0.65);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 26px;
+  min-width: 150px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+
+
+
+.btn-primary.see-more:hover {
+  transform: scale(1.05);
+}
+
+
+/* Chips (hidden by default) */
+.chip {
+  background: linear-gradient(135deg, rgba(60,67,147,0.25), rgba(19,24,74,0.35));
+  color: #fff;
+  border: 1px solid rgba(132,147,255,0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+
+/* When visible */
+.chip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+/* Responsive: stack on mobile */
+@media (max-width: 700px) {
+  .cta-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* --- Fix overlap: add proper spacing between See more and chips --- */
+.cta-row {
+  justify-content: center !important;
+  align-items: center;
+  gap: 22px !important;   /* dagdag pagitan sa mga buttons */
+  margin-top: 10px !important;  /* may konting space mula sa glass card */
+  position: relative;
+}
+
+
+.btn-primary.see-more {
+  position: relative;
+  left: -5px;    /* move slightly right */
+  top: 0;
+  transform: translateX(0);
+}
+
+
+/* Move "About us" section closer to logo */
+.hero {
+  grid-template-columns: 1.1fr 0.9fr; /* shift divider, mas maliit space sa gitna */
+  gap: 0px; /* remove large gap between logo and about section */
+}
+
+
+.right {
+  transform: translateX(-40px); /* move section slightly left */
+}
+
+
+/* Responsive adjustment */
+@media (max-width: 980px) {
+  .right {
+    transform: translateX(0); /* keep centered on small screens */
+  }
+}
+
+
+.btn-primary.see-more {
+  margin-left: -300px; /* move it slightly to the right */
+}
+
+
+/* --- ABOUT US ANIMATION (Final Version) --- */
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  transform: translateY(170px); /* Start perfectly aligned beside logo */
+  transition: transform 0.8s ease;
+}
+
+
+/* When active (moves up to reveal description) */
+.right.active {
+  transform: translateY(0);
+}
+
+
+/* About title */
+.about-title {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(42px, 7vw, 110px);
+  cursor: pointer;
+  transition: transform 0.8s ease;
+}
+.about-title span {
+  background: radial-gradient(circle, #E5E9FF 55%, #7983BC 83%, #0D1D7A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+/* Hidden glass description card */
+.glass {
+  width: 88vw;
+  max-width: 850px;
+  min-height: 320px;
+  padding: 48px 60px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  margin: 20px auto 0;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(60px);
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+.glass p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #ffffff;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+
+/* Visible when toggled */
+.glass.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+/* Responsive behavior */
+@media (max-width: 980px) {
+  .right {
+    transform: translateY(120px);
+  }
+  .glass.show {
+    padding: 36px 28px;
+  }
+}
+
+
+/* --- ALIGN ABOUT US WITH LOGO --- */
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  transform: translate(-140px, 180px); /* horizontally close to logo + vertically aligned with logo */
+  transition: transform 0.8s ease;
+}
+
+
+/* When opened (moves up smoothly) */
+.right.active {
+  transform: translate(-140px, 0);
+}
+
+
+/* Responsive (center it for mobile) */
+@media (max-width: 980px) {
+  .right,
+  .right.active {
+    transform: translate(0, 0);
+  }
+}
+
+
+/* Description text formatting — formal & centered */
+.glass p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #f1f5ff;
+  margin: 0 auto;
+  max-width: 850px;            /* Keeps text readable width */
+  text-align: justify;         /* Formal paragraph look */
+  text-justify: inter-word;
+  letter-spacing: 0.3px;
+  font-weight: 400;
+  white-space: normal;         /* Important: prevents weird line breaks */
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  transition: color 0.4s ease;
+}
+
+
+
+
+/* Keep these as before */
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+
+
+
+
+
+/*SECOND PAGE*/
+/* === SECOND PAGE (scrollable cinematic bg2 section) === */
+.second-page {
+  position: relative;
+  min-height: 130vh;
+  width: 100%;
+  background: url("images/bg2.png") no-repeat center center fixed;
+  background-size: cover;
+  z-index: 0;
+  animation: fadeBg 2s ease-in-out both;
+}
+
+/* Smooth fade when scrolling from first to second page */
+@keyframes fadeBg {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* === SECOND PAGE (cinematic wavy fade-in) === */
+.second-page {
+  position: relative;
+  min-height: 140vh;
+  width: 100%;
+  background: url("images/bg2.png") no-repeat center center fixed;
+  background-size: cover;
+  z-index: 0;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.5s ease-out, transform 2.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+/* === About + See-More graceful fade-out on scroll === */
+.hero, .glass, .cta-row {
+  transition: opacity 0.8s ease-out, transform 1.2s ease-out;
+  will-change: opacity, transform;
+}
+
+/* Hidden (used dynamically by JS) */
+.hero.fade-out,
+.glass.fade-out,
+.cta-row.fade-out {
+  opacity: 0;
+  transform: translateY(-40px);
+  pointer-events: none;
+}
+
+/* === SECOND PAGE (smooth natural fade-in) === */
+.second-page {
+  position: relative;
+  min-height: 140vh;
+  width: 100%;
+  background: url("images/bg2.png") no-repeat center center fixed;
+  background-size: cover;
+   background-position: 100% center; /* adjust mo ito */
+  z-index: 0;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1.8s ease, transform 1.8s ease;
+  will-change: opacity, transform;
+}
+
+/* === Fade out About section gracefully === */
+.hero, .glass, .cta-row {
+  transition: opacity 1s ease-out, transform 1.4s ease-out;
+  will-change: opacity, transform;
+}
+
+.hero.fade-out,
+.glass.fade-out,
+.cta-row.fade-out {
+  opacity: 0;
+  transform: translateY(-40px);
+  pointer-events: none;
+}
+
+/* === SECOND PAGE BACKGROUND (flipped version of first) === */
+/* === SECOND PAGE — fixed and properly scaled === */
+.second-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: url("images/bg2.png") no-repeat center bottom fixed;
+  background-size: cover; /* ibabalik sa dati kung ito talaga yung gamit mo */
+  background-position: center bottom;
+  margin-bottom: -1px; /* ito ang tatanggal sa sobrang gap sa baba */
+  z-index: 0;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 2s ease, transform 2s ease;
+}
+
+/* ============================= */
+/* SECOND PAGE (ISOLATED STYLES) */
+/* ============================= */
+
+/* ============================= */
+/* SECOND PAGE (Independent) */
+/* ============================= */
+
+.second-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: url("images/bg2.png") no-repeat center bottom fixed;
+  background-size: cover;
+  background-position: center bottom;
+  margin-bottom: -1px;
+  z-index: 0;
+  font-family: "SF Pro Display", sans-serif;
+}
+
+/* main container */
+.secondpage-container {
+  position: relative;
+  top: 100px;
+  left: 100px;
+}
+
+/* title image (About Our Website.png) */
+.about-img {
+  width: 750px; /* adjust as needed */
+  height: auto;
+  margin-top: 60px; /* 🔹 adjust this value (10–50px) para pababa lang ng kaunti */
+  margin-bottom: 80px;
+}
+
+/* --- CENTER GLASS CARDS ONLY --- */
+.button-wrapper {
+  position: relative;
+  top: 20px; /* pababa ng konti mula sa title */
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* gitna horizontally */
+  gap: 80px; /* pagitan ng dalawang card */
+}
+
+/* optional tweak kung gusto mo konting pakaliwa o pakanan */
+.secondpage-btn {
+  margin-left: -200px; /* bawasan (pakaliwa) o dagdagan (pakanan) depende sa gusto mo */
+}
+
+/* button layout */
+.secondpage-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+/* glass card button style (using your gc.png) */
+.secondpage-btn {
+    width: 520px;   /* dati 345px */
+  height: 230px;  /* dati 165px */
+  background: url("images/gc.png") no-repeat center;
+  background-size: cover;
+  border: none;
+  border-radius: 20px;
+
+  /* text style */
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 55px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.3; /* 🔹 para bumaba ng kaunti yung "Offers?" at "Exists?" */
+
+  /* layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* effects */
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.secondpage-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.card-block {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: all 0.6s ease;
+}
+
+/* glass card button (gc.png) */
+.secondpage-btn {
+  width: 520px;
+  height: 230px;
+  background: url("images/gc.png") no-repeat center;
+  background-size: cover;
+  border: none;
+  border-radius: 20px;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 55px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  transition: transform 0.6s ease;
+}
+
+.secondpage-btn:hover {
+  transform: scale(1.05);
+}
+
+/* gc2 glass description card */
+.desc-card {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+
+.gc2-box {
+  width: 641px;
+  height: 165px;
+  background: url("images/gc2.png") no-repeat center;
+  background-size: cover;
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.card-block {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: all 0.6s ease;
+}
+
+/* glass card button (gc.png) */
+.secondpage-btn {
+  width: 520px;
+  height: 230px;
+  background: url("images/gc.png") no-repeat center;
+  background-size: cover;
+  border: none;
+  border-radius: 20px;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 55px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  transition: transform 0.6s ease;
+}
+
+.secondpage-btn:hover {
+  transform: scale(1.05);
+}
+
+/* --- Base state --- */
+/* Smooth, fade-behind animation for description */
+.desc-card {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: 
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    z-index 0s linear 0.5s; /* para bumalik siya sa likod pagkatapos mag-fade */
+  z-index: -1;
+}
+
+/* kapag active (fade in) */
+.card-block.active-left .desc-card,
+.card-block.active-right .desc-card {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  z-index: 2;
+  pointer-events: auto;
+  transition: 
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    z-index 0s;
+}
+
+/* kapag nag-close, magfa-fade out smoothly at lilipat sa likod */
+.card-block.closing .desc-card {
+  opacity: 0;
+  transform: translateY(-50%) scale(0.97);
+  pointer-events: none;
+  z-index: -1;
+  transition: 
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+
+
+.gc2-box {
+   width: 800px;   /* dating 641px → mas mahaba */
+  height: 230px;  /* dating 165px → mas mataas */
+  background: url("images/gc2.png") no-repeat center;
+  background-size: cover;
+  border-radius: 20px;
+  padding: 30px 40px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+
+/* WHY WEBSITE EXISTS — lilipat pakaliwa, may awang sa gilid */
+.card-block.active-left .secondpage-btn {
+  transform: translateX(-470px); /* mas malapit sa dulo, may kaunting awang */
+}
+.card-block.active-left .desc-card {
+  left: 220%; /* lalabas sa kanan, medyo malapit sa frame */
+  opacity: 1;
+  transform: translate(-100%, -50%) scale(1);
+  pointer-events: auto;
+   z-index: 0; /* nasa likod lang ng blue card */
+}
+
+/* WHAT WEBSITE OFFERS — lilipat pakanan, may awang din */
+.card-block.active-right .secondpage-btn {
+  transform: translateX(470px);
+}
+.card-block.active-right .desc-card {
+  right: 280%;
+  opacity: 1;
+  transform: translate(100%, -50%) scale(1);
+  pointer-events: auto;
+   z-index: 0; /* nasa likod lang ng blue card */
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+.gc2-box p {
+  margin-bottom: 15px; /* dagdag space sa pagitan ng paragraphs */
+}
+
+/* === Fine horizontal alignment for About us section === */
+.hero {
+  position: relative;
+}
+
+/* Moves the entire About Us block slightly to the right
+   without interfering with the existing vertical translateY animation */
+.hero .right {
+  position: relative;
+  left: 100px; /* 🔹 adjust this (60–100px) to get the perfect gap beside the logo */
+}
+
+/* Keep it centered again on smaller screens */
+@media (max-width: 980px) {
+  .hero .right {
+    left: 0;
+  }
+}
+
+
+/* --------------------------------------------------------- */
+/* ✅ RESPONSIVE FIXES — KEEP EXISTING STYLES INTACT         */
+/*     Works for all laptops, tablets, and mobile devices    */
+/* --------------------------------------------------------- */
+
+/* --- General scaling --- */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+}
+
+/* --- Hero Section: stack elements nicely --- */
+@media (max-width: 1200px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 60px 40px;
+    gap: 50px;
+  }
+
+  .hero .left, .hero .right {
+    transform: none !important;
+    margin: 0 auto;
+  }
+
+  .hero-mark {
+    width: clamp(300px, 70vw, 640px);
+  }
+
+  .tagline {
+    margin: 10px auto 0 auto;
+    font-size: clamp(16px, 2vw, 22px);
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: clamp(42px, 8vw, 80px);
+  }
+
+  .glass {
+    width: 90%;
+    padding: clamp(20px, 5vw, 40px);
+  }
+
+  .glass p {
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.6;
+  }
+
+  .cta-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .btn-primary.see-more {
+    margin: 0 auto;
+    font-size: clamp(14px, 2vw, 16px);
+    padding: 10px 20px;
+  }
+
+  .chip {
+    font-size: clamp(12px, 1.8vw, 14px);
+    padding: 8px 16px;
+  }
+}
+
+/* --- Hero adjustments for mobile --- */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px;
+  }
+
+  .hero-mark {
+    width: 85%;
+  }
+
+  .glass {
+    width: 95%;
+  }
+
+  .glass p {
+    font-size: 14px;
+  }
+
+  .cta-row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .btn-primary.see-more {
+    min-width: 130px;
+    font-size: 14px;
+  }
+}
+
+/* --- Second Page (About Website) --- */
+@media (max-width: 1200px) {
+  .secondpage-container {
+    top: 60px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .about-img {
+    width: clamp(280px, 70vw, 750px);
+    margin: 40px auto;
+  }
+
+  .button-wrapper {
+    align-items: center;
+    gap: 60px;
+  }
+
+  .secondpage-btn {
+    width: clamp(280px, 55vw, 520px);
+    height: clamp(140px, 20vh, 230px);
+    font-size: clamp(24px, 4vw, 55px);
+    margin-left: 0;
+  }
+
+  .gc2-box {
+    width: clamp(320px, 65vw, 800px);
+    height: auto;
+    padding: clamp(20px, 3vw, 40px);
+    font-size: clamp(13px, 1.3vw, 16px);
+  }
+
+  /* Move descriptions closer */
+  .card-block.active-left .secondpage-btn {
+    transform: translateX(-30vw);
+  }
+  .card-block.active-right .secondpage-btn {
+    transform: translateX(30vw);
+  }
+
+  .card-block.active-left .desc-card {
+    left: 110%;
+  }
+  .card-block.active-right .desc-card {
+    right: 110%;
+  }
+}
+
+/* --- Stack layout for tablets & phones --- */
+@media (max-width: 768px) {
+  .button-wrapper {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .card-block {
+    flex-direction: column;
+    position: relative;
+  }
+
+  .secondpage-btn {
+    transform: none !important;
+    width: 80%;
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .desc-card {
+    position: relative;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    margin-top: 20px;
+  }
+
+  .gc2-box {
+    width: 85%;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* --- Ultra small phones --- */
+@media (max-width: 480px) {
+  .hero-mark {
+    width: 90%;
+  }
+
+  .about-title {
+    font-size: 40px;
+  }
+
+  .glass {
+    padding: 20px;
+  }
+
+  .btn-primary.see-more {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .chip {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .secondpage-btn {
+    width: 90%;
+    font-size: 28px;
+    padding: 30px 0;
+  }
+
+  .gc2-box {
+    width: 90%;
+    font-size: 13px;
+    padding: 20px;
+  }
+}
+
+/* --------------------------------------------------------- */
+/* ✅ FIX FOR OVERLAPPING DESCRIPTION CARDS (ALL DEVICES)    */
+/* --------------------------------------------------------- */
+
+/* Make sure each card block stacks vertically on small screens */
+@media (max-width: 1024px) {
+  .secondpage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    padding-bottom: 100px; /* add extra breathing space */
+  }
+
+  .button-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    z-index: 1;
+  }
+
+  .card-block {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .desc-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none !important;
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: 20px;
+    z-index: 3; /* ✅ make sure it appears above everything */
+  }
+
+  .gc2-box {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    text-align: justify;
+  }
+}
+
+/* Extra safety: Prevent background overlap */
+@media (max-width: 600px) {
+  .second-page {
+    padding-bottom: 120px; /* ensures last card is visible */
+  }
+}
+
+
+/* ✅ FINAL BEHAVIOR FIX — stay visible until clicked again */
+/* --------------------------------------------------------- */
+/* ✅ FIX: Description stays visible when active (no blink)  */
+/* --------------------------------------------------------- */
+
+.desc-card {
+  opacity: 0;
+  visibility: hidden;          /* 🧩 ito ang missing key */
+  transition: opacity 0.35s ease-in-out, visibility 0s linear 0.35s;
+  pointer-events: none;
+}
+
+.card-block.active-left .desc-card,
+.card-block.active-right .desc-card {
+  opacity: 1;
+  visibility: visible;         /* stays visible habang active */
+  transition-delay: 0s;        /* agad mag-show */
+  pointer-events: auto;
+}
+
+/* --- Mobile behavior fix --- */
+@media (max-width: 768px) {
+  .desc-card {
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: none !important;
+    margin-top: 18px;
+    transition: opacity 0.35s ease-in-out, visibility 0s linear 0.35s;
+  }
+
+  .card-block.active-left .desc-card,
+  .card-block.active-right .desc-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s; /* 🧩 no blink delay */
+  }
+}
+
+
+/* --------------------------------------------------------- */
+/* ✅ FINAL MOBILE FIX - STAYING DESCRIPTION (NO BLINK)      */
+/* --------------------------------------------------------- */
+@media (max-width: 768px) {
+  .desc-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out, visibility 0s linear 0.4s;
+    margin-top: 12px;
+    width: 90%;
+  }
+
+  /* When active - STAY visible */
+  .card-block.active-left .desc-card,
+  .card-block.active-right .desc-card {
+    position: relative !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    transition-delay: 0s !important;
+    z-index: 5;
+  }
+
+  /* Inner glass box responsive */
+  .gc2-box {
+    width: 100% !important;
+    height: auto !important;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 20px 18px !important;
+    text-align: justify;
+
+    /* --------------------------------------------------------- */
+/* ✅ FINAL RESPONSIVE ALIGNMENT FIX — WAVOUND ABOUT PAGE    */
+/* --------------------------------------------------------- */
+
+/* Fix misalignment of About section across laptops */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 6vh 6vw;
+  gap: 2vw;
+}
+
+/* Responsive transform instead of fixed pixels */
+.right {
+  transform: translate(-10vw, 15vh) !important;
+  transition: transform 0.8s ease;
+}
+
+.right.active {
+  transform: translate(-10vw, 0) !important;
+}
+
+/* Keep centered again on smaller screens */
+@media (max-width: 1200px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 5vh;
+    padding: 8vh 5vw;
+  }
+
+  .right,
+  .right.active {
+    transform: none !important;
+    margin-top: 4vh;
+  }
+
+  .glass {
+    width: 90%;
+    padding: clamp(20px, 5vw, 40px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px;
+  }
+  .hero-mark {
+    width: 85%;
+  }
+  .glass {
+    width: 95%;
+  }
+}
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

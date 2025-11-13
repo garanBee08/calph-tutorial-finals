@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wavound | Home</title>
+  <link rel="stylesheet" href="home.css" />
+
+  <link rel="stylesheet" href="../waves/waves-bg.css" />
+</head>
+
+<body>
+  <video autoplay muted loop playsinline id="wave-video">
+    <source src="home.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+  <!-- BACKGROUND -->
+  <script>
+    fetch('../waves/waves-bg.html')
+      .then(res => res.text())
+      .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+      });
+  </script>
+
+  <!-- PAGE 1 (Hero Section) -->
+  <section class="page hero-section" id="home">
+    <!-- Animated Background Waves
+    <div class="wave-container">
+      <div class="animated-wave"></div>
+      <div class="animated-wave"></div>
+      <div class="animated-wave"></div>
+    </div>
+     -->
+    <!-- Floating Orbs -->
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    
+    <!-- Particle System -->
+    <div class="particle-system" id="particles"></div>
+    
+    <div class="content">
+      <h1>Waves and Sound</h1>
+      <p>Exploring the Physics of Waves and Sound</p>
+      
+      <!-- Additional Animated SVG Waves -->
+      <!-- <svg class="wave-svg-animated" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+        <path class="wave-path" d="M0,100 Q150,50 300,100 T600,100 T900,100 T1200,100" 
+              stroke="rgba(96, 165, 250, 0.8)" 
+              stroke-width="3" 
+              fill="none"/>
+        <path class="wave-path" d="M0,100 Q150,50 300,100 T600,100 T900,100 T1200,100" 
+              stroke="rgba(167, 139, 250, 0.6)" 
+              stroke-width="2" 
+              fill="none"
+              style="animation-delay: 0.5s"/>
+        <path class="wave-path" d="M0,100 Q150,50 300,100 T600,100 T900,100 T1200,100" 
+              stroke="rgba(240, 171, 252, 0.4)" 
+              stroke-width="2" 
+              fill="none"
+              style="animation-delay: 1s"/>
+      </svg> -->
+    </div>
+  </section>
+
+  <!-- PAGE 2 (Topics Section) -->
+  <section class="page topics-section" id="topics">
+    <div class="intro">
+      <h2>Connect, Calculate, and Discover.</h2>
+      <p>
+        Discover the fascinating world of waves and sound—where motion turns into music and
+        energy becomes experience.
+      </p>
+    </div>
+
+    <div class="topics-container">
+      <div class="topic-box" onmousemove="trackMouse(event, this)">
+        <div class="icon">
+          <img src="../images/wave-icon.png" alt="Waves Icon" />
+        </div>
+        <h3>WAVES</h3>
+        <button onclick="redirectTo('../waves/waves.html')">EXPLORE</button>
+      </div>
+
+      <div class="topic-box" onmousemove="trackMouse(event, this)">
+        <div class="icon">
+          <img src="../images/sound-icon.png" alt="Sound Icon" />
+        </div>
+        <h3>SOUND</h3>
+        <button onclick="redirectTo('../sound/SoundsP1.html')">EXPLORE</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ SECTION -->
+  <section class="page quiz-section" id="quiz">
+    <div class="quiz-wrapper">
+      <!-- LEFT CARD -->
+      <div class="quiz-card left">
+        <p>Make sure to review your lessons about waves and sound for better accuracy.</p>
+      </div>
+
+      <!-- MAIN QUIZ AREA -->
+      <div class="quiz-main">
+        <div class="quiz-icon-wrapper">
+          <div class="quiz-glow"></div>
+          <div class="quiz-icon">
+            <img src="../images/quiz-icon.png" alt="Quiz Icon" />
+          </div>
+        </div>
+
+        <h1>Quiz</h1>
+        <button class="quiz-start" onclick="redirectTo('../quiz/quiz.html')">
+          <span>→</span>
+        </button>
+        <p class="quiz-desc">
+          Test what you've learned! Answer fun and interactive questions about waves and sound
+          to check your understanding and improve your skills in CalPhy.
+        </p>
+      </div>
+
+      <!-- RIGHT CARD -->
+      <div class="quiz-card right">
+        <p>Read each question carefully before selecting your answer.</p>
+      </div>
+    </div>
+
+    <!-- QUIZ FOOTER -->
+    <div class="quiz-footer">
+      <img src="../images/nlogo.png" alt="Wavound Logo" class="footer-logo" />
+      <p>
+        Copyright © 2025 <strong>Wavound</strong> — An Educational Waves & Sound Learning Platform •
+        All Rights Reserved.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+
+  <!-- JS -->
+  <script src="home.js"></script>
+
+  <!-- Load Navbar Dynamically -->
+  <script>
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>
+</body>
+</html>

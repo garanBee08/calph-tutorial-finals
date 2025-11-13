@@ -1,0 +1,502 @@
+/* ===============================
+   FONT IMPORTS
+   =============================== */
+@font-face {
+  font-family: "Sempione Grotesk B";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-bold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sempione Grotesk M";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sempione Grotesk L";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sempione Grotesk R";
+  src: url("../fonts/sempione-font-family/sempionegrotesk-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ===============================
+   BACK BUTTON DESIGN
+   =============================== */
+.back-btn {
+  margin-top: 5%;
+  margin-left: 0%;
+  position: absolute;
+  top: 33px;
+  left: 22px;
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(120, 150, 255, 0.35);
+}
+
+
+/* ===============================
+   MAIN LAYOUT
+   =============================== */
+/* ===============================
+   BACKGROUND & BODY
+   =============================== */
+
+   /* ===============================
+   FIX BACKGROUND LAYER ORDER
+   =============================== */
+
+/* Ensure the fetched sound-bg always sits behind everything */
+/* Animated Body Gradient */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Sempione Grotesk R', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  /* Gradient setup */
+  background: linear-gradient(135deg, #1e2a78, #0b1440);
+  background-size: 600% 600%; /* allows smooth animation */
+
+  /* Animation */
+  animation: gradientShift 20s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Background gradient animation */
+.background-art {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-size: 600% 600%;
+  animation: wavesMove 20s ease infinite;
+  opacity: 100;
+}
+
+/* Background video */
+.background-art video {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+  filter: brightness(1.05) contrast(1.05) saturate(1.15);
+  pointer-events: none;
+
+  opacity: 0.9;
+}
+
+#video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at top right,
+              rgba(47, 87, 225, 0.2),
+              rgba(10, 20, 60, 0.75));
+  pointer-events: none;
+}
+
+/* Gradient animation */
+@keyframes wavesMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.classification-hero {
+  position: relative;
+  z-index: 1;
+  padding: 6% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gradient-title {
+font-size: clamp(3rem, 5vw, 3.8rem);
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 8px #b0c4ff,
+    0 0 10px #6f9dff;
+  animation: typing 3.5s steps(30, end) 1s 1 normal both,
+             blinkCursor 0.8s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  margin: 2rem auto 0rem auto;
+  border-right: 2px solid rgba(255, 255, 255, 0.8);
+
+  /* Typewriter effect */
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #bbaaff; /* typing cursor */
+  width: 0;
+  animation: typing 5s steps(30, end) forwards, blink 0.7s step-end infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 70%; }
+}
+
+/* Cursor blink (will stop after typing) */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Stop cursor blinking after typing */
+.classification-title {
+  animation: typing 7s steps(30, end) forwards, blink 0.7s step-end infinite;
+  animation-fill-mode: forwards;
+  animation-delay: 0s, 0s;
+}
+
+/* Use this to stop blink after typing */
+.classification-title {
+  animation: typing 7s steps(30, end) forwards, blink 0.7s step-end infinite;
+  animation-fill-mode: forwards;
+}
+
+.classification-title.typing-done {
+  border-right: none;
+}
+
+/* ===============================
+   MAIN CONTAINER BOX
+   =============================== */
+.classification-hero__inner {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  
+  padding: 50px 60px;
+  display: flex;
+  
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2.5rem;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+}
+
+
+/* ===============================
+   LEFT SIDE (TEXT)
+   =============================== */
+.classification-copy {
+  flex: 1 1 40%;
+  font-weight: 100;
+  line-height: 1.8;
+
+  padding: 8% 0%;
+}
+
+.classification-copy h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.classification-copy p {
+  margin: 0;
+  line-height: 1.7;
+  text-align: justify;
+  max-width: 380px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.08rem;
+}
+
+/* ===============================
+   RIGHT SIDE (CARDS)
+   =============================== */
+.classification-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 1.8rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  flex: 1 1 65%;
+  padding: 1rem 0 1.5rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+.classification-cards::-webkit-scrollbar {
+  height: 8px;
+}
+
+.classification-cards::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 8px;
+}
+
+/* ===============================
+   CARD DESIGN
+   =============================== */
+.classification-card {
+  flex: 0 0 270px;
+  height: 320px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: #ffffff;
+  padding: 2rem 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  box-shadow: 8px 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.classification-card h2 {
+  font-size: 1.4rem;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Center title initially */
+.classification-card h2 {
+  color: #f3f3f3;
+  text-shadow: 0 0 8px #8391DA;
+
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.4s ease;
+}
+
+/* Move title up when hovered */
+.classification-card:hover h2 {
+  top: 0;
+  transform: translateY(0);
+  margin-bottom: 1rem;
+    color: #d5caff;
+  text-shadow: 0 0 0px #ffffff;
+}
+
+/* Hidden details (closed by default) */
+.classification-card .card-detail {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+/* Hidden details */
+.card-detail {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.4s ease;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* On hover — expands smoothly */
+.classification-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, rgba(40, 85, 180, 0.75), rgba(20, 50, 120, 0.7));
+  box-shadow: 0 0 15px rgba(163, 187, 255, 0.4);
+}
+
+.classification-card:hover .card-detail {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 400px;
+  margin-top: 10px;
+}
+
+/* Detail text style */
+.card-detail span {
+  display: block;
+  font-weight: 700;
+  color: #d5caff;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+}
+
+.card-detail p {
+  margin-bottom: 1rem;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+
+/* --- Large tablets / small laptops --- */
+@media (max-width: 1024px) {
+  .classification-hero__inner {
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem;
+  }
+
+  .classification-title {
+    font-size: 3rem;
+  }
+
+  .classification-copy {
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .classification-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 1.2rem;
+  }
+
+  .classification-card {
+    flex: 0 0 calc(33.33% - 0.8rem); /* ✅ show 3 cards fully */
+    scroll-snap-align: start;
+  }
+}
+
+/* --- Tablets / medium screens --- */
+@media (max-width: 768px) {
+  .back-btn {
+    top: 20px;
+    left: 20px;
+    margin-top: 15%;
+    padding: 8px 18px;
+    font-size: 0.5rem;
+  }
+
+  .classification-title {
+    padding-top: 12%;
+    font-size: 1.6rem;
+  }
+
+  .classification-hero__inner {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .classification-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
+    gap: 1rem;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .classification-card {
+    flex: 0 0 calc(50% - 0.75rem); /* ✅ show exactly 2 full cards */
+    height: 260px;
+    min-width: 220px;
+    scroll-snap-align: start;
+  }
+
+  .classification-copy h1 {
+    font-size: 1.6rem;
+  }
+
+  .classification-copy p {
+    font-size: 1rem;
+  }
+}
+
+/* --- Phones / small screens --- */
+@media (max-width: 480px) {
+  .classification-title {
+    font-size: 1.4rem;
+    padding-top: 18%;
+  }
+
+  .classification-hero__inner {
+    padding: 1.5rem;
+  }
+
+  .classification-copy {
+    text-align: center;
+  }
+
+  .classification-copy p {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .classification-cards {
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .classification-card {
+    flex: 0 0 85%; /* ✅ one full card visible, smooth horizontal scroll */
+    height: 230px;
+  }
+}

@@ -1,0 +1,697 @@
+@font-face {
+  font-family: "SF Pro";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYBOLD.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Medium";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Light";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYLIGHT.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Reg";
+  src: url("../fonts/sf-pro-display/SFPRODISPLAYREGULAR.OTF") format("truetype");
+}
+
+/* ===============================
+   GLOBAL BASE & VIDEO BACKGROUND
+   =============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background: radial-gradient(circle at top right, rgba(47,87,225,0.3), rgba(10,20,60,0.9));
+  color: #000000;
+  font-family: "Sempione Grotesk R", sans-serif;
+}
+
+/* 🌊 Full-page background video */
+/* Base background video */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+  filter: brightness(1.05) contrast(1.05) saturate(1.15);
+  pointer-events: none;
+}
+
+/* Overlay video — subtle motion or texture */
+#overlay-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.1; /* lower = more subtle */
+  mix-blend-mode: screen; /* try lighten, overlay, or soft-light */
+  z-index: 12;
+  pointer-events: none;
+}
+
+/* Overlay gradient on top of video for color harmony 8*/
+#video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1; /* Above the video, below content */
+  background: radial-gradient(radial-gradient, rgba(47, 87, 225, 0.18), rgba(10, 20, 60, 0.55));
+  pointer-events: none;
+} 
+
+
+/* Optional soft overlay for better text contrast */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.7), rgba(2, 6, 30, 0.85));
+  z-index: -1;
+}
+
+/* body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at top right, rgba(47, 87, 225, 0.35), rgba(10, 20, 60, 0.85));
+  pointer-events: none;
+} */
+
+/* ===============================
+   HERO SECTION (MATCHED TO SOUNDS P1)
+   =============================== */
+.wave-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 5%;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Soft glow lighting */
+.wave-hero::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  right: -20%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(120,180,255,0.3), transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.wave-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,30,0.3), rgba(0,0,30,0.6));
+  z-index: 1;
+}
+
+/* Grid Layout (same as sounds-grid) */
+.wave-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  padding: 3%;
+  gap: 40px;
+  align-items: center;
+}
+
+/* LEFT PANEL — Intro Box */
+.wave-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
+  min-height: 520px;
+  padding: 40px 50px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+/* Title */
+.wave-intro h1 {
+  font-family: "SF Pro", sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-shadow: 0 0 8px #8391da;
+  color: #ffffff;
+}
+
+.wave-intro h1 span {
+  color: #91a4ff;
+}
+
+/* Subtitle / Typewriter Text */
+.wave-intro p,
+.typewriter-text {
+  max-width: 93%;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 0.9;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Typewriter animation (multi-line friendly) */
+.typewriter-text {
+  display: inline-block;
+  animation: typing 10s steps(80, end) forwards;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* RIGHT PANEL — Cards */
+.wave-cards {
+  display: grid;
+  gap: 32px;
+  justify-items: center;
+}
+
+/* Individual Card */
+.wave-card {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  min-height: 240px;
+  padding: 20px 32px;
+  border-radius: 20px;
+
+  background: rgba(238, 237, 237, 0.197);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  transition: all 0.4s ease;
+  animation: fadeInUp 1s ease forwards;
+  overflow: hidden;
+}
+
+.wave-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.wave-card:hover {
+  transform: translateY(6px) scale(1.03);
+  box-shadow: 0 10px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Card title (engraved depth, same as Sounds) */
+.wave-card h2 {
+  font-family: "SF Pro", sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #bfc7f8;
+  text-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 0.6);
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5));
+}
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "SF Medium", sans-serif;
+  font-size: 1rem;
+  color: #000;
+  background: linear-gradient(90deg, #c7c7c9, #c8c9cd);
+  border-radius: 999px;
+  border: none;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #7a9aff, #5373e0);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   NEXT LESSONS SECTION
+   =============================== */
+.more-topics {
+  margin-top: 60px;
+  background: none;
+}
+
+.next-lessons {
+  width: 85%; /* Matches your hero section width for alignment */
+  margin: 5% auto;
+  /* padding: 55px 32px 60px; */
+  border-radius: 28px;
+
+  /* Glossy white glass look */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+
+  font-family: "Sempione Grotesk R", sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Gloss highlight overlay */
+.next-lessons::before {
+  content: "";
+  border-radius: 28px;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(136, 68, 231, 0.25) 5%, 
+    rgba(183, 181, 181, 0.04) 30%,  
+    transparent 100%
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+
+/* Subtitle */
+.next-lessons__sub {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  max-width: 630px;
+  margin: 5% auto 0 auto;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  width: 0;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.next-lessons__sub.typing {
+  animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+/* Grid Layout */
+.next-lessons__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* ✅ Added wider gaps between cards */
+  padding: 0 20px;
+}
+
+/* Card Styles */
+.next-lessons__scroll {
+  overflow-x: auto;
+  padding: 3% 0 5% 0;
+}
+
+.next-lessons__card {
+  flex: 0 1 280px; 
+  min-height: 300px; 
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  padding: 32px 26px;
+
+  box-shadow: 8px 8px 18px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  transition: all 0.3s ease;
+  color: #111;
+}
+
+/* Hover Effects */
+.next-lessons__card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.next-lessons__card h3 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center; 
+  background: linear-gradient(270deg, #ff8fa3, #8aa3ff, #8af6ff, #ff8fa3);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientMove 6s ease infinite;
+
+  min-height: 55px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  @keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes softGlow {
+  from {
+    text-shadow:
+      0 0 3px rgba(180, 180, 255, 0.4),
+      0 0 6px rgba(150, 150, 255, 0.3);
+    transform: scale(1);
+  }
+  to {
+    text-shadow:
+      0 0 8px rgba(210, 210, 255, 0.75),
+      0 0 15px rgba(66, 32, 91, 0.901);
+    transform: scale(1.015);
+  }
+}
+
+.next-lessons__card:hover h3 {
+  animation: none;
+  text-shadow: none;
+}
+
+/* Card Description */
+.next-lessons__card p {
+  color: #ffffffb6;
+  text-align: center;
+  line-height: 1.4;
+  font-size: 0.9rem;
+  margin: 14% 0 40px;
+}
+
+/* Button */
+.next-lessons__link {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #7a5cff, #8a6cff);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(100, 80, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.next-lessons__link:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 2px 8px rgba(100, 80, 255, 0.3);
+}
+
+/* ===============================
+   ANIMATIONS
+   =============================== */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes softGlow {
+  from {
+    text-shadow: 0 0 6px rgba(180, 180, 255, 0.5),
+                 0 0 14px rgba(140, 140, 255, 0.3);
+  }
+  to {
+    text-shadow: 0 0 16px rgba(220, 220, 255, 0.8),
+                 0 0 40px rgba(120, 120, 255, 0.5);
+  }
+}
+
+/* ===============================
+   RESPONSIVE DESIGN — POLISHED FINAL
+   =============================== */
+
+/* --- Medium screens (tablets & small laptops) --- */
+@media (max-width: 1024px) {
+  .wave-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .wave-intro {
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .wave-intro h1 {
+    font-size: 3.5rem;
+  }
+
+  .wave-intro p {
+    font-size: 1.05rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .wave-cards {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .wave-card {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .next-lessons {
+    width: 92%;
+    margin: 8% auto;
+    padding: 45px 24px;
+  }
+
+  .next-lessons__grid {
+    gap: 25px;
+  }
+
+  .next-lessons__card {
+    flex: 0 1 300px;
+    margin: 0 auto;
+  }
+}
+
+/* --- Small screens (phones & compact tablets) --- */
+@media (max-width: 768px) {
+  .wave-intro {
+    min-height: 200px;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .wave-intro h1 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+  }
+
+  .wave-intro p {
+    font-size: 0.95rem;
+  }
+
+  .wave-card h2 {
+    font-size: 2.2rem;
+  }
+
+  .wave-card {
+    padding: 22px 20px;
+  }
+
+  .next-lessons {
+    width: 95%;
+    padding: 32px 16px;
+  }
+
+  .next-lessons__sub {
+    font-size: 1.1rem;
+    white-space: normal; /* prevents overflow */
+    border: none;
+    width: 100%;
+  }
+
+  .next-lessons__grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .next-lessons__card {
+    flex: 0 1 90%;
+    min-height: 250px;
+    padding: 26px 20px;
+  }
+
+  .next-lessons__card h3 {
+    font-size: 1.4rem;
+  }
+
+  .next-lessons__card p {
+    font-size: 0.85rem;
+    margin: 10% 0 30px;
+  }
+
+  .next-lessons__link {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+  }
+}
+
+/* --- Extra small screens (under 480px) --- */
+@media (max-width: 480px) {
+  .wave-hero {
+    padding: 60px 5%;
+  }
+
+  .wave-intro h1 {
+    font-size: 2.3rem;
+  }
+
+  .wave-intro p {
+    font-size: 0.9rem;
+  }
+
+  .wave-card {
+    min-height: 160px;
+    padding: 20px;
+  }
+
+  .wave-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .next-lessons__card {
+    flex: 0 1 100%;
+    padding: 22px 16px;
+  }
+
+  .next-lessons__card h3 {
+    font-size: 1.2rem;
+  }
+
+  .next-lessons__card p {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 10px 24px;
+  }
+}
+
+.back-btn {
+  margin-top: 5%;
+  margin-left: 0%;
+  position: absolute;
+  top: 33px;
+  left: 22px;
+  z-index: 50;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+  font-family: "Sempione Grotesk M", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(120, 150, 255, 0.35);
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>wavound — About us</title>
+
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="about.css" />
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg-wrap">
+    <img src="images/bg.png" alt="Background" class="bg-img" />
+  </div>
+
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+
+  <!-- Hero Section -->
+  <main class="hero">
+    <div class="left">
+      <img class="hero-mark" src="images/logo.png" alt="wavound"/>
+      <p class="tagline">Exploring the Physics of Waves and Sound</p>
+    </div>
+    
+
+
+    <div class="right">
+      <!-- About title -->
+      <h1 class="about-title"><span>About us</span></h1>
+
+
+      <!-- Matte black glass card -->
+      <div class="glass">
+        <p>
+          We created this page to share knowledge and understanding about the fascinating world of Waves and Sound.
+          Our goal is to help others learn how sound travels, how waves work, and how these concepts connect to our
+          daily lives—from music and communication to technology and nature. Through this project, we aim to make
+          learning physics fun, easy, and meaningful for everyone.
+        </p>
+      </div>
+
+
+      <!-- See More row (button left, chips right) -->
+      <div class="cta-row">
+        <a href="#" class="btn btn-primary see-more">See more...</a>
+       <a href="#about-section" class="chip scroll-link">About our website</a>
+        <a href="../developers/developers.html" class="chip">About developers</a>
+      </div>
+    </div>
+  </main>
+
+
+  <script src="about.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const existsBtn = document.getElementById("btn-exists");
+  const offersBtn = document.getElementById("btn-offers");
+  const existsBlock = existsBtn.closest(".card-block");
+  const offersBlock = offersBtn.closest(".card-block");
+
+  // ✅ independent toggling (both can stay open)
+  ["click", "touchend"].forEach(evt => {
+    existsBtn.addEventListener(evt, e => {
+      e.preventDefault();
+      e.stopPropagation();
+      existsBlock.classList.toggle("active-left");
+    });
+
+    offersBtn.addEventListener(evt, e => {
+      e.preventDefault();
+      e.stopPropagation();
+      offersBlock.classList.toggle("active-right");
+    });
+  });
+});
+</script>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const aboutLink = document.querySelector('.scroll-link');
+
+  aboutLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    // Scroll all the way to the bottom of the page
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  });
+});
+
+</script>
+
+</script>
+
+
+</body>
+</html>
+
+
+ <!-- SECOND PAGE -->
+  <!-- SECOND PAGE (bg2 background only, scrolls after first) -->
+<!-- SECOND PAGE -->
+<!-- SECOND PAGE -->
+<!-- SECOND PAGE -->
+<!-- SECOND PAGE -->
+<!-- SECOND PAGE -->
+<section class="second-page" id="about-section">
+  <div class="secondpage-container">
+    <img src="images/About Our Website.png" alt="About Our Website" class="about-img">
+
+    <div class="button-wrapper">
+      <div class="card-block">
+        <button class="secondpage-btn" id="btn-exists">Why Website<br>Exists?</button>
+        <div class="desc-card" id="desc-exists">
+          <div class="gc2-box">
+            <p>
+              This website was created to make the study of waves and sound more engaging,
+              accessible, and meaningful for everyone. In traditional classrooms, these topics
+              can be difficult to visualize or imagine, so our goal is to bridge that gap
+              through interactive simulations and real-world applications.
+            </p>
+            <p>
+              The website encourages curiosity and understanding by allowing users to explore,
+              manipulate, and experience how waves move and how sound travels. It serves as
+              a digital space where learning is not just observed but truly felt — turning
+              complex scientific ideas into fun, hands-on exploration.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-block">
+        <button class="secondpage-btn" id="btn-offers">What Website<br>Offers?</button>
+        <div class="desc-card" id="desc-offers">
+          <div class="gc2-box">
+            <p>
+              Our website offers a complete and interactive learning experience about waves
+              and sound. It features guided lessons that explain the nature of sound and waves
+              in a clear and simplified way. Each lesson is designed to engage learners and
+              prepare them for further exploration and assessment.
+            </p>
+            
+            <p>
+              To test understanding, quizzes are available to challenge knowledge and reinforce
+              learning. Altogether, the website serves as both a learning companion and a teaching
+              aid, making science exploration exciting, hands-on, and accessible to all.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Load Navbar Dynamically -->
+  <script>
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '../nav-bar/nav.css';
+    document.head.appendChild(link);
+  </script>

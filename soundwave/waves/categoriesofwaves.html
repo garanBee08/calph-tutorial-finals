@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories of Waves | Wavound</title>
+  <link rel="stylesheet" href="categoriesofwaves.css">
+  <link rel="stylesheet" href="waves-bg.css">  
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- BACK BUTTON -->
+  <a href="../waves/waves.html" class="back-btn">← Back</a>
+
+  <!-- BACKGROUND -->
+  <script>
+    fetch('../waves/waves-bg.html')
+      .then(res => res.text())
+      .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+      });
+  </script>
+  
+  <!-- ---------- SECTION 1: Categories of Waves ---------- -->
+  <section class="categories-section" id="top">
+    <div class="content">
+      
+      <!-- Left: Waves -->
+      <div class="wave-graphic">
+        <div class="circle-bg"></div>
+
+        <!-- Wave SVGs -->
+        <svg class="wave-line wave1" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4d5a9e"/>
+              <stop offset="50%" stop-color="#6a7fd6"/>
+              <stop offset="100%" stop-color="#4d5a9e"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,50 C25,15 50,85 75,50 C100,25 125,75 150,50 C175,15 200,85 225,50 C250,25 275,75 300,50 C325,15 350,85 375,50 C400,25 425,75 450,50 C475,15 500,85 525,50 C550,25 575,75 600,50" fill="none" stroke="url(#waveGradient1)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+
+        <svg class="wave-line wave2" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#3b4685"/>
+              <stop offset="50%" stop-color="#5969c0"/>
+              <stop offset="100%" stop-color="#3b4685"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,60 C30,20 60,100 90,60 C120,30 150,90 180,60 C210,20 240,100 270,60 C300,30 330,90 360,60 C390,20 420,100 450,60 C480,30 510,90 540,60 C570,20 600,100 630,60" fill="none" stroke="url(#waveGradient2)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+
+        <svg class="wave-line wave3" viewBox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4d5a9e"/>
+              <stop offset="50%" stop-color="#6a7fd6"/>
+              <stop offset="100%" stop-color="#4d5a9e"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,45 C35,5 70,85 105,45 C140,10 175,80 210,45 C245,5 280,85 315,45 C350,10 385,80 420,45 C455,5 490,85 525,45 C560,10 595,80 630,45" fill="none" stroke="url(#waveGradient3)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Right: Text -->
+      <div class="text-box">
+        <h1>
+          <span class="gradient-text">CATEGORIES OF</span><br>
+          <span class="gradient-text">WAVES</span>
+        </h1>
+        <p>
+          Waves can be found everywhere — in water, sound, light, and even in the invisible signals
+          that let us use the internet and phones. However, not all waves are the same.
+          They can be grouped into different categories based on how they travel, what they travel through,
+          and how particles in the medium move.
+        </p>
+        <button class="see-more" id="scrollToFormulas">See more</button>
+      </div>
+      
+    </div>
+  </section>
+
+<!-- ---------- PAGE 1 ---------- -->
+<section id="page1" class="page-section">
+  <div class="page-content">
+    <!-- Blurred box containing the title and info -->
+    <div class="info-blur-box">
+      <!-- Title with full main-box design preserved -->
+      <div class="main-box">
+        <h2>Mechanical Waves</h2>
+      </div>
+
+ <!-- Wave information -->
+      <div class="wave-box">
+        <h3>Definition</h3>
+        <p>
+          <strong>Mechanical waves</strong> require a medium such as air, water, or solid material
+          to travel through. They transfer energy by the vibration of particles in the medium.
+        </p>
+      </div>
+
+      <div class="wave-box">
+        <h3>Examples</h3>
+        <p>
+          Sound waves, water waves, and seismic waves are common examples of mechanical waves.
+        </p>
+      </div>
+  </div>
+   </div>
+</section>
+
+ <!-- ---------- PAGE 2 ---------- -->
+<section id="page2" class="page-section">
+  <div class="page-content">
+   <div class="info-blur-box">
+      <div class="main-box">
+        <h2>Electromagnetic 
+          Waves</h2>
+      </div>
+
+     <div class="wave-box">
+        <h3>Definition</h3>
+        <p>
+          <strong>Electromagnetic waves</strong> do not require a medium and can travel through a vacuum.
+          They consist of oscillating electric and magnetic fields.
+        </p>
+      </div>
+
+       <div class="wave-box">
+        <h3>Examples</h3>
+        <p>
+          Light waves, radio waves, microwaves, X-rays, and gamma rays are examples of electromagnetic waves.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ---------- PAGE 3 ---------- -->
+<section id="page3" class="page-section">
+     <div class="info-blur-box">
+      <div class="main-box">
+        <h2>Pulse & Periodic Waves</h2>
+      </div>
+
+       <div class="wave-box">
+        <h3>Definition</h3>
+        <p>
+          <strong>Pulse waves</strong> are single disturbances moving through a medium,
+          while <strong>periodic waves</strong> are continuous and repeat at regular intervals.
+          <strong>Example:</strong> a single wave on a rope.
+        </p>
+      </div>
+
+ <!-- Periodic Wave Box -->
+     <div class="wave-box">
+        <h3>Periodic Wave</h3>
+        <p>
+        A <strong>periodic wave</strong> is created when a vibration or disturbance repeats at
+        regular intervals. It has a continuous, repeating pattern and can be either
+        <strong>transverse</strong> or <strong>longitudinal</strong>, depending on how the particles move.
+        <strong>Periodic:</strong> sound waves, water waves, or vibrations of a guitar string.
+        </p>
+      </div>
+    </div>
+      </div>
+</section>
+
+
+
+  <!-- ---------- SCRIPTS ---------- -->
+  <script>
+    // Navbar loader
+    fetch('../nav-bar/nav.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        const script = document.createElement('script');
+        script.src = '../nav-bar/nav.js';
+        document.body.appendChild(script);
+      });
+
+      // Fade-in when scrolled into view (IntersectionObserver)
+    (function() {
+      const faders = document.querySelectorAll('.fade-in');
+      const options = { threshold: 0.15 };
+
+      const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.animationPlayState = 'running';
+        // ensure we don't re-run it
+        observer.unobserve(entry.target);
+      });
+    }, options);
+
+    // pause animations until element is in view
+    faders.forEach(el => {
+      el.style.animationPlayState = 'paused';
+      appearOnScroll.observe(el);
+    });
+  })();
+
+
+    // // Smooth scroll
+    // document.querySelectorAll('.next-btn').forEach(btn => {
+    //   btn.addEventListener('click', function(e){
+    //     e.preventDefault();
+    //     const target = document.querySelector(this.getAttribute('href'));
+    //     target.scrollIntoView({ behavior: 'smooth' });
+    //   });
+    // });
+
+    // Animate waves on scroll
+    const wave1 = document.querySelector('.wave1');
+    const wave2 = document.querySelector('.wave2');
+    const wave3 = document.querySelector('.wave3');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      wave1.style.transform = `translateX(${scrollY * -0.1}px) translateY(${Math.sin(scrollY * 0.01) * 22}px)`;
+      wave2.style.transform = `translateX(${scrollY * -0.07}px) translateY(${Math.sin(scrollY * 0.01) * 18}px)`;
+      wave3.style.transform = `translateX(${scrollY * -0.05}px) translateY(${Math.sin(scrollY * 0.01) * 24}px)`;
+    });
+  </script>
+
+  <!-- SCROLL TO FORMULAS -->
+  <script>
+    document.getElementById('scrollToFormulas').addEventListener('click', () => {
+      // Automatically scroll to the first section with the class 'page-section'
+      const nextSection = document.querySelector('.page-section');
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    // Fade-in for cards (optional)
+    const cards = document.querySelectorAll('.formula-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+
+  <!-- 🔼 Back to Top Button -->
+  <button id="backToTop" title="Back to top"> ↑</button>
+
+  <script>
+    // Show button when scrolled down 200px
+    const backToTopBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (document.documentElement.scrollTop > 200) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    });
+
+    // Scroll to top smoothly
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>
