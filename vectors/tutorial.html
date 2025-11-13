@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Tutorial</title>
+    <link rel="stylesheet" href="/styles/tutorial.css">
+    <link rel="stylesheet" href="/styles/nav.css">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="/styles/quiz.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/calphy_icon.png">
+    <link rel="apple-touch-icon" href="/assets/images/calphy_icon.png">
+    <link rel="shortcut icon" href="/assets/images/calphy_icon.png">
+</head>
+<body>
+    <div class="menubar">
+        <div class="hamburger">
+          <span class="material-symbols-rounded">menu</span>
+        </div>
+        <div class="logo-container" id="logo-container">
+          <div class="logo">
+            <img onclick="location.href='/landing.html'" src="/assets/images/website_logo.png" alt="Logo picture" class="logo-pic">
+            <h3>Measurements and Vectors</h3>
+          </div>
+          <div class="profile">
+            <img src="/assets/images/profile_placeholder.png" alt="Profile picture" class="profile-pic" id="logoButton1">
+         
+            <!-- Dropdown Modal -->
+            <div id="accountDropdown1" class="dropdown-modal">
+              <div class="logout-option"></div>
+                <button onclick="window.open('https://calphy.gitbook.io/calphy++-docs/', '_blank')">
+                        <span class="material-symbols-rounded profile-dropdown-icons">developer_guide</span>
+                        Documentation
+                </button>
+              <button id="logoutBtn1"><span class="material-symbols-rounded profile-dropdown-icons">logout</span>Logout</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="menu-container">
+            <ul class="menu" id="menu">
+                <li><a href="dashboard.html" data-tooltip="Dashboard"><span class="material-symbols-rounded">dashboard</span></a></li>
+                <li><a href="tutorial.html" data-tooltip="Lessons"><span class="material-symbols-rounded" id="this">auto_stories</span></a></li>
+                <li><a href="simulation.html" data-tooltip="Simulator"><span class="material-symbols-rounded">arrows_output</span></a></li>
+                <li><a href="converter.html" data-tooltip="Converter"><span class="material-symbols-rounded">straighten</span></a></li>
+                <li><a href="leaderboard.html" data-tooltip="Leaderboard"><span class="material-symbols-rounded">leaderboard</span></a></li>
+            </ul>
+        </div>
+      </div>
+
+    <div class="background">
+        <div class="background-blur">
+            <div class="logo-card">
+                <div class="logo-main">
+                    <img onclick="location.href='/landing.html'" src="/assets/images/website_logo.png" alt="Logo picture" class="logo-pic-main">
+                    <h3>Measurements and Vectors</h3>
+                </div>
+                <div class="profile-main">
+                    <img src="/assets/images/profile_placeholder.png" alt="Profile picture" class="profile-pic-main" id="logoButton2">
+                
+                    <!-- Dropdown Modal -->
+                    <div id="accountDropdown2" class="dropdown-modal">
+                    <div class="logout-option"></div>
+                        <button onclick="window.open('https://calphy.gitbook.io/calphy++-docs/', '_blank')">
+                            <span class="material-symbols-rounded profile-dropdown-icons">developer_guide</span>
+                            Documentation
+                        </button>
+                        <button id="logoutBtn2"><span class="material-symbols-rounded profile-dropdown-icons">logout</span>Logout</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="lessons-container">
+                    <div class="lesson-container">
+                        <div class="lesson-header">
+                            <p>Lesson 1</p>
+                            <h2>Measurements</h2>
+                        </div>
+                        <div class="lesson-content">
+                            <div class="topic-container" id="m-topic1" onclick="location.href='/TOPICS/mTopic1.html'">
+                                <span class="material-symbols-rounded" id="lesson-icon">import_contacts</span>
+                                <div class="topic-info">
+                                    <p>Topic 1</p>
+                                    <h3>Physical Quantities</h3>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-m-topic1"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container" id="m-topic2" onclick="location.href='/TOPICS/mTopic2.html'">
+                                <span class="material-symbols-rounded" id="lesson-icon">import_contacts</span>
+                                <div class="topic-info">
+                                    <p>Topic 2</p>
+                                    <h3>Units of Measurement</h3>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-m-topic2"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container quiz-btn" id="m-quiz1" data-table="measurement_quiz1">
+                                <span class="material-symbols-rounded" id="lesson-icon">extension</span>
+                                <div class="topic-info">
+                                    <h3>Quiz 1</h3>
+                                </div>
+                                <div class="score">
+                                    <h4 id="score-quiz1">---</h4>
+                                    <p>Score</p>
+                                </div>
+                               <div class="status-container">
+                                    <div class="status" id="status-m-quiz1"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container" id="m-topic3" onclick="location.href='/TOPICS/mTopic3.html'">
+                                <span class="material-symbols-rounded" id="lesson-icon">import_contacts</span>
+                                <div class="topic-info">
+                                    <p>Topic 3</p>
+                                    <h3>Accuracy, Precision, and Errors</h3>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-m-topic3"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container" id="m-topic4" onclick="location.href='/TOPICS/mTopic4.html'">
+                                <span class="material-symbols-rounded" id="lesson-icon">import_contacts</span>
+                                <div class="topic-info">
+                                    <p>Topic 4</p>
+                                    <h3>Dimensional Analysis</h3>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-m-topic4"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container quiz-btn" id="m-quiz2" data-table="measurement_quiz2">
+                                <span class="material-symbols-rounded" id="lesson-icon">extension</span>
+                                <div class="topic-info">
+                                    <h3>Quiz 2</h3>
+                                </div>
+                                <div class="score">
+                                    <h4 id="score-quiz2">---</h4>
+                                    <p>Score</p>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-m-quiz2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="lesson-container">
+                        <div class="lesson-header">
+                            <p>Lesson 2</p>
+                            <h2>Vectors</h2>
+                        </div>
+                        <div class="lesson-content">
+                            <div class="topic-container" id="v-topic1" onclick="location.href='/TOPICS/vTopic1.html'">
+                                <span class="material-symbols-rounded" id="lesson-icon">import_contacts</span>
+                                <div class="topic-info">
+                                    <p>Topic 1</p>
+                                    <h3>Scalars vs. Vectors</h3>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-v-topic1"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container" id="v-topic2" onclick="location.href='/TOPICS/vTopic2.html'">
+                                <span class="material-symbols-rounded" id="lesson-icon">import_contacts</span>
+                                <div class="topic-info">
+                                    <p>Topic 2</p>
+                                    <h3>Representation of Vectors </h3>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-v-topic2"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container quiz-btn" id="v-quiz3" data-table="vectors_quiz3">
+                                <span class="material-symbols-rounded quiz-icon" id="lesson-icon">extension</span>
+                                <div class="topic-info">
+                                    <h3>Quiz 3</h3>
+                                </div>
+                                <div class="score">
+                                    <h4 id="score-quiz3">---</h4>
+                                    <p>Score</p>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-v-quiz3"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container" id="v-topic3" onclick="location.href='/TOPICS/vTopic3.html'">
+                                <span class="material-symbols-rounded" id="lesson-icon">import_contacts</span>
+                                <div class="topic-info">
+                                    <p>Topic 3</p>
+                                    <h3>Vector Addition and Subtraction</h3>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-v-topic3"></div>
+                                </div>
+                            </div>
+
+                            <div class="topic-container quiz-btn" id="v-quiz4" data-table="vectors_quiz4">
+                                <span class="material-symbols-rounded" id="lesson-icon">extension</span>
+                                <div class="topic-info">
+                                    <h3>Quiz 4</h3>
+                                </div>
+                                <div class="score">
+                                    <h4 id="score-quiz4">---</h4>
+                                    <p>Score</p>
+                                </div>
+                                <div class="status-container">
+                                    <div class="status" id="status-v-quiz4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- 🆕 Instructions Modal -->
+    <div id="instructions-modal" class="quiz-modal hidden">
+        <div class="quiz-background">
+        <div class="particles" id="particles"></div>
+            <div class="quiz-header">
+                <a href="/tutorial.html" class="back-btn" id="instruction-back">←</a>
+                <h1>Quiz</h1>
+            </div>
+            <div class="quiz-container">
+                <h2>Before You Begin</h2>
+                <div class="instructions">
+                    <ul>
+                        <li>Read each question carefully.</li>
+                        <li>Answer quickly to earn <strong>extra points</strong>!</li>
+                        <li>The quiz will immediately start once you click the <i>Start Quiz</i> button.</li>
+                        <li>You may exit the quiz at any time, but your current score will automatically be saved once you do.</li>
+                    </ul>
+                    <p class="goodluck"> Good luck!</p>
+                </div>
+                <button id="begin-quiz" class="start-btn" style="margin-top:10px; margin-bottom: 15px;">Start Quiz</button>
+            </div>
+        </div>
+    </div>
+
+
+  <!-- Quiz Modal -->
+  <div id="quiz-modal" class="quiz-modal hidden">
+    <div class="quiz-background">
+            <div class="particles" id="particles"></div>
+            <div class="quiz-header">
+                <a class="back-btn" id="quiz-back">←</a>
+                <h1>Quiz</h1>
+            </div>
+            
+            <div class="quiz-container">
+            <div class="progress-section">
+                <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+                </div>
+                <div class="progress-info">
+                <span id="question-count">Question 1 out of 15</span>
+                <span class="timer">⏱ <span id="time">0.00</span></span>
+                </div>
+            </div>
+            
+
+            <div class="quiz-content">
+                <h2 id="question-text"></h2>
+                <div class="choices"></div>
+            </div>
+
+            <button id="next-btn" class="next-btn">Next</button>
+            </div>
+    </div>
+  </div>
+    
+    <!-- Confirm Exit Modal -->
+        <div id="confirm-exit-modal" class="quiz-modal hidden">
+        <div class="confirm-container">
+            <h3>Are you sure you want to exit?</h3>
+            <!-- <p>Your current score will be saved.</p> -->
+            <div style="margin-top: 20px; display: flex; justify-content: space-around;">
+            <button id="confirm-exit" class="confirm-btn">Yes, Exit</button>
+            <button id="cancel-exit" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+        </div>
+  
+
+  
+  
+
+  <!-- 🎉 Summary Modal --> 
+  <div id="summary-modal" class="summary-modal hidden">
+    <div class="quiz-background">
+    <div class="particles" id="particles"></div>
+        <div class="quiz-header">
+            <a href="/tutorial.html" class="back-btn" id="close-summary">←</a>
+            <h1>Quiz</h1>
+        </div>
+        <div class="summary-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616490.png" alt="Trophy" width="100" />
+        <h2>Congratulations!</h2>
+        <p>You’ve scored <span id="final-score" class="summary-points">+0 points</span></p>
+
+        <div class="summary-stats">
+            <div class="stat">
+            <div class="stat-value total" id="total-ques">0</div>
+            <div class="stat-label">Total</div>
+            </div>
+            <div class="stat">
+            <div class="stat-value correct" id="correct-count">0</div>
+            <div class="stat-label">Correct</div>
+            </div>
+            <div class="stat">
+            <div class="stat-value wrong" id="wrong-count">0</div>
+            <div class="stat-label">Wrong</div>
+            </div>
+        </div>
+
+        <div class="auto-close" id="auto-close-text">Closing in 10...</div>
+        </div>
+    </div>
+  </div>
+
+  <!-- 🔊 Sounds -->
+  <audio id="sound-correct" src="/assets/audios/correct_answer.mp3" preload="auto"></audio>
+  <audio id="sound-wrong" src="/assets/audios/wrong_answer.mp3" preload="auto"></audio>
+
+
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="logout-modal">
+        <div class="logout-modal-content">
+        <h1>Confirm Logout</h1>
+        <p>Are you sure you want to log out?</p>
+        <div class="logout-actions">
+            <button id="cancelLogout" class="cancel-btn">Cancel</button>
+            <button id="confirmLogout" class="confirm-btn">Ok</button>
+        </div>
+        </div>
+    </div>
+
+    <script src="/script/general.js"> </script>
+    <script type="module" src="/script/function.js"></script>
+    <script src="script/nav.js"></script>
+    <script type="module" src="/script/quiz.js"></script>
+    <script type="module" src="/script/status.js"></script>
+    <script type="module" src="/script/quizScores.js"></script>
+    <script>
+        // ===== Floating Particles =====
+        
+        function createParticles() {
+            const particlesContainer = document.querySelectorAll('.particles');
+        
+        particlesContainer.forEach(particlecont => {
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particlecont.appendChild(particle);
+            }
+        });
+
+        
+        }
+
+        // Call function when page loads
+        document.addEventListener("DOMContentLoaded", createParticles);
+    </script>
+</body>
+</html>

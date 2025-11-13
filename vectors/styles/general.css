@@ -1,0 +1,155 @@
+.logo-container {
+  flex: 0.06;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.logo {
+  flex-grow: 1;
+  display: flex;
+}
+
+.logo-pic {
+  height: 32px;
+}
+
+.profile {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.profile-pic {
+  height: 35px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.logo img {
+  cursor: pointer;
+}
+
+.logo-main img {
+  cursor: pointer;
+}
+
+
+/* Dropdown modal */
+.dropdown-modal {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 75px; 
+  right: 30px;
+  background-color: #4e5e92;
+  border-radius: 10px;
+  width: 168px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  padding: 6px 0;
+  z-index: 999;
+}
+
+/* Dropdown buttons */
+.dropdown-modal button {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown-modal button:hover {
+  background-color: #6878ad;
+}
+
+.profile-dropdown-icons {
+  font-size: 24px; 
+  margin-right: 8px;
+  color: rgb(255, 255, 255);
+  margin-left: 6px;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+
+
+.logout-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-modal-content {
+  background: linear-gradient(#29365F, #29365F) padding-box,
+              linear-gradient(to bottom, #4D71DE 0%, #1D388B 100%) border-box;
+  border: 2px solid transparent;
+  background-color: rgba(87, 99, 139, 0.247);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.logout-modal-content h1 {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.logout-modal-content p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 100;
+  margin-bottom: 30px;
+}
+
+.logout-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.confirm-btn {
+  background-color:#4a61a7;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  width: 80px;
+  border-radius: 20px;
+  
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #4D71DE;
+  padding: 8px 16px;
+  width: 80px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background-color:#5c71b1;
+}
+
+.cancel-btn:hover {
+  background-color: #5870b6;
+}
+
+
+

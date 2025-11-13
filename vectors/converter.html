@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unit Converter - Physics Tutorial</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="/styles/converter.css">
+  <link rel="stylesheet" href="/styles/nav.css">
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/calphy_icon.png">
+  <link rel="apple-touch-icon" href="/assets/images/calphy_icon.png">
+  <link rel="shortcut icon" href="/assets/images/calphy_icon.png">
+</head>
+<body>
+    <div class="menubar">
+        <div class="hamburger">
+          <span class="material-symbols-rounded">menu</span>
+        </div>
+        <div class="logo-container" id="logo-container">
+          <div class="logo">
+            <img onclick="location.href='/landing.html'" src="/assets/images/website_logo.png" alt="Logo picture" class="logo-pic">
+            <h3>Unit Converter</h3>
+          </div>
+          <div class="profile">
+            <img src="/assets/images/profile_placeholder.png" alt="Profile picture" class="profile-pic" id="logoButton1">
+         
+            <!-- Dropdown Modal -->
+            <div id="accountDropdown1" class="dropdown-modal">
+              <div class="logout-option"></div>
+                <button onclick="window.open('https://calphy.gitbook.io/calphy++-docs/', '_blank')">
+                        <span class="material-symbols-rounded profile-dropdown-icons">developer_guide</span>
+                        Documentation
+                </button>
+              <button id="logoutBtn1"><span class="material-symbols-rounded profile-dropdown-icons">logout</span>Logout</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="menu-container">
+            <ul class="menu" id="menu">
+                <li><a href="dashboard.html" data-tooltip="Dashboard"><span class="material-symbols-rounded">dashboard</span></a></li>
+                <li><a href="tutorial.html" data-tooltip="Lessons"><span class="material-symbols-rounded">auto_stories</span></a></li>
+                <li><a href="simulation.html" data-tooltip="Simulator"><span class="material-symbols-rounded">arrows_output</span></a></li>
+                <li><a href="converter.html" data-tooltip="Converter"><span class="material-symbols-rounded" id="this">straighten</span></a></li>
+                <li><a href="leaderboard.html" data-tooltip="Leaderboard"><span class="material-symbols-rounded">leaderboard</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+      <div class="background">
+        <div class="background-blur">
+            <div class="logo-card">
+                <div class="logo-main">
+                    <img onclick="location.href='/landing.html'" src="/assets/images/website_logo.png" alt="Logo picture" class="logo-pic-main">
+                    <h3>Measurements and Vectors</h3>
+                </div>
+                <div class="profile-main">
+                    <img src="/assets/images/profile_placeholder.png" alt="Profile picture" class="profile-pic-main" id="logoButton2">
+                
+                    <!-- Dropdown Modal -->
+                    <div id="accountDropdown2" class="dropdown-modal">
+                    <div class="logout-option"></div>
+                    <button onclick="window.open('https://calphy.gitbook.io/calphy++-docs/', '_blank')">
+                        <span class="material-symbols-rounded profile-dropdown-icons">developer_guide</span>
+                        Documentation
+                    </button>
+
+                    <button id="logoutBtn2"><span class="material-symbols-rounded profile-dropdown-icons">logout</span>Logout</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="converter-container">
+                    <div class="converter-card cards">
+                        <div class="converter-header"><h4>Convert between different units of measurement</h4></div>
+                            <div class="converter-content">
+                                <div class="category-section">
+                                    <label>Select Category</label>
+                                    <select id="categorySelect" class="converter-select">
+                                    <option value="area">Area</option>
+                                    <option value="volume">Volume</option>
+                                    <option value="speed">Speed/Velocity</option>
+                                    <option value="acceleration">Acceleration</option>
+                                    <option value="force">Force</option>
+                                    <option value="pressure">Pressure</option>
+                                    <option value="energy">Energy/Work/Heat</option>
+                                    <option value="power">Power</option>
+                                    <option value="charge">Electric Charge</option>
+                                    <option value="potential">Electric Potential</option>
+                                    <option value="resistance">Electric Resistance</option>
+                                    <option value="frequency">Frequency</option>
+                                    </select>
+                                </div>
+
+                                <div class="conversion-section">
+                                    <div class="input-group">
+                                        <label>From</label>
+                                        <div class="input-row">
+                                            <input type="number" id="inputValue" class="converter-input" placeholder="Enter value" step="any">
+                                            <select id="fromUnit" class="converter-select unit-select"></select>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                                <div class="swap-container">
+                                <button id="swapBtn" class="swap-btn">
+                                    <span class="material-symbols-rounded">swap_vert</span>
+                                </button>
+                                </div>
+
+                        <div class="input-group">
+                        <label>To</label>
+                        <div class="input-row">
+                            <input type="number" id="outputValue" class="converter-input" placeholder="Result" readonly>
+                            <select id="toUnit" class="converter-select unit-select"></select>
+                        </div>
+                    </div>
+
+                    <button id="convertBtn" class="convert-btn">
+                    <span class="material-symbols-rounded">calculate</span>
+                    Convert
+                </button>
+
+                </div>
+
+                
+            </div>
+
+                <div class="side-content">
+                    <div class="info-container">
+                        <div class="info-card cards">
+                            <h4 class="h4">Quick Reference</h4>
+                            <div class="formula-list" id="formulaList">
+                            <div class="formula-item">
+                                <p class="formula-title">Select a category</p>
+                                <p class="formula-desc">Choose a conversion category to see common formulas and conversions.</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="history-container">
+                        <div class="history-card cards">
+                            <div class="history-header">
+                            <h4 class="h4">Recent Conversions</h4>
+                            <button id="clearHistory" class="clear-btn">Clear</button>
+                            </div>
+                            <div class="history-list" id="historyList">
+                            <p class="no-history">No conversions yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script/general.js"></script>
+    <script src="/script/converter.js"></script>
+    <script src="script/nav.js"></script>
+    <script type="module" src="/script/function.js"></script>
+</body>
+</html>

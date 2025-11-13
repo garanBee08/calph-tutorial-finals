@@ -1,0 +1,586 @@
+/* Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  
+  body {
+    background: url('../assets/images/homepage_bg.jfif') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 60px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  
+  /* Center navigation buttons */
+  .nav-left {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  
+  /* Right side (Get Started button) */
+  .nav-right {
+    margin-left: auto;
+  }
+  
+  
+  /* Navigation Buttons */
+  .nav-btn {
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  
+  .nav-btn.active {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  
+  .nav-btn:hover {
+    opacity: 0.8;
+  }
+  
+  
+  /* Get Started Button */
+  .get-started {
+    background: #3f64ff;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  
+  .get-started:hover {
+    background: #597aff;
+    transform: translateY(-2px);
+  }
+  
+  
+  /*Home Section */
+  .hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 0 20px;
+    margin-top: 10px;
+  }
+  
+  
+  .subtitle {
+    font-size: 35px;
+    opacity: 0.9;
+    margin-bottom: 0px;
+  }
+  
+  
+  .title {
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  
+  .description {
+    font-size: 20px;
+    opacity: 0.9;
+  }
+  
+  
+  /* About Section */
+  .about {
+  position: relative;
+  margin-top: 10px;
+  height: 100vh;          /* fill full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 0 10px;
+}
+  
+  .about-box {
+    border: 1.5px solid rgba(120, 160, 255, 0.4);
+    border-radius: 20px;
+    width: 90%;
+    padding: 60px 30px 80px 30px;
+    max-width: 1500px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(120, 160, 255, 0.3);
+    backdrop-filter: blur(15px);
+}
+  
+  
+  
+  
+  .about-box h2 {
+    font-size: 70px;
+    font-weight: 700;
+    text-align: left;
+    margin-left: 30px;
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  
+  .about-box p {
+    font-size: 25px;
+    margin: 0 auto 40px auto; /* centers horizontally */
+    width: 80%;
+    text-align: center; /* centers the text inside */
+    margin-top: 50px;
+  }  
+  
+  
+  /* Features (Boxes Inside About) */
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+  }
+  
+  
+  .feature {
+    width: 250px;
+    height: 120px;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  
+  .feature:hover {
+    transform: scale(1.05);
+  }
+  
+  
+  /* Blue box text */
+  .blue h3 {
+    font-size: 35px;
+    margin-top: 30px; /* adjust title for blue */
+  }
+  .blue p {
+    font-size: 16px;
+    margin-top: 10px;  /* adjust description for blue */
+    opacity: 0.9;
+  }
+  
+  
+  /* Purple box text */
+  .purple h3 {
+    font-size: 35px;
+    margin-top: 30px;  /* adjust title for purple */
+  }
+  .purple p {
+    font-size: 16px;
+    margin-top: 10px;  /* adjust description for blue */
+    opacity: 0.9;
+  }
+  
+  
+  /* Orange box text */
+  .orange h3 {
+    font-size: 35px;
+    margin-top: 30px;  /* adjust title for orange */
+  }
+  .orange p {
+    font-size: 16px;
+    margin-top: 10px;  /* adjust description for blue */
+    opacity: 0.9;
+  }
+  
+  
+  /* Box Colors */
+  .blue {
+    width: 400px;
+    height: 200px;
+    background: #466fff;
+  }
+  .purple {
+    width: 400px;
+    height: 200px;
+    background: #742BF6;
+  }
+  .orange {
+    width: 400px;
+    height: 200px;
+    background: #DC7667;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 98px;
+    }
+  
+    .about-box {
+      padding: 75px;
+    }
+
+    .features {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .feature {
+      width: 90%;
+    }
+  }
+  
+/* Developers Section */
+.developers-section {
+  padding: 40px 30px 30px;
+  backdrop-filter: blur(20px);
+  background: rgba(22, 28, 48, 0.6);
+  color: #fff;
+  text-align: center;
+}
+  
+  /* Header layout */
+  .developers-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* helps when shrinking */
+    gap: 0.5rem;
+    padding: 0px 50px 50px 100px;
+  }
+  
+  .developers-header h2 {
+    font-size: 70px;
+    font-weight: 800;
+    text-align: left;
+    margin: 0;
+  }
+  
+  .developers-header p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    text-align: left;
+    color: #cbd5e1;
+    margin: 0;
+  }
+  
+  /* ✅ New container to center grid and limit width */
+  .developers-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Grid layout */
+  .developers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  /* Developer cards */
+  .developer-card {
+    background: rgba(199, 85, 85, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .developer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* ✅ Responsive image */
+  .developer-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* keeps a square shape */
+    object-fit: cover;
+  }
+  
+  .developer-info {
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.9);
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .developer-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .developer-info p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 10px;
+  }
+  
+  .developer-info a {
+    color: #38bdf8;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    transition: color 0.3s ease;
+  }
+  
+  .developer-info a:hover {
+    color: #7dd3fc;
+  }
+
+  .developer-info a i {
+  color: #38bdf8;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.developer-info a:hover i {
+  color: #eff3f5;
+  transform: scale(1.2);
+}
+
+.github-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.github-text {
+  font-size: 1rem; /* small text */
+  color: #38bdf8;
+}
+
+.github-link:hover i {
+  color: #7dd3fc;
+  transform: scale(1.2);
+}
+
+.github-link:hover .github-text {
+  color: #7dd3fc;
+}
+
+  
+  /* ✅ Responsive adjustments */
+  @media (max-width: 1024px) {
+    .developers-header h2 {
+      font-size: 3.5rem;
+    }
+  
+    .developers-header p {
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 0 auto;
+    }
+  
+    .developers-header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .developer-info h3 {
+      font-size: 1.1rem;
+    }
+    .developer-info p,
+    .developer-info a {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Prevent giant text overflowing on phones */
+@media (max-width: 480px) {
+  .title {
+    font-size: 55px;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 14px;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .nav-left {
+    position: static;
+    transform: none;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .nav-right {
+    display: none; /* hide Get Started on very small screens */
+  }
+}
+
+@media (max-width: 768px) {
+
+  .about {
+    padding: 0 10px;
+  }
+
+  .about-box {
+    padding: 30px 20px;
+    width: 95%;
+  }
+
+  .about-box h2 {
+    font-size: 40px;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .about-box p {
+    font-size: 18px;
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .features {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feature {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .feature h3 {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+
+  .feature p {
+    font-size: 14px;
+  }
+
+  .blue, .purple, .orange {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    height: auto; /* prevent cut-off on some phones */
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .developers-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .developers-header h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  .developers-header p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .developers-container {
+    padding: 0 10px;
+  }
+
+  .developers-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .developer-card img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .developer-info h3 {
+    font-size: 1rem;
+  }
+
+  .developer-info p {
+    font-size: 0.85rem;
+  }
+}

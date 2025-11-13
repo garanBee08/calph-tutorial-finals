@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalars and Vectors - Interactive Guide</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/calphy_icon.png">
+    <link rel="apple-touch-icon" href="/assets/images/calphy_icon.png">
+    <link rel="shortcut icon" href="/assets/images/calphy_icon.png">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.background-blur {
+    backdrop-filter: blur(20px);
+    background: rgba(22, 28, 48, 0.6);
+    padding: 30px;
+    padding-left: 120px;
+    column-gap: 25px;
+    row-gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+    background-size: cover;
+    background-image: url(/assets/images/auth_bg.jfif);
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    backdrop-filter: blur(20px);
+    background: rgba(22, 28, 48, 0.6);
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(20px, 3vw, 40px) clamp(20px, 15vw, 250px);
+    padding-top: clamp(20px, 3vw, 40px);
+}
+
+header {
+    text-align: center;
+    padding: clamp(40px, 8vw, 60px) 20px;
+    animation: fadeInDown 1s ease;
+}
+
+.topic-header {
+    display: flex;
+    align-items: center;
+    padding: clamp(0.5rem, 1vw, 0.7rem) clamp(1rem, 3vw, 2rem);
+    background: #121a4a;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.topic-header h1 {
+    font-size: clamp(14px, 2vw, 18px);
+    padding: 0;
+    margin: 0;
+}
+
+.back-btn {
+    color: #fff;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    margin-right: clamp(0.5rem, 1.5vw, 1rem);
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.back-btn:hover {
+    transform: translateX(-5px);
+}
+
+.topic-label {
+    font-size: clamp(12px, 1.5vw, 16px);
+    letter-spacing: clamp(1px, 0.3vw, 3px);
+    opacity: 0.8;
+    margin-bottom: 10px;
+    color: #7483da;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: clamp(2em, 5vw, 3.4em);
+    margin: 20px 0;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: clamp(14px, 2vw, 18px);
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.section {
+    margin: clamp(30px, 5vw, 40px) 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    font-size: clamp(1.5em, 3vw, 2em);
+    margin-top: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #742BF6, #ffa07a);
+    transition: width 0.5s ease;
+}
+
+h2:hover::after {
+    width: 100%;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(20px, 3vw, 25px);
+    margin: 20px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-3px) scale(1.008);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.card.pink {
+    background: linear-gradient(135deg, #DC7667 0%, #e78d7f 100%);
+}
+
+.card.purple {
+    background: linear-gradient(135deg, #5e2a84 0%, #7c3aed 100%);
+}
+
+.card.blue {
+    background: linear-gradient(135deg, #3254FF 0%, #5a72eb 100%);
+}
+
+.card-title {
+    font-size: clamp(1.1em, 2vw, 1.4em);
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-title::before {
+    content: '◆';
+    font-size: 0.8em;
+    animation: pulse 2s ease infinite;
+}
+
+.card-content {
+    font-size: clamp(0.85em, 1.5vw, 0.95em);
+    opacity: 0.95;
+    line-height: 1.7;
+}
+
+.card-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.card-content li {
+    padding: 8px 0;
+    padding-left: clamp(20px, 3vw, 25px);
+    position: relative;
+}
+
+.card-content li::before {
+    content: '▸';
+    position: absolute;
+    left: 5px;
+    color: #ffa07a;
+}
+
+.example-box {
+    border-radius: clamp(8px, 1.5vw, 10px);
+    padding: clamp(20px, 4vw, 30px);
+    margin: 25px 0;
+    transition: all 0.4s ease;
+    background-color: rgba(87, 99, 139, 0.20);
+    border: solid 1px rgba(255, 255, 255, 0.35);
+}
+
+.example-box:hover {
+    border-color: #ffa07a;
+    box-shadow: 0 0 30px rgba(255, 160, 122, 0.4);
+    transform: translateY(-5px);
+}
+
+.example-title {
+    font-size: clamp(1.1em, 2vw, 1.3em);
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffa07a;
+}
+
+.example-box ul {
+    padding-left: clamp(15px, 3vw, 25px);
+}
+
+.example-box li {
+    line-height: clamp(1.6, 2vw, 2);
+    font-size: clamp(0.85em, 1.5vw, 1em);
+}
+
+.computation-card {
+    background-color: rgba(87, 99, 139, 0.281);
+    border-radius: clamp(8px, 1.5vw, 10px);
+    padding: clamp(18px, 3vw, 22px) clamp(20px, 3vw, 25px);
+    margin-top: 20px;
+}
+
+.computation-card h4 {
+    font-size: clamp(16px, 2vw, 19px);
+    margin-bottom: 10px;
+    color: #ffa07a;
+}
+
+.computation-card p {
+    line-height: 1.8;
+    margin: 8px 0;
+    font-size: clamp(0.85em, 1.5vw, 1em);
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(15px, 3vw, 20px);
+    margin-top: 25px;
+}
+
+.comparison-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(20px, 4vw, 30px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+}
+
+.comparison-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.comparison-card.scalars {
+    background: linear-gradient(135deg, #DC7667 0%, #e78d7f 100%);
+}
+
+.comparison-card.vectors {
+    background: linear-gradient(135deg, #5e2a84 0%, #7c3aed 100%);
+}
+
+.comparison-title {
+    font-size: clamp(1.2em, 2.5vw, 1.5em);
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.comparison-card p {
+    font-size: clamp(0.85em, 1.5vw, 1em);
+}
+
+/* Video Boxes */
+.video-grid {
+    display: flex;
+    justify-content: center;
+    gap: clamp(15px, 3vw, 20px);
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.video-box {
+    flex: 1;
+    min-width: 250px;
+    max-width: 450PX;
+    min-height: clamp(200px, 30vw, 240px);
+    background-color: rgba(30, 60, 114, 0.5);
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(40px, 6vw, 60px) clamp(30px, 5vw, 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.video-box:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.play-icon {
+    width: clamp(50px, 8vw, 60px);
+    height: clamp(50px, 8vw, 60px);
+    border: 3px solid #3a1ca8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.play-icon::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: clamp(16px, 2.5vw, 20px) solid #3a1ca8;
+    border-top: clamp(10px, 1.5vw, 12px) solid transparent;
+    border-bottom: clamp(10px, 1.5vw, 12px) solid transparent;
+    margin-left: 5px;
+}
+
+.highlight {
+    animation: highlightPulse 1s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes highlightPulse {
+    0%, 100% {
+        background: rgba(255, 255, 255, 0.1);
+        transform: scale(1);
+    }
+    50% {
+        background: rgba(255, 160, 122, 0.4);
+        transform: scale(1.02);
+    }
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid white;
+    opacity: 0.3;
+    animation: float 15s infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-150px) translateX(50px) rotate(45deg);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(-300px) translateX(-30px) rotate(90deg);
+        opacity: 0.2;
+    }
+    75% {
+        transform: translateY(-200px) translateX(-80px) rotate(135deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(0) translateX(0) rotate(180deg);
+        opacity: 0.3;
+    }
+}
+
+.conclusion {
+    background: rgba(236, 236, 236, 0.212);
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(20px, 4vw, 30px);
+    padding-top: clamp(15px, 3vw, 20px);
+    margin: clamp(30px, 5vw, 40px) 0;
+    border-left: 5px solid #ffa07a;
+    transition: all 0.3s ease;
+}
+
+.conclusion p {
+    font-size: clamp(0.9em, 1.5vw, 1em);
+    line-height: 1.7;
+}
+
+.scroll-indicator {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+.scroll-dot {
+    width: clamp(10px, 1.5vw, 12px);
+    height: clamp(10px, 1.5vw, 12px);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-dot.active {
+    background: #ffa07a;
+    transform: scale(1.5);
+}
+
+.scroll-dot:hover {
+    background: #ffa07a;
+    transform: scale(1.3);
+}
+
+/* Lesson Buttons */
+.lesson-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mark-complete-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            background-color: #3254FF;
+            color: white;
+            position: relative;
+        }
+
+        .mark-complete-btn:hover {
+            background-color: #4d68f3;
+        }
+
+        .mark-complete-btn.loading {
+            color: transparent;
+            pointer-events: none;
+        }
+
+        .mark-complete-btn.loading::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            border-top-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 0.8s linear infinite;
+        }
+
+        .mark-complete-btn.completed {
+            background-color: #3254FF;
+        }
+
+        .mark-complete-btn.completed .material-symbols-rounded {
+            vertical-align: middle;
+            margin-right: 6px;
+            font-size: 18px;
+        }
+
+        .btn-next {
+            background-color: transparent;
+            border: 2px solid #3254FF;
+            color: white;
+        }
+
+        .btn-next:hover {
+            background-color: #3254FF;
+            color: white;
+        }
+
+        .references {
+            padding: 20px 0;
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+
+        .references a {
+            color: white;
+            word-break: break-word;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            color: white;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .close:hover {
+            color: red;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 16px solid white;
+            opacity: 0.3;
+            animation: float 15s infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-150px) translateX(50px) rotate(45deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-300px) translateX(-30px) rotate(90deg);
+                opacity: 0.2;
+            }
+            75% {
+                transform: translateY(-200px) translateX(-80px) rotate(135deg);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(180deg);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        /* Responsive Breakpoints */
+
+        /* Extra Large Screens (1920px+) */
+        @media (min-width: 1920px) {
+            .container {
+                padding: 20px 350px;
+            }
+            
+            h1 {
+                font-size: 4em;
+            }
+            
+            h2 {
+                font-size: 2.4em;
+            }
+            
+            .subtitle {
+                font-size: 20px;
+            }
+        }
+
+        /* Large Screens (1440px - 1919px) */
+        @media (min-width: 1440px) and (max-width: 1919px) {
+            .container {
+                padding: 20px 200px;
+            }
+        }
+
+        /* Medium-Large Screens (1200px - 1439px) */
+        @media (min-width: 1200px) and (max-width: 1439px) {
+            .container {
+                padding: 20px 150px;
+            }
+            
+            h1 {
+                font-size: 3em;
+            }
+        }
+
+        /* Medium Screens (992px - 1199px) */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .container {
+                padding: 20px 80px;
+            }
+            
+            h1 {
+                font-size: 2.8em;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .dimension-table {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Tablets (768px - 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .container {
+                padding: 20px 50px;
+            }
+            
+            .topic-header {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .topic-header h1 {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dimension-table {
+                padding: 15px;
+                font-size: 0.85em;
+            }
+            
+            .dimension-table th,
+            .dimension-table td {
+                padding: 10px 8px;
+            }
+            
+            .steps-box {
+                padding: 25px;
+            }
+            
+            .step-item {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                width: 30px;
+                height: 30px;
+                font-size: 1em;
+            }
+            
+            .formula-box {
+                font-size: 1em;
+                padding: 15px;
+            }
+            
+            .lesson-buttons {
+                gap: 1rem;
+            }
+            
+            .btn, .mark-complete-btn {
+                font-size: 0.85rem;
+                padding: 0.65rem 1.2rem;
+            }
+        }
+
+        /* Mobile Landscape & Small Tablets (576px - 767px) */
+        @media (min-width: 576px) and (max-width: 767px) {
+            .container {
+                padding: 20px 30px;
+            }
+            
+            .topic-header {
+                padding: 0.6rem 1rem;
+            }
+            
+            .topic-header h1 {
+                font-size: 14px;
+            }
+            
+            .back-btn {
+                font-size: 1.3rem;
+                margin-right: 0.7rem;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .subtitle {
+                font-size: 15px;
+            }
+            
+            header {
+                padding: 30px 15px;
+            }
+            
+            .card {
+                padding: 18px;
+            }
+            
+            .card-title {
+                font-size: 1.2em;
+            }
+            
+            .dimension-table {
+                padding: 12px;
+                font-size: 0.8em;
+            }
+            
+            .dimension-table th,
+            .dimension-table td {
+                padding: 8px 6px;
+            }
+            
+            .steps-box {
+                padding: 20px;
+            }
+            
+            .steps-box h3 {
+                font-size: 1.1em;
+            }
+            
+            .step-item {
+                padding: 15px 20px;
+                padding-left: 55px;
+            }
+            
+            .step-number {
+                width: 28px;
+                height: 28px;
+                left: 15px;
+                font-size: 0.95em;
+            }
+            
+            .formula-box {
+                font-size: 0.95em;
+                padding: 15px 10px;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .video-box {
+                padding: 50px 30px;
+                min-height: 180px;
+            }
+            
+            .scroll-indicator {
+                display: none;
+            }
+            
+            .lesson-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .btn, .mark-complete-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.85rem;
+            }
+            
+            .conclusion {
+                padding: 20px;
+            }
+        }
+
+        /* Mobile Portrait (up to 575px) */
+        @media (max-width: 575px) {
+            .container {
+                padding: 15px 20px;
+            }
+            
+            .topic-header {
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .topic-header h1 {
+                font-size: 13px;
+            }
+            
+            .back-btn {
+                font-size: 1.2rem;
+                margin-right: 0.5rem;
+            }
+            
+            header {
+                padding: 25px 10px;
+            }
+            
+            .topic-label {
+                font-size: 13px;
+                letter-spacing: 2px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+            
+            .section {
+                margin: 30px 0;
+            }
+            
+            .card {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .card-title {
+                font-size: 1.1em;
+                margin-bottom: 12px;
+            }
+            
+            .card-content {
+                font-size: 0.9em;
+            }
+            
+            .card-content li {
+                padding: 6px 0;
+                padding-left: 20px;
+            }
+            
+            .dimension-table {
+                padding: 10px;
+                font-size: 0.75em;
+            }
+            
+            .dimension-table th,
+            .dimension-table td {
+                padding: 6px 4px;
+            }
+            
+            .steps-box {
+                padding: 18px;
+                margin: 20px 0;
+            }
+            
+            .steps-box h3 {
+                font-size: 1em;
+                margin-bottom: 8px;
+            }
+            
+            .step-item {
+                padding: 12px 15px;
+                padding-left: 50px;
+                margin-top: 12px;
+            }
+            
+            .step-number {
+                width: 26px;
+                height: 26px;
+                left: 12px;
+                font-size: 0.9em;
+            }
+            
+            .formula-box {
+                font-size: 0.85em;
+                padding: 12px 8px;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .video-box {
+                padding: 40px 20px;
+                min-height: 150px;
+            }
+            
+            .play-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .play-icon::after {
+                border-left: 16px solid #3a1ca8;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+            }
+            
+            .scroll-indicator {
+                display: none;
+            }
+            
+            .conclusion {
+                padding: 18px;
+                margin: 30px 0;
+            }
+            
+            .conclusion h2 {
+                font-size: 1.2em;
+                margin-bottom: 12px;
+            }
+            
+            .conclusion p {
+                font-size: 0.9em;
+            }
+            
+            .lesson-buttons {
+                flex-direction: column;
+                gap: 0.7rem;
+                margin-top: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            .btn, .mark-complete-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.8rem;
+                padding: 0.6rem 1rem;
+            }
+            
+            .references {
+                font-size: 0.8em;
+                padding: 15px 0;
+            }
+            
+            .references h3 {
+                font-size: 1.1em;
+                margin-bottom: 8px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .modal {
+                padding-top: 50px;
+            }
+        }
+
+        /* Very Small Screens (up to 375px) */
+        @media (max-width: 375px) {
+            .container {
+                padding: 12px 15px;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+            }
+            
+            h2 {
+                font-size: 1.2em;
+            }
+            
+            .subtitle {
+                font-size: 13px;
+            }
+            
+            .card {
+                padding: 12px;
+            }
+            
+            .card-title {
+                font-size: 1em;
+            }
+            
+            .card-content {
+                font-size: 0.85em;
+            }
+            
+            .dimension-table {
+                font-size: 0.7em;
+            }
+            
+            .steps-box {
+                padding: 15px;
+            }
+            
+            .step-item {
+                padding: 10px 12px;
+                padding-left: 45px;
+            }
+            
+            .step-number {
+                width: 24px;
+                height: 24px;
+                font-size: 0.85em;
+            }
+            
+            .formula-box {
+                font-size: 0.8em;
+                padding: 10px 6px;
+            }
+            
+            .btn, .mark-complete-btn {
+                font-size: 0.75rem;
+                padding: 0.55rem 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topic-header">
+        <a href="/tutorial.html" class="back-btn">←</a>
+        <h1>Scalars Vs. Vectors</h1>
+    </div>
+    <div class="particles" id="particles"></div>
+   
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    <div class="container">
+        <header class="section" data-section="header">
+            <div class="topic-label">TOPIC 1</div>
+            <h1 class="floating">Scalars Vs. Vectors</h1>
+            <p class="subtitle" style="margin-top: 20px;">
+                In physics, quantities can be classified into two main types: scalars and vectors. Understanding the difference between them is fundamental to describing motion, forces, and other physical phenomena accurately.
+            </p>
+        </header>
+
+
+        <section class="section" data-section="scalar-quantity">
+            <h2>Scalar Quantity</h2>
+            <div class="card pink">
+                <div class="card-title">What is a Scalar Quantity?</div>
+                <div class="card-content">
+                    It is a physical quantity that has magnitude (or numerical value) only and no direction. It is described completely by a number and a unit.
+                </div>
+            </div>
+
+
+            <div class="example-box">
+                <div class="example-title">Examples of Scalar Quantity</div>
+                <ul style="padding-left: 25px;">
+                    <li style="line-height: 2;">• <strong>Mass</strong> — 50 kg (just tells how much, not where)</li>
+                    <li style="line-height: 2;">• <strong>Temperature</strong> — 30°C (only a value, no direction)</li>
+                    <li style="line-height: 2;">• <strong>Time</strong> — 10 seconds (a measure of duration)</li>
+                    <li style="line-height: 2;">• <strong>Speed</strong> — 60 km/h (how fast, but not which way)</li>
+                    <li style="line-height: 2;">• <strong>Distance</strong> — 5 meters (length without direction)</li>
+                    <li style="line-height: 2;">• <strong>Energy</strong> — 100 joules (amount of energy)</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section class="section" data-section="scalar-operations">
+            <h2>Scalar Quantities</h2>
+            <div class="card blue">
+                <div class="card-content">
+                    It follows normal math rules. It's like working with their numbers and units without worrying about directions.
+                </div>
+            </div>
+
+
+            <div class="example-box">
+                <div class="example-title">Examples of Scalar Quantities Basic Computation:</div>
+               
+                <div class="computation-card">
+                    <h4>Addition and Subtraction</h4>
+                    <p>A class that ends 10 minutes early from a 50-minute schedule lasts 40 minutes.</p>
+                    <p><strong>Computation:</strong> 50 − 10 = 40 minutes.</p>
+                </div>
+
+
+                <div class="computation-card">
+                    <h4>Multiplying a scalar by a number to make it larger or smaller</h4>
+                    <p>If breakfast has 200 calories, and you eat it 4 times that amount, that's 800 calories.</p>
+                    <p><strong>Computation:</strong> 4 × 200 = 800 calories.</p>
+                </div>
+
+
+                <div class="computation-card">
+                    <h4>Multiplying or Dividing two scalar quantities to form another scalar</h4>
+                    <p>If a train travels 100km in 1 hour, its speed is 100km/h.</p>
+                    <p><strong>Computation:</strong> 100km ÷ 1h = 100km/h</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section" data-section="vector-quantity">
+            <h2>Vector Quantity</h2>
+            <div class="card purple">
+                <div class="card-title">What is a Vector Quantity?</div>
+                <div class="card-content">
+                    It is a physical quantity that has both magnitude and direction. It shows how much and in what direction a quantity acts.
+                </div>
+            </div>
+
+
+            <div class="example-box">
+                <div class="example-title">Examples of Vector Quantity</div>
+                <ul style="padding-left: 25px;">
+                    <li style="line-height: 2;">• <strong>Displacement</strong> — 10 meters north (distance with direction)</li>
+                    <li style="line-height: 2;">• <strong>Velocity</strong> — 50 km/h eastward (speed with direction)</li>
+                    <li style="line-height: 2;">• <strong>Force</strong> — 20 N downward (push or pull with direction)</li>
+                    <li style="line-height: 2;">• <strong>Acceleration</strong> — 5 m/s² forward (rate of velocity change)</li>
+                    <li style="line-height: 2;">• <strong>Momentum</strong> — mass × velocity (has direction)</li>
+                    <li style="line-height: 2;">• <strong>Weight</strong> — force due to gravity, acts downward</li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section class="section" data-section="comparison">
+            <h2>Key Differences Between Scalar and Vectors</h2>
+           
+            <div class="comparison-grid">
+                <div class="comparison-card scalars">
+                    <div class="comparison-title">Scalars</div>
+                    <div style="line-height: 2;">
+                        <p>• <strong>Has magnitude only</strong></p>
+                        <p>• No direction needed</p>
+                        <p>• Follows regular arithmetic</p>
+                        <p>• Examples: mass, time, speed, temperature</p>
+                        <p>• Represented by simple numbers</p>
+                    </div>
+                </div>
+
+
+                <div class="comparison-card vectors">
+                    <div class="comparison-title">Vectors</div>
+                    <div style="line-height: 2;">
+                        <p>• <strong>Has both magnitude and direction</strong></p>
+                        <p>• Direction is essential</p>
+                        <p>• Requires vector addition rules</p>
+                        <p>• Examples: displacement, velocity, force</p>
+                        <p>• Represented by arrows or components</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section" data-section="videos">
+            <h2>Video Tutorial</h2>
+            <p style="text-align: center; margin-bottom: 15px; font-size: 16px; opacity: 0.9;">
+                To better understand Scalars and Vectors, please watch this video:
+            </p>
+            <div class="video-grid">
+                <div class="video-box" videoData="/assets/videos/Scalars vs Vectors/Vectors Vs. Scalar Quantities.mp4" style="background-image: url('/assets/videos/Scalars vs Vectors/thumbnail1.png'); background-size: cover; background-position: center; background-repeat: no-repeat; flex: 1 1 100%;">
+                    <div class="play-icon"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="conclusion section" data-section="conclusion">
+            <h2>Conclusion</h2>
+            <p>
+                Understanding the difference between scalars and vectors is crucial in physics. Scalars give us the "how much" — magnitude alone — while vectors give us both the "how much" and "which way" — magnitude and direction. This distinction helps us accurately describe and analyze physical phenomena, from simple motion to complex forces. Mastering these concepts forms the foundation for deeper understanding of mechanics and other areas of physics.
+            </p>
+        </div>
+
+
+        <div class="references" data-section="references" style="padding: 20px 0; opacity: 0.7; font-size: 0.9em;">
+            <h3>References</h3>
+            <p>
+                • Khan Academy — Scalars and Vectors: <a href="https://www.khanacademy.org">https://www.khanacademy.org</a><br>
+                • Physics Classroom: <a href="https://www.physicsclassroom.com">https://www.physicsclassroom.com</a><br>
+                • LibreTexts Physics: <a href="https://phys.libretexts.org">https://phys.libretexts.org</a><br>
+            </p>
+        </div>
+        <div class="lesson-buttons">
+            <button class="btn btn-next" onclick="window.location.href='/TOPICS/mTopic4.html'">
+                    <span class="material-symbols-rounded next-lesson">arrow_back</span>
+                    Previous Lesson
+            </button>
+            <button class="mark-complete-btn" 
+                        data-table="vectors_progress" 
+                        data-topic="topic1" id="btn-complete">
+                Mark Complete
+            </button>
+            <button class="btn btn-next" onclick="window.location.href='/TOPICS/vTopic2.html'">
+                    Next Lesson
+                    <span class="material-symbols-rounded next-lesson">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <video id="videoPlayer" width="100%" controls>
+        <source src="" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+    <script type="module" src="../script/topicStatus.js"></script>
+    <script>
+        // Floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+
+
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+
+            sections.forEach(section => observer.observe(section));
+
+
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            sections.forEach((section, idx) => {
+                const dot = document.createElement('div');
+                dot.className = 'scroll-dot';
+                dot.addEventListener('click', () => {
+                    const navbarHeight = document.querySelector('.topic-header').offsetHeight || 300; // adjust if needed
+                    const offsetTop = section.offsetTop - navbarHeight + 30; // 10px extra spacing
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                });
+                scrollIndicator.appendChild(dot);
+            });
+
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(s => {
+                    if (window.pageYOffset >= s.offsetTop - 200) current = s.getAttribute('data-section');
+                });
+                const dots = document.querySelectorAll('.scroll-dot');
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === Array.from(sections).findIndex(s => s.getAttribute('data-section') === current));
+                });
+            });
+        });
+
+        const videoButton = document.querySelectorAll(".video-box");
+        const modal = document.getElementById("videoModal");
+        const closeBtn = document.querySelector(".close");
+        const video = document.getElementById("videoPlayer");
+        const source = video.querySelector("source");
+
+        videoButton.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const videoSrc = btn.getAttribute("videoData");
+                source.src = videoSrc;
+                video.load();
+                modal.style.display = "flex";
+                video.play();
+            });
+        });
+
+        closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+        video.pause();
+        video.currentTime = 0;
+        });
+
+        window.addEventListener("click", function(e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            video.pause();
+            video.currentTime = 0;
+        }
+        });
+    </script>
+</body>
+</html>

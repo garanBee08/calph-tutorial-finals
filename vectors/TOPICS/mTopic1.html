@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical Quantities - Interactive Guide</title>
+    <link rel="apple-touch-icon" href="../assets/images/website_logo.png">
+    <link rel="stylesheet" href="../styles/mTopic1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/calphy_icon.png">
+    <link rel="apple-touch-icon" href="/assets/images/calphy_icon.png">
+    <link rel="shortcut icon" href="/assets/images/calphy_icon.png">
+</head>
+<body>
+    <div class="topic-header">
+        <a href="/tutorial.html" class="back-btn">←</a>
+        <h1>Physical Quantities</h1>
+    </div>
+    <div class="particles" id="particles"></div>
+    
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    <div class="container">
+        <header class="section" data-section="header">
+            <div class="topic-label">TOPIC 1</div>
+            <h1 class="floating">Physical Quantities</h1>
+            <p class="subtitle">
+                A physical quantity is the property of a material or system that can be measured or quantified. This means that a physical quantity can be expressed as the combination of a numerical value and a unit, creating a standard for scientific and technical communication.
+            </p>
+        </header>
+
+        <section class="section" data-section="principles">
+            <h2>Principles</h2>
+            
+            <div class="card pink">
+                <div class="card-title">Dimensions</div>
+                <div class="card-content">
+                    It's the concept of understanding what a form of measure and what it tells supported to mathematically represent.
+                </div>
+            </div>
+
+            <div class="card purple">
+                <div class="card-title">Unit</div>
+                <div class="card-content">
+                    <ul>
+                        <li>A unit is a specially chosen amount of a physical quantity used to measure and express physical quantities.</li>
+                        <li>The SI unit or Système International d'Unités 'French' is the current System of Units. It has seven common and widely accepted values of measurement which include length, mass, time, electric current, thermodynamic temperature, amount of substance, and luminous intensity.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-section="support">
+            <h2>Support</h2>
+            
+            <div class="card blue">
+                <div class="card-title">Scalar</div>
+                <div class="card-content">
+                    A scalar quantity is a physical quantity that has magnitude but has no direction.
+                </div>
+            </div>
+
+            <div class="card pink">
+                <div class="card-title">Vectors</div>
+                <div class="card-content">
+                    A vector quantity is a physical quantity that has magnitude AND direction, and that obeys the triangle or parallelogram law of vector addition (is said to be a vector only account of measurement.)
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-section="types">
+            <h2>The Two Types of Physical Quantities</h2>
+            
+            <div class="quantity-box">
+                <div class="quantity-title">1. Base (Fundamental Quantities)</div>
+                <p>A system of quantities that are used as physical quantities is set of values that are used as starting point of dimension. E.g measurement</p>
+                
+                    <div class="base-quantity">
+                        <h4>International System of Quantities (Base Quantities)</h4>
+                        <p class="text-gray-300 mb-4">The SI defines seven base quantities, which are the fundamental building blocks from which all other quantities are derived:</p>
+                        <ul class="base-examples">
+                            <li><strong>Length</strong> (Unit: meter, m)</li>
+                            <li><strong>Mass</strong> (Unit: kilogram, kg)</li>
+                            <li><strong>Time</strong> (Unit: second, s)</li>
+                            <li><strong>Electric Current</strong> (Unit: ampere, A)</li>
+                            <li><strong>Temperature</strong> (Unit: kelvin, K)</li>
+                            <li><strong>Amount of Substance</strong> (Unit: mole, mol)</li>
+                            <li><strong>Luminous Intensity</strong> (Unit: candela, cd)</li>
+                        </ul>
+                    </div>
+            </div>
+
+            <div class="quantity-box">
+                <div class="quantity-title">2. General Derived Quantities</div>
+                <p>Are the quantities built on top of the platform of base quantities. It's essentially building up on the expectation that base quantities are true and represents with the base unit.</p>
+                <p style="margin-top: 10px;">The SI has special names for 22 of these derived quantities only for example, Hertz, the SI unit of measurement of frequency. But for most mainly called example can be SI Pascal, for the unit pressure which is measured by newton. For these derived units of SI.</p>
+                
+                <div class="base-quantity">
+                    <h4>International System of Quantities (Base Quantities)</h4>
+                    <p class="text-gray-300 mb-4">The SI defines seven base quantities, which are the fundamental building blocks from which all other quantities are derived:</p>
+                    <ul class="base-examples">
+                        <li><strong>Area</strong> (Unit: m²)</li>
+                        <li><strong>Volume</strong> (Unit: m³)</li>
+                        <li><strong>Velocity</strong> (Unit: m/s)</li>
+                        <li><strong>Acceleration</strong> (Unit: m/s²)</li>
+                        <li><strong>Force</strong> (Unit: Newton - N)</li>
+                        <li><strong>Energy</strong> (Unit: Joule - J)</li>
+                        <li><strong>Power</strong> (Unit: Watt - W)</li>
+                        <li><strong>Frequency</strong> (Unit: Hertz - Hz)</li>
+                        <li><strong>Pressure</strong> (Unit: Pascal - Pa)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-section="base-applications">
+            <h2>Common Application of Base Units</h2>
+
+            <div class="unit-applications">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-title">Length</div>
+                            <p class="text-gray-400 text-sm mt-2">(Hover to see details)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-title">Length</div>
+                            <div class="card-content">
+                                It's the magnitude of distance; the measurement of the most dimension distance it has point can physically extend.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-title">Mass</div>
+                            <p class="text-gray-400 text-sm mt-2">(Hover to see details)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-title">Mass</div>
+                            <div class="card-content">
+                                This measures the quantity of matter present within an object or material body that is the number that represents the lack of a subject to accelerate a line of force and reaction to be applied.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-title">Time</div>
+                            <p class="text-gray-600 text-sm mt-2">(Hover to see details)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-title">Time</div>
+                            <div class="card-content">
+                                The consistent measure of the continued progression of existence; an irreversible succession of events present existing in the universe at measurement, continue to the continuation progress.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-section="derived-applications">
+            <h2>Common Application of Derived Quantities</h2>
+            
+            <div class="unit-applications">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-title">Velocity</div>
+                            <p class="text-gray-400 text-sm mt-2">(Hover to see details)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-title">Velocity</div>
+                            <div class="card-content">
+                                The measurement of speed in relation to its direction or path of motion. The number that represents the speed at an object or a person in every moment or every 1 or 2 placeloca.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-title">Force</div>
+                            <p class="text-gray-400 text-sm mt-2">(Hover to see details)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-title">Force</div>
+                            <div class="card-content">
+                                Usually a push or pull. The number of force represents the values required to change the velocity or shape in the object or entity.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-title">Energy</div>
+                            <p class="text-gray-400 text-sm mt-2">(Hover to see details)</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="card-title">Energy</div>
+                            <div class="card-content">
+                                The number that represents the value of performance to do force or work. This cannot be created nor destroyed, only transferred or changed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-section="importance">
+            <h2>Why are Measurements Important in Physics?</h2>
+            
+            <div class="card purple">
+                <div class="card-content">
+                    <ul>
+                        <li>Measurements allow humans to see the numerical value of a certain object. Mathematics allows numerical values to be consistent with calculations so it could achieve any mathematical goals there is with precision around the world with precision and accuracy as well as evidence of reality regardless if denied take or reject it.</li>
+                        <li>Measurement is a fundamental part of Physics, as this field is mainly concerned with the observation, experimentation, and manipulation of those data related to the physical world and physicality of objects and entities.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="conclusion section" data-section="conclusion">
+            <h2>Conclusion</h2>
+            <p>Physical quantities help us understand and measure the physical world through numbers. They are divided into base and derived quantities, which serve as the foundation for all measurements in physics. Using dimensions, units, scalars, and vectors allows consistency and accuracy when describing an object’s properties like length, mass, time, velocity, force, and energy. Overall, measurements are important because they provide a clear and reliable way to observe, compare, and explain how things exist and behave in the real world.</p>
+        </div>
+
+        <div class="references" data-section="references" style="padding: 20px 0; opacity: 0.7; font-size: 0.9em;">
+            <h3>References</h3>
+            <p>
+                • Sciencely - Physical Quantity: <a href="https://scienly.com/what-is-physical-quantity">https://scienly.com/what-is-physical-quantity</a><br>
+            </p>
+        </div>
+
+
+        <div class="lesson-buttons">
+            <button class="mark-complete-btn" 
+                        data-table="measurement_progress" 
+                        data-topic="topic1" id="btn-complete">
+                Mark Complete
+            </button>
+            <button class="btn btn-next" onclick="window.location.href='/TOPICS/mTopic2.html'">
+                    Next Lesson
+                    <span class="material-symbols-rounded next-lesson">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <script type="module" src="../script/topicStatus.js"></script>
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll animations with intersection observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            
+            // Observe sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Create scroll indicator dots
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            sections.forEach((section, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'scroll-dot';
+                dot.addEventListener('click', () => {
+                    const navbarHeight = document.querySelector('.topic-header').offsetHeight || 300; // adjust if needed
+                    const offsetTop = section.offsetTop - navbarHeight + 30; // 10px extra spacing
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                });
+                scrollIndicator.appendChild(dot);
+            });
+
+            // Update active dot on scroll
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('data-section');
+                    }
+                });
+
+                const dots = document.querySelectorAll('.scroll-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.remove('active');
+                    if (index === Array.from(sections).findIndex(s => s.getAttribute('data-section') === current)) {
+                        dot.classList.add('active');
+                    }
+                });
+            });
+
+            // Add click animation to cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                    ripple.style.width = '20px';
+                    ripple.style.height = '20px';
+                    ripple.style.left = e.offsetX + 'px';
+                    ripple.style.top = e.offsetY + 'px';
+                    ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                    ripple.style.animation = 'ripple 0.6s ease-out';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Add ripple animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: translate(-50%, -50%) scale(20);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Smooth scroll for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

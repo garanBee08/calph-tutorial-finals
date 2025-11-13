@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Auth — Login / Sign Up</title>
+
+  <!-- Material icons for the eye -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/calphy_icon.png">
+  <link rel="apple-touch-icon" href="/assets/images/calphy_icon.png">
+  <link rel="shortcut icon" href="/assets/images/calphy_icon.png">
+
+  <link rel="stylesheet" href="/styles/auth.css" />
+</head>
+<body>
+  <div class="left-bg-container">
+    <div class="bg-blur">
+      <div class="auth-header">
+        <img src="/assets/images/website_logo.png" alt="Logo picture" class="logo-pic-auth">
+      </div>
+      <div class="auth-mid">
+        <h1>Enhance your understanding of <span>Measurements</span> and <span>Vectors</span></h1>
+        <p>Learn through guided tutorials, visual tools, and quizzes designed for clarity and mastery.</p>
+      </div>
+      <div class="auth-bot">
+        <h1>Every measurement tells a story. Every vector points to understanding.</h1>
+      </div>
+    </div>
+  </div>
+  <div class="right-bg-container">
+    <div class="auth-container">
+
+      <!-- LOGIN FORM (shown first) -->
+      <form id="login-form" class="auth-form" autocomplete="off">
+        <h2>Login</h2>
+
+        <input type="text" id="login-email" placeholder="Email" required />
+        <div class="password-field">
+          <input type="password" id="login-password" placeholder="Password" required />
+          <span class="material-symbols-rounded toggle-password" data-target="login-password">visibility_off</span>
+        </div>
+
+        <button id="login-btn" type="submit">Login</button>
+
+        <p class="small">Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+      </form>
+
+      <!-- SIGNUP FORM (hidden initially) -->
+      <form id="signup-form" class="auth-form hidden" autocomplete="off">
+        <h2>Create account</h2>
+
+        <input type="text" id="signup-name" placeholder="Name" required />
+        <input type="text" id="signup-username" placeholder="Username" required />
+        <input type="email" id="signup-email" placeholder="Email" required />
+
+        <div class="password-field">
+          <input type="password" id="signup-password" placeholder="Password" required />
+          <span class="material-symbols-rounded toggle-password" data-target="signup-password">visibility_off</span>
+        </div>
+
+        <div class="password-field">
+          <input type="password" id="signup-confirm" placeholder="Confirm password" required />
+          <span class="material-symbols-rounded toggle-password" data-target="signup-confirm">visibility_off</span>
+        </div>
+
+        <button id="signup-btn" type="submit">Sign Up</button>
+
+        <p class="small">Already have an account? <a href="#" id="show-login">Login</a></p>
+      </form>
+
+    </div>
+
+  </div>
+  
+  <script type="module" src="/script/auth.js"></script>
+</body>
+</html>

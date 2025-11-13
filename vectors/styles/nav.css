@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=Berkshire+Swash&family=Black+Han+Sans&family=Cal+Sans&family=Carter+One&family=Comic+Relief:wght@400;700&family=Happy+Monkey&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jua&family=Lilita+One&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Luckiest+Guy&family=Madimi+One&family=New+Amsterdam&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Odibee+Sans&family=Outfit:wght@100..900&family=Pacifico&family=Pangolin&family=Passion+One:wght@400;700;900&family=Playwrite+DE+Grund:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sniglet:wght@400;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Staatliches&family=Underdog&display=swap');
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+h1, h2, h3 {
+  margin: 0;
+}
+.menubar {
+  position: fixed;
+  width: 110px;
+  height: 100%;
+  display: flex;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.menu-container {
+  height: 90%;
+  width: 50px;
+  background: linear-gradient(#29365F, #29365F) padding-box,
+              linear-gradient(to bottom, #4D71DE 0%, #1D388B 100%) border-box;
+  border: 5px solid transparent;
+  background-color: rgba(87, 99, 139, 0.247);
+  border-radius: 12px;
+  padding: 5px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menubar .menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.menu li .material-symbols-rounded {
+  margin-bottom: 45px;
+  font-size: 23px; 
+  color: white;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  transition: 0.3s;
+  cursor: pointer;
+  padding: 6px 8px;
+  padding-top: 7px;
+  border-radius: 6px;
+}
+
+.menu li .material-symbols-rounded:hover {
+  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+}
+
+#this {
+  background-color: #4055c0e1;
+}
+
+#tutorial {
+  background-color: #4055c0e1;
+}
+
+.hamburger {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 200;
+}
+.hamburger span {
+  font-size: 35px;
+  color: #ffffff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.menu-container {
+  transition: all 0.5s ease;
+}
+.logo-container {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+#logo-container {
+  display: none;
+}
+.logo {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.logo h3 {
+  color: #fff;
+} 
+.logo-pic {
+  height: 32px;
+  margin-right: 10px;
+}
+.profile {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.profile-pic {
+  height: 35px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/* Dropdown modal */
+.dropdown-modal {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 75px; 
+  right: 30px;
+  background-color: #4e5e92;
+  border-radius: 10px;
+  width: 168px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  padding: 6px 0;
+  z-index: 999;
+}
+
+.logo-main img {
+  cursor: pointer;
+}
+
+.logo img {
+  cursor: pointer;
+}
+
+/* Dropdown buttons */
+.dropdown-modal button {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown-modal button:hover {
+  background-color: #6878ad;
+}
+
+.profile-dropdown-icons {
+  font-size: 24px; 
+  margin-right: 8px;
+  color: rgb(255, 255, 255);
+  margin-left: 6px;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+
+
+.logout-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-modal-content {
+  background: linear-gradient(#29365F, #29365F) padding-box,
+              linear-gradient(to bottom, #4D71DE 0%, #1D388B 100%) border-box;
+  border: 2px solid transparent;
+  background-color: rgba(87, 99, 139, 0.247);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.logout-modal-content h1 {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.logout-modal-content p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 100;
+  margin-bottom: 30px;
+}
+
+.logout-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.confirm-btn {
+  background-color:#4a61a7;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  width: 80px;
+  border-radius: 20px;
+  
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #4D71DE;
+  padding: 8px 16px;
+  width: 80px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background-color:#5c71b1;
+}
+
+.cancel-btn:hover {
+  background-color: #5870b6;
+}
+
+/* Tooltip styling for sidebar icons */
+.menu li a {
+  position: relative;
+}
+
+/* Tooltip bubble */
+.menu li a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50px; /* adjusts tooltip position relative to icon */
+  top: 20%;
+  transform: translateY(-50%);
+  background-color: rgba(252, 252, 252, 0.37);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  transform-origin: left center;
+}
+
+/* Small triangle pointer */
+.menu li a::before {
+  content: '';
+  position: absolute;
+  left: 40px;
+  top: 20%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: rgba(252, 252, 252, 0.37);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+/* Show tooltip on hover */
+.menu li a:hover::after,
+.menu li a:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+
+
+
+@media (max-width: 479px) {
+     .menubar {
+        position: fixed;
+        flex-direction: row;
+        width: 100%;
+        height: 70px;
+        display: grid;
+        padding: 0px 20px 0px 10px;
+        grid-template-columns: 40px 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+        "hamburger logo";
+        gap: 10px;
+    }
+    .hamburger {
+      display: flex;
+      grid-area: hamburger;
+    }
+    .hamburger span {
+      font-size: 32px;
+    }
+    #logo-container {
+      display: flex;
+      grid-area: logo;
+    }
+    .logo {
+      display: flex;
+    }
+    .logo-pic {
+      width: 30px;
+      height: 30px;
+    }
+    .logo h3 {
+      font-size: 16PX;
+    } 
+    .profile {
+      width: 50px;
+    }
+    .profile-pic {
+      width: 35px;
+      height: 32px;
+    }
+    .menu-container {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: #29365F;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        border-radius: 0px;
+        transition: all 0.5s ease;
+    }
+    .menu-container.active {
+        left: 0;
+        transition: all 0.5s ease;
+    }
+    .menu {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        justify-content: space-evenly;
+    }
+    .menu li .material-symbols-rounded {
+      font-size: 30px; 
+    }
+    .hamburger.active span {
+        color: rgb(255, 255, 255);
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    .menubar {
+        position: fixed;
+        flex-direction: row;
+        width: 100%;
+        height: 70px;
+        display: grid;
+        padding: 0px 30px 0px 20px;
+        grid-template-columns: 50px 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+        "hamburger logo";
+        gap: 20px;
+    }
+    .hamburger {
+      display: flex;
+      grid-area: hamburger;
+    }
+    #logo-container {
+      display: flex;
+      grid-area: logo;
+    }
+    .logo {
+      display: flex;
+    }
+    .menu-container {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: #29365F;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        border-radius: 0px;
+        transition: all 0.5s ease;
+    }
+    .menu-container.active {
+        left: 0;
+        transition: all 0.5s ease;
+    }
+    .menu {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        justify-content: space-evenly;
+    }
+    .menu li .material-symbols-rounded {
+      font-size: 32px; 
+    }
+    .hamburger.active span {
+        color: rgb(255, 255, 255);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}

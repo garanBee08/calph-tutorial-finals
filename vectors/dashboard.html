@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Tutorial</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="/styles/dashboard.css">
+  <link rel="stylesheet" href="/styles/nav.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/calphy_icon.png">
+  <link rel="apple-touch-icon" href="/assets/images/calphy_icon.png">
+  <link rel="shortcut icon" href="/assets/images/calphy_icon.png">
+</head>
+<body>
+    <div class="menubar">
+        <div class="hamburger">
+          <span class="material-symbols-rounded">menu</span>
+        </div>
+        <div class="logo-container" id="logo-container">
+          <div class="logo">
+            <img onclick="location.href='/landing.html'" src="/assets/images/website_logo.png" alt="Logo picture" class="logo-pic">
+            <h3>Measurements and Vectors</h3>
+          </div>
+          <div class="profile">
+            <img src="/assets/images/profile_placeholder.png" alt="Profile picture" class="profile-pic" id="logoButton1">
+         
+            <!-- Dropdown Modal -->
+            <div id="accountDropdown1" class="dropdown-modal">
+              <div class="logout-option"></div>
+              <button onclick="window.open('https://calphy.gitbook.io/calphy++-docs/', '_blank')">
+                        <span class="material-symbols-rounded profile-dropdown-icons">developer_guide</span>
+                        Documentation
+              </button>
+              <button id="logoutBtn1"><span class="material-symbols-rounded profile-dropdown-icons">logout</span>Logout</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-container">
+            <ul class="menu" id="menu">
+                <li><a href="dashboard.html" data-tooltip="Dashboard"><span class="material-symbols-rounded" id="this">dashboard</span></a></li>
+                <li><a href="tutorial.html" data-tooltip="Lessons"><span class="material-symbols-rounded">auto_stories</span></a></li>
+                <li><a href="simulation.html" data-tooltip="Simulator"><span class="material-symbols-rounded">arrows_output</span></a></li>
+                <li><a href="converter.html" data-tooltip="Converter"><span class="material-symbols-rounded">straighten</span></a></li>
+                <li><a href="leaderboard.html" data-tooltip="Leaderboard"><span class="material-symbols-rounded">leaderboard</span></a></li>
+            </ul>
+        </div>
+      </div>
+     
+<div class="background">
+    <div class="background-left">
+        <div class="logo-card">
+          <div class="logo-main">
+            <img onclick="location.href='/landing.html'" src="/assets/images/website_logo.png" alt="Logo picture" class="logo-pic-main">
+            <h3>Measurements and Vectors</h3>
+          </div>
+          <div class="profile-main">
+            <img src="/assets/images/profile_placeholder.png" alt="Profile picture" class="profile-pic-main" id="logoButton2">
+         
+            <!-- Dropdown Modal -->
+            <div id="accountDropdown2" class="dropdown-modal">
+              <div class="logout-option"></div>
+                <button onclick="window.open('https://calphy.gitbook.io/calphy++-docs/', '_blank')">
+                        <span class="material-symbols-rounded profile-dropdown-icons">developer_guide</span>
+                        Documentation
+              </button>
+              <button id="logoutBtn2"><span class="material-symbols-rounded profile-dropdown-icons">logout</span>Logout</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="welcome-card">
+            <div class="welcome-text">
+                <h1>Welcome, </h1>
+                <p>
+                Explore the fascinating world of Measurement and Vectors! Learn through tutorials, interactive tools, and quizzes designed to make physics easy and engaging.
+                </p>
+                <button onclick="location.href='/landing.html'"><p>Learn More</p></button>
+            </div>
+            <div class="welcome-image">
+            </div>
+        </div>
+
+        <div class="lessons-card">
+            <div class="lessons-header">
+                <h3>Lessons</h3>
+                <button class="view-lessons-btn" onclick="window.location.href='tutorial.html'">VIEW LESSONS<span class="material-symbols-rounded" id="view-lesson-icon">arrow_forward_ios</span></button>
+            </div>
+
+            <div class="lesson-card purple">
+                <div class="lesson-bg" style="background-image: url('/assets/images/purple_lesson.png');">
+                  <div class="lesson-top-container purple">
+                    <div class="lesson-top">
+                      <span class="lesson-number">Lesson 1</span>
+                      <span class="lesson-progress" id="measurement-lesson-progress">0% Complete</span>
+                    </div>
+                    <h3>Measurements</h3>
+                    <div class="lesson-info">
+                      <span class="material-symbols-rounded" id="lesson-info-icon">import_contacts</span><span>4 Topics</span>
+                      <span class="material-symbols-rounded" id="lesson-info-icon">extension</span><span>2 Quizzes</span>
+                    </div>
+                  </div>
+                </div>
+               
+                <div class="lesson-body">
+                  <p class="lesson-desc">
+                    Learn the basics of physical quantities, SI units, and how accuracy, precision,
+                    and dimensional analysis keep measurements reliable in physics.
+                  </p>
+                </div>
+            </div>
+             
+            <div class="lesson-card orange">
+                <div class="lesson-bg" style="background-image: url('/assets/images/orange_lesson.png');">
+                  <div class="lesson-top-container orange">
+                    <div class="lesson-top">
+                      <span class="lesson-number">Lesson 2</span>
+                      <span class="lesson-progress" id="vector-lesson-progress">0% Complete</span>
+                    </div>
+                    <h3>Vectors</h3>
+                    <div class="lesson-info">
+                      <span class="material-symbols-rounded" id="lesson-info-icon">import_contacts</span><span>3 Topics</span>
+                      <span class="material-symbols-rounded" id="lesson-info-icon">extension</span><span>2 Quizzes</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="lesson-body">
+                    <p class="lesson-desc">
+                        Understand how vectors describe direction and magnitude. Explore how
+                        to represent, add, and subtract them in solving real-world problems.
+                    </p>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="background-right">
+        <div class="profile-card">
+          <h2>Your Profile</h2>
+
+          <div class="profile-container">
+            <img id="profile-container-pic" class="profile-container-pic" src="/assets/images/profile_placeholder.png" alt="Profile Picture">
+            <h3 id="user-name">Loading...</h3>
+            <p id="profile-username">---</p>
+          </div>
+
+          <div class="progress-section">
+            <div class="progress-card">
+              <div class="progress-wrapper">
+                <svg class="progress-ring" width="120" height="120">
+                  <circle class="progress-ring-bg" cx="60" cy="60" r="50"></circle>
+                  <circle id="measurement-ring" class="progress-ring-fill measurement-color" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <div id="measurement-progress" class="progress-text">0%</div>
+              </div>
+              <h4>Measurements</h4>
+            </div>
+
+            <div class="progress-card">
+              <div class="progress-wrapper">
+                <svg class="progress-ring" width="120" height="120">
+                  <circle class="progress-ring-bg" cx="60" cy="60" r="50"></circle>
+                  <circle id="vector-ring" class="progress-ring-fill vector-color" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <div id="vector-progress" class="progress-text">0%</div>
+              </div>
+              <h4>Vectors</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-card">
+            <div class="leaderboard-header">
+                <h3>Leaderboard</h3>
+                <button onclick="window.location.href='leaderboard.html'">View All<span class="material-symbols-rounded" id="view-lesson-icon">arrow_forward_ios</span></button>
+            </div>
+            <div class="podium-container">
+                <p style="text-align:center; color:#fff; opacity:0.8;">Loading leaderboard...</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Logout Confirmation Modal -->
+  <div id="logoutModal" class="logout-modal">
+    <div class="logout-modal-content">
+      <h1>Confirm Logout</h1>
+      <p>Are you sure you want to log out?</p>
+      <div class="logout-actions">
+        <button id="cancelLogout" class="cancel-btn">Cancel</button>
+        <button id="confirmLogout" class="confirm-btn">Ok</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/script/general.js"></script>
+  <script type="module" src="/script/function.js"></script>
+  <script src="/script/nav.js"></script>
+  <script type="module" src="/script/dashboard.js"></script>
+  
+  <script type="module">
+    // 🧩 Supabase setup for user profile
+    import { supabase } from "../script/supabaseClient.js";
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const welcomeHeader = document.querySelector(".welcome-text h1");
+      const name = document.getElementById("user-name");
+      const profileUsername = document.getElementById("profile-username");
+
+      async function loadUser() {
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        if (sessionError) console.error("Session error:", sessionError);
+
+        if (!session?.user) {
+          welcomeHeader.textContent = "Welcome, Guest!";
+          return;
+        }
+
+        const user = session.user;
+        const userId = user.id;
+
+        // ✅ Only fetch existing profile
+        const { data: profile, error: profileError } = await supabase
+          .from("profiles")
+          .select("name, username")
+          .eq("user_id", userId)
+          .single();
+
+        if (profileError) {
+          welcomeHeader.textContent = "Welcome, User!";
+          return;
+        }
+
+        console.log("📄 Profile data:", profile);
+
+        // ✅ Extract first name
+        const fullName = profile?.name?.trim() || "User";
+        const username = profile?.username;
+        const firstName = fullName.split(" ")[0];
+        welcomeHeader.textContent = `Welcome, ${firstName}!`;
+        name.textContent = fullName;
+        profileUsername.textContent = `@${username}`;
+      }
+
+      await loadUser();
+
+      // 🔄 Watch for auth state changes
+      supabase.auth.onAuthStateChange(async (event) => {
+        if (event === "SIGNED_IN" || event === "INITIAL_SESSION") {
+          await loadUser();
+        } else if (event === "SIGNED_OUT") {
+          welcomeHeader.textContent = "Welcome, Guest!";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
