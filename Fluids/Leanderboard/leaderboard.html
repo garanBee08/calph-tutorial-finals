@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard - Fluids Quiz</title>
+  <link rel="stylesheet" href="../Quiz/quiz.css" />
+  <link rel="stylesheet" href="./leaderboard.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="../FINAL/index.html" class="navbar-logo">Fluids</a>
+      <div class="navbar-links">
+        <a href="../FINAL/index.html#about">Topics</a>
+        <a href="/about/about.html">About</a>
+        <a href="../Quiz/quiz.html">Quiz</a>
+        <a href="#" class="active">Leaderboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Leaderboard Wrapper -->
+  <div class="leaderboard-wrapper">
+    <div class="layer dark"></div>
+    <div class="layer light"></div>
+    <div class="leaderboard-container">
+      <div class="leaderboard-header">
+        <h1>🏆 Leaderboard</h1>
+        <p>Top performers in Fluids Quiz</p>
+      </div>
+
+      <div class="leaderboard-table" id="leaderboard-table">
+        <!-- Leaderboard items will be inserted here -->
+      </div>
+
+      <div class="button-group">
+        <a href="../Quiz/quiz.html" class="action-btn">Take Quiz</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- Supabase Config -->
+  <script src="../config/supabase-config.js"></script>
+  <script src="./leaderboard.js"></script>
+</body>
+</html>
+

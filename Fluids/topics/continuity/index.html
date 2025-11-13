@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Continuity Principle - Fluids</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<a href="javascript:history.back()" class="back-button">← Back</a>
+
+<main class="topic-container">
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1 class="topic-title">Continuity Principle</h1>
+    <p class="topic-subtitle">Understanding Mass Conservation in Fluid Flow</p>
+    <p class="topic-description">
+      The <strong>Continuity Principle</strong> states that for an <em>incompressible fluid</em> flowing through a pipe, the <strong>mass flow rate</strong> remains constant. 
+      When a pipe narrows, the fluid’s velocity increases to maintain the same flow — illustrating how fluids adapt to changing cross-sectional areas.
+    </p>
+  </section>
+
+  <!-- Visual Section -->
+  <section class="visual-section">
+    <div class="content-grid">
+      <div class="visual-box hoverable">
+        <img src="../asset-topics/continuity.png" alt="Continuity Principle Diagram">
+        <p class="img-caption">Fluid accelerates through a narrower section of the pipe — the same volume passes every second.</p>
+      </div>
+      <div class="info-box hoverable">
+        <h2>Key Concepts</h2>
+        <ul class="concept-list">
+          <li title="Mass entering a section equals mass leaving."><strong>Mass Conservation:</strong> Mass in = Mass out</li>
+          <li title="Fluid speeds up in narrower areas."><strong>Velocity Change:</strong> Narrower pipes increase speed</li>
+          <li title="Relationship of area and velocity."><strong>Area-Velocity Relationship:</strong> A₁V₁ = A₂V₂</li>
+          <li title="Fluid density remains constant."><strong>Incompressible Flow:</strong> Constant density</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formula Section -->
+  <section class="formula-section hoverable">
+    <div class="formula-container">
+      <h2>Continuity Equation</h2>
+      <div class="formula-display">
+        <div class="formula-main">A₁V₁ = A₂V₂</div>
+      </div>
+      <div class="formula-variables">
+        <div class="variable"><span class="var-symbol">A₁</span><span class="var-desc">Area 1 (m²)</span></div>
+        <div class="variable"><span class="var-symbol">V₁</span><span class="var-desc">Velocity 1 (m/s)</span></div>
+        <div class="variable"><span class="var-symbol">A₂</span><span class="var-desc">Area 2 (m²)</span></div>
+        <div class="variable"><span class="var-symbol">V₂</span><span class="var-desc">Velocity 2 (m/s)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="application-section">
+  <h2 class="app-title">Real-World Applications</h2>
+  <p class="app-subtitle">Hover on each card to see how continuity appears in everyday life.</p>
+
+  <div class="application-grid">
+    <div class="app-card hoverable">
+      <img src="../asset-topics/hose.png" alt="Garden Hose" class="app-icon">
+      <div class="hover-info">
+        <h3 class="hover-title">Garden Hose</h3>
+        <p>Covering part of a hose opening increases the water speed, demonstrating the continuity principle.</p>
+      </div>
+    </div>
+
+    <div class="app-card hoverable">
+      <img src="../asset-topics/artery.png" alt="Blood Flow" class="app-icon">
+      <div class="hover-info">
+        <h3 class="hover-title">Blood Flow in Arteries</h3>
+        <p>Narrow arteries increase blood velocity to maintain mass conservation — a vital process in the human body.</p>
+      </div>
+    </div>
+
+    <div class="app-card hoverable">
+      <img src="../asset-topics/river.png" alt="River Flow" class="app-icon">
+      <div class="hover-info">
+        <h3 class="hover-title">River Flow</h3>
+        <p>When a river narrows between rocks, the water speeds up, perfectly illustrating the continuity principle in nature.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Interactive Section -->
+  <section class="interactive-section">
+    <div class="interactive-container">
+
+      <!-- Flow Visualization -->
+      <div class="pipe-box hoverable">
+        <h3>Flow Visualization</h3>
+        <div class="pipe">
+          <div class="pipe-left"></div>
+          <div class="pipe-narrow"></div>
+          <div class="pipe-right"></div>
+          <div id="flow-arrows"></div>
+        </div>
+        <p class="img-caption">Arrows show how fluid accelerates in narrower sections.</p>
+      </div>
+
+      <!-- Calculator -->
+      <div class="calculator-wrapper hoverable">
+        <h2>Calculate Flow Velocity</h2>
+        <div class="calculator">
+          <div class="input-group">
+            <label>Cross-Sectional Area 1 (A₁)</label>
+            <input type="number" id="area1" placeholder="e.g., 4" step="0.01">
+            <span class="unit">m²</span>
+          </div>
+          <div class="input-group">
+            <label>Flow Velocity 1 (V₁)</label>
+            <input type="number" id="velocity1" placeholder="e.g., 2" step="0.01">
+            <span class="unit">m/s</span>
+          </div>
+          <div class="input-group">
+            <label>Cross-Sectional Area 2 (A₂)</label>
+            <input type="number" id="area2" placeholder="e.g., 2" step="0.01">
+            <span class="unit">m²</span>
+          </div>
+          <button onclick="calculateContinuity()" class="calc-button">Calculate V₂</button>
+          <div class="result-display" id="result-box">
+            <div class="result-label">Flow Velocity 2 (V₂):</div>
+            <div class="result-value" id="result">—</div>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <h3>Example</h3>
+          <p>If a pipe narrows from 4 m² to 2 m² and V₁ = 3 m/s:</p>
+          <p class="example-calc">V₂ = (A₁ × V₁) / A₂ = (4 × 3) / 2 = <strong>6 m/s</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

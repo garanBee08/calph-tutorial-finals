@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="./quiz.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="../FINAL/index.html" class="navbar-logo">Fluids</a>
+      <div class="navbar-links">
+        <a href="../FINAL/index.html#about">Topics</a>
+        <a href="/about/about.html">About</a>
+        <a href="#" class="active">Quiz</a>
+        <a href="../Leanderboard/leaderboard.html">Leaderboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Username Card -->
+  <div class="quiz-wrapper" id="username-card">
+    <div class="layer dark"></div>
+    <div class="layer light"></div>
+    <div class="quiz-container">
+      <h1 class="intro-text">Enter Username</h1>
+      <input type="text" id="username-input" placeholder="Type username here">
+      <button id="continue-btn">Continue</button>
+    </div>
+  </div>
+
+  <!-- Intro Card -->
+  <div class="quiz-wrapper" id="intro-card" style="display: none;">
+    <div class="layer dark"></div>
+    <div class="layer light"></div>
+    <div class="quiz-container">
+      <h1 class="intro-text">Time to test your knowledge!</h1>
+      <button id="start-btn">Start</button>
+    </div>
+  </div>
+
+  <!-- Quiz Wrapper -->
+  <div class="quiz-wrapper" id="quiz-wrapper" style="display: none;">
+    <div class="layer dark"></div>
+    <div class="layer light"></div>
+    <div class="quiz-container">
+      <!-- Progress Bar -->
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      
+      <h2 class="question" id="question-text"></h2>
+      <div class="options" id="options-container"></div>
+      <div class="bottom-bar">
+        <button class="nav-btn prev" id="prev-btn">◀ Previous</button>
+        <div class="progress">
+          <span id="current">1</span> / <span id="total">5</span>
+        </div>
+        <button class="nav-btn next" id="next-btn">Next ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Wrapper -->
+  <div class="quiz-wrapper" id="result-wrapper" style="display: none;">
+    <div class="layer dark"></div>
+    <div class="layer light"></div>
+    <div class="quiz-container">
+      <h1 class="intro-text">Quiz Finished!</h1>
+      <div class="score-card">
+        <p id="score-text" class="score-text">Your Score: 0 / 0</p>
+        <p id="message-text" class="message-text"></p>
+      </div>
+      <div class="result-buttons">
+  <button id="review-btn" class="nav-btn">Review Quiz</button>
+  <button id="restart-btn" class="nav-btn">Restart Quiz</button>
+  
+  <!-- Add the Leaderboard button here -->
+      <button id="leaderboard-btn" class="nav-btn">Go to Leaderboard</button>
+</div>
+    </div>
+  </div>
+
+
+  <!-- Review Quiz Wrapper -->
+<div class="quiz-wrapper" id="review-wrapper" style="display: none;">
+  <div class="layer dark"></div>
+  <div class="layer light"></div>
+  <div class="quiz-container review-container">
+    <h2>Review Answers</h2>
+
+    <div id="review-content"></div>
+
+    <button id="back-to-result-btn" class="nav-btn" style="margin-top:15px;">Back</button>
+  </div>
+</div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- Supabase Config -->
+  <script src="../config/supabase-config.js"></script>
+  <script src="./quiz.js"></script>
+</body>
+</html>
