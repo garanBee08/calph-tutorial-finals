@@ -3,14 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/mainDashboard.css">
+    <link rel="icon" type="image/png" href="/Images/bsit.png">
+    <link rel="apple-touch-icon" href="/Images/bsit.png">
+    <title>CALPH++ | BSIT - 3A</title>
 </head>
 <body>
-    <a href="/Heat and Temperature/index.html">
-        <div class="div">Heat and Temperature</div>
-    </a>
-    <a href="/Measurement and Vectors/dashboard.html">
-        <div class="div">Measurement and Vectors</div>
-    </a>
+    <div class="mainContainer">
+        <div class="upper">
+            <h1 id = "title">Physics in Motion: Exploring the Wonders of CALPH++</h1>
+            <h5 id = "sub">Discover, Measure, and Understand the Energy Around You</h5>
+            <p id = "sub-sub">Dive into the fascinating world of Scalars and Vectors, Heat and Temperature, and Sound and Waves—where every quantity, movement, and vibration tells a story about how our physical world works.</p>
+            <div class="see-more-wrapper">
+                <a href = "#lower"><p id = "see">See more</p></a>
+                <a href = "#lower" class="arrow-btn">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <g class="chevron chevron-1">
+                            <polyline points="30,35 50,55 70,35" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <g class="chevron chevron-2">
+                            <polyline points="30,55 50,75 70,55" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="lower" id = "lower">
+            <div class="headerTopic">
+                <div class="left">
+                    <p>Topics</p>
+                </div>
+                <div class="right">
+                    <p>Dive into the fascinating world of Scalars and Vectors, Heat and Temperature, and Sound and Waves—where every quantity, movement, and vibration tells a story about how our physical world works.</p>
+                </div>
+            </div>
+            <div class="actualTopic">
+                <a href="/Measurement and Vectors/index.html">
+                    <div class="vectors">
+                        <p>SCALARS & VECTORS</p>
+                    </div>
+                </a>
+                <a href="/Heat and Temperature/index.html">
+                    <div class="heat">
+                        <p>HEAT <span>& TEMPERATURE</span></p>
+                    </div>
+                </a>
+                <!-- Leader ng sounds and waves, pa link dito ng website niyo -->
+                <a href="">
+                    <div class="sounds">
+                        <p>SOUND & WAVES</p>
+                    </div>
+                </a>
+                <!-- Leader ng fluids, pa link dito ng website niyo -->
+                <a href="">
+                    <div class="fluids">
+                        <p>FLUIDS</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
