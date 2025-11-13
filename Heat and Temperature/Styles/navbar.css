@@ -1,0 +1,129 @@
+/* Template for Navigation Bar */
+
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=Berkshire+Swash&family=Black+Han+Sans&family=Cal+Sans&family=Carter+One&family=Comic+Relief:wght@400;700&family=Happy+Monkey&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jua&family=Lilita+One&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Luckiest+Guy&family=Madimi+One&family=New+Amsterdam&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Odibee+Sans&family=Outfit:wght@100..900&family=Pacifico&family=Pangolin&family=Passion+One:wght@400;700;900&family=Playwrite+DE+Grund:wght@100..400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sniglet:wght@400;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Staatliches&family=Underdog&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.886);  
+}
+.navbar{
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.556);
+    background: linear-gradient(to right, #731A2E, #F38612);
+}
+.left, .middle, .right{
+    width: 100%;
+    height: 100%;
+}
+.left{
+    display: grid;
+    grid-template-columns: 1fr 2.4fr;
+}
+.logoImage{
+    width: 78px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+#logoPic{
+    display: block;
+    width: 75px;
+    height: 70px;
+    position: absolute;
+    filter: drop-shadow(2px 2px 3px rgb(108, 3, 3));
+}
+.teamName{
+    display: flex;
+    align-items: center;
+}
+.teamName p{
+    color: white;
+    font-family: "Lobster Two";
+    font-size: 1.8rem;
+}
+.right{
+    width: 100%;
+    height: 100%;
+    padding-right: 30px;
+}
+.right ul{
+    height: 100%;
+    color: white;
+    list-style-type: none;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.right ul li span{
+    display: inline;
+    margin: 0px 20px;
+    font-size: 2rem;
+    transition: 0.3s;
+}
+span:hover{
+    color: rgb(96, 0, 0);
+}
+
+/* Extra small: phones < 480px */
+@media (max-width: 479px) {
+    .navbar{
+        height: 70px;
+    }
+    .logoImage{
+        width: 65px;
+    }
+    #logoPic{
+        width: 70px;
+        height: 65px;
+
+    }
+
+    .teamName p{
+        color: white;
+        font-family: "Lobster Two";
+        font-size: 1.6rem;
+    }
+    .right{
+        padding: 10px;
+    }
+    .right ul li span{
+        margin: 0px 8px;
+        font-size: 1.7rem;;
+    }
+}
+
+/* Small: phones 480px–767px */
+@media (min-width: 480px) and (max-width: 767px) {
+    .right{
+        padding: 10px;
+    }
+    .right ul li span{
+        margin: 0px 15px;
+    }
+}
+
+/* Medium: tablets 768px–991px */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Large: laptops 992px–1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Extra Large: desktops ≥ 1200px */
+@media (min-width: 1200px) {
+
+}

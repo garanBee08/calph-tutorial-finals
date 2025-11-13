@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Energy Calculator</title>
+    <link rel="icon" type="image/png" href="/Heat and Temperature/Images/fireTabLogo.png">
+    <link rel="apple-touch-icon" href="/Heat and Temperature/Images/fireTabLogo.png">
+
+    <link rel="stylesheet" href="/Heat and Temperature/Styles/navbar.css">
+    <link rel="stylesheet" href="/Heat and Temperature/Styles/heCalculator3.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/Heat and Temperature/Screens/dashboard.html">
+        <div class="left">
+            <div class="logoImage">
+                <img id="logoPic" src="/Heat and Temperature/Images/gr3_Logo.png">
+            </div>
+            <div class="teamName">
+                <p>Luminara</p>
+            </div>
+        </div>
+        </a>
+        <div class="middle"></div>
+        <div class="right">
+            <ul>
+                <li class="items"><a href="/Heat and Temperature/Screens/dashboard.html"><span class="material-symbols-outlined">home</span></a></li>
+                <li class="items"><a href="/Heat and Temperature/Screens/mainContent.html"><span class="material-symbols-outlined">lightbulb_2</span></a></li>
+                <li class="items"><a href="/Heat and Temperature/Screens/devs.html"><span class="material-symbols-outlined">diversity_3</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mainContainer">
+        <div class="leftNav">
+            <a href="/Heat and Temperature/Screens/mainCalculator.html">
+                <div class="back"><p>Back</p></div>
+            </a>
+            <div class="choices"><p>HEAT ENERGY CALCULATOR</p></div>
+        </div>
+
+        <div class="rightProper">
+            <div class="title">
+                <div class="titlePart1">
+                    <a href="/Heat and Temperature/Screens/heCalculator.html"><div id="special3" class="tempItems ha">Heat Energy</div></a>
+                    <a href="/Heat and Temperature/Screens/heCalculator2.html"><div id="special2" class="tempItems">Mass</div></a>
+                </div>
+                <div class="titlePart2">
+                    <a href="/Heat and Temperature/Screens/heCalculator3.html"><div id = "special" class="tempItems ha">Specific Heat Capacity</div></a>
+                    <a href="/Heat and Temperature/Screens/heCalculator4.html"><div class="tempItems" id="special4">Change in Temperature</div></a>
+                </div>
+            </div>
+
+            <div class="computationArea">
+                <div class="inputTemp">
+
+                    <div class="upperFirst">
+                        <div class="left1">
+                            <div class="name"><p>Heat Energy</p></div>
+                            <div class="areaInput">
+                                <input type="text" id="initials" class="initial-length" placeholder="Enter a value">
+                                <select id="initialsUnit" class="initial-length-unit">
+                                    <option value="m">J</option>
+                                    <option value="km">kJ</option>
+                                    <option value="cm">cal</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="right1">
+                            <div class="name"><p id="sizeTemp">Change in Temperature</p></div>
+                            <div class="areaInput">
+                                <input type="text" id="initials" class="change-temp" placeholder="Enter a value">
+                                <select id="initialsUnit" class="change-temp-unit">
+                                    <option value="C">°C</option>
+                                    <option value="F">°F</option>
+                                    <option value="K">K</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lowerFirst">
+                        <div class="inputName"><p>Mass</p></div>
+                        <div class="inputField">
+                            <input type="text" id="cof" class="cof-value" placeholder="Enter a value">
+                            <select id="initialsUnits" class="cof-unit">
+                                <option value="Cinv">kg</option>
+                                <option value="Kinv">g</option>
+                                <option value="Finv">Mg</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="answerContainer">
+                    <div class="answer">Answer:</div>
+                    <div class="answerField">
+                        <div class="finalAnswer">—</div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <div class="reset">Reset</div>
+                    <div class="compute">Compute</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/Heat and Temperature/Scripts/heCalculator3.js"></script>
+</body>
+</html>

@@ -1,0 +1,880 @@
+body{
+    background-color: #581F10;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+.mainContainer{
+    width: 100%;
+    height: 100lvh;
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: 0.4fr 3fr;
+    padding: 105px 25px 25px 25px;
+}
+.leftNav, .rightProper{
+    width: 100%;
+    height: 100%;
+}
+.leftNav{
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1.5fr 5fr;
+}
+.back{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #B47C7B;
+    border-radius: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    background-color: rgba(73, 64, 61, 0.53);
+}
+.back:hover{
+    background-color: #432100;
+    cursor: pointer;
+}
+.back p{
+    color: rgb(255, 246, 235);
+    font-family: "Comic Relief";
+    font-size: 2rem;
+    text-align: center;
+}
+#special{
+    font-size: 1.8rem;
+    background-color: #6F1507;
+    border: 3px solid #CECCCC;
+}
+#special2{
+    font-size: 2.3rem;
+}
+.choices{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #BD8484;
+    background-color:rgba(148, 126, 120, 0.36);
+}
+.choices p{
+    color: rgb(255, 246, 235);
+    font-family: "Passion One";
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+.rightProper{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1.5fr 5fr;
+}
+.title{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(148, 126, 120, 0.36);
+    border-radius: 20px;
+    border: 2px solid #BD8484;
+    display: grid;
+    padding: 50px 20px;
+    gap: 1.3rem;
+    grid-template-rows: 1fr 1fr;
+}
+
+.titlePart1{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.3rem;
+}
+.tempItems{
+    text-align: center;
+    font-size: 2rem;
+    padding: 0px 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.tempItems:hover{
+    transform: scale(1.025);
+}
+.titlePart2{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.3rem;
+}
+.tempItems{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #432100;
+    color: rgb(255, 246, 235);
+    font-family: "Passion One";
+    font-size: 1.8rem;
+    border-radius: 22px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.984);
+}
+
+
+.computationArea{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(73, 64, 61, 0.53);
+    border-radius: 20px;
+    border: 2px solid #BD8484;
+    display: grid;
+    gap: 0.8rem;
+    padding: 20px;
+    grid-template-rows: 3.3fr 0.8fr 0.8fr;
+}
+
+.inputTemp, .answerContainer, .buttons{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    background-color: rgba(7, 3, 3, 0.23);
+}
+ .inputTemp{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 0.8rem;
+    background-color: transparent;
+    grid-template-rows: 1.2fr 1fr;
+}
+.upperFirst, .lowerFirst{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+.upperFirst{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: 1fr 1fr;
+}
+.left1, .right1{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background-color: rgba(7, 3, 3, 0.23);
+}
+.left1, .right1{
+    display: grid;
+    grid-template-rows: 0.6fr 1fr;
+    padding: 20px;
+}
+.name{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: 'Passion One';
+    font-size: 2.3rem;
+    color: rgb(255, 246, 235);
+}
+
+.areaInput{
+    padding-top: 6px;
+    width: 100%;
+    height: 100%;
+}
+
+#initialsUnit{
+    width: 14%;
+    height: 60px;
+    border-radius: 10px;
+    border: none;
+    padding: 0px 20px;
+    font-family: 'Comic Relief';
+    font-size: 1rem;
+    padding-right: 0px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.22);
+
+}
+
+#initials{
+    width: 84%;
+    height: 60px;
+    border-radius: 10px;
+    border: none;
+    padding: 0px 20px;
+    font-family: 'Comic Relief';
+    font-size: 1.2rem;
+    color: rgb(255, 246, 235);
+    background-color: rgba(255, 255, 255, 0.22);
+}
+#initials::placeholder, #cof::placeholder{
+    color: rgba(255, 255, 255, 0.559);
+}
+#initials:focus, #initialsUnit:focus, #cof:focus{
+    outline: none;
+}
+ #initialsUnit:focus{
+    color: rgb(255, 246, 235);
+    background-color: rgb(118, 101, 101);
+    border: none;
+    font-size: 16px;
+}
+
+.lowerFirst{
+    display: grid;
+    grid-template-rows: 0.6fr 1fr;
+    padding: 13px 20px 13px 20px;
+    background-color: rgba(7, 3, 3, 0.23);
+}
+.inputName{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: rgb(255, 246, 235);
+    font-family: 'Passion One';
+    font-size: 2rem;
+    
+}
+.ha{
+    font-size: 1.9rem;
+}
+.inputField{
+    padding-top: 5px;
+}
+#cof{
+    width: 89%;
+    height: 48px;
+    border-radius: 10px;
+    border: none;
+    padding: 0px 20px;
+    font-family: 'Comic Relief';
+    font-size: 1.1rem;
+    color: rgb(255, 246, 235);
+    background-color: rgba(255, 255, 255, 0.22);
+}
+#initialsUnits{
+    width: 10%;
+    height:48px;
+    border-radius: 10px;
+    border: none;
+    padding: 0px 20px;
+    font-family: 'Comic Relief';
+    font-size: 0.9rem;
+    padding-right: 0px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.22);
+
+}
+#initialsUnits:focus{
+    color: rgb(255, 246, 235);
+    background-color: rgb(118, 101, 101);
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+.answerContainer{
+    display: grid;
+    padding: 5px 15px;
+    border-radius: 20px;
+    grid-template-columns: 0.5fr 3fr;
+}
+
+.answer{
+    padding: 10px 35px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+    font-size: 2.5rem;
+    color: rgb(255, 246, 235);
+    padding: 10px;
+    font-family: "Passion One";
+}
+.answerField{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.finalAnswer{
+    width: 99.7%;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.22);
+    font-size: 2rem;
+    color: rgb(255, 246, 235);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-radius: 10px;
+    font-family: "Comic Relief";
+}
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.603);
+    background-color: transparent;
+}
+.reset{
+    width: 100%;
+    height: 100%;
+    background-color: #7A2624;
+    border-radius: 20px;
+    color: rgb(255, 246, 235);
+    font-family: "Passion One";
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.537);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.reset:hover{
+    background-color: #7a2524c1;
+}
+.compute{
+    width: 100%;
+    height: 100%;
+    background-color: #C16315;
+    border-radius: 20px;
+    color: rgb(255, 246, 235);
+    font-family: "Passion One";
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.537);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.compute:hover{
+    background-color: #c16215bc;
+} 
+#sizeTemp{
+    font-size: 2.6rem;
+}
+/* Extra small: phones < 480px */
+@media (max-width: 479px) {
+    .mainContainer {
+        /* background-color: lime; */
+    }
+    #sizeTemp{
+        font-size: 1.4rem;
+    }
+    .mainContainer{
+        width: 100%;
+        height: 100lvh;
+        display: grid;
+        gap: 0.8rem;
+        grid-template-columns: none;
+        grid-template-rows: 0.36fr 4fr;
+        padding: 90px 15px 15px 15px;
+    }
+    .leftNav{
+        /* height: 80px; */
+        height: 100%;
+        gap: 0.8rem;
+        display: grid;
+        grid-template-rows: none;
+        grid-template-columns: 1fr 3fr;
+    }
+    .back{
+        border-radius: 15px;
+    }
+    .choices{
+        border-radius: 15px;
+        padding: 10px 0px;
+    }
+    .choices p{
+        color: white;
+        font-family: "Passion One";
+        font-size: 1.35rem;
+        text-align: center;
+    }
+    .back p{
+        color: white;
+        font-family: "Comic Relief";
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    .rightProper{
+        display: grid;
+        gap: 0.8rem;
+        grid-template-columns: none;
+        grid-template-rows: 1fr 4fr;
+    }
+    .title{
+        padding: 0px;
+        height: 100%;
+        background-color: rgba(148, 126, 120, 0.36);
+        border-radius: 20px;
+        gap: 0.8rem;
+        padding: 10px;
+        grid-template-rows: none;
+        grid-template-columns: 1fr 1fr;
+        border: 2px solid #BD8484;
+
+    }
+    .titlePart1, .titlePart2{
+        gap: 0.8rem;
+    }
+    .tempItems{
+        font-size: 1.5rem;
+        border-radius: 10px;
+        padding: 0px;
+        height: 100%;
+    }
+    #special{
+        font-size: 1.2rem;
+    }
+
+    #special4{
+        font-size: 1rem;
+    }
+
+    .computationArea{
+        padding: 10px;
+    }
+    .inputTemp{
+        grid-template-rows: 2fr 1fr;
+    }
+    .upperFirst{
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+    }
+    .inputName{
+        font-size: 1.4rem;
+    }
+    .finalAnswer{
+        height: 45px;
+        padding: 0px 10px;
+        font-size: 0.8rem;
+    }
+
+
+    .name{
+        padding-top: 0px;
+        font-size: 1.4rem;
+    }
+    .left1, .right1, .lowerFirst{
+        border-radius: 20px;
+    }
+    .left1, .right1{
+        padding: 10px 18px;
+    }
+    #initials{
+        width: 79%;
+        height: 35px;
+        border-radius: 10px;
+        border: none;
+        padding: 0px 10px;
+        font-family: 'Comic Relief';
+        font-size: 1.1rem;
+        color: rgb(255, 246, 235);
+        background-color: rgba(255, 255, 255, 0.22);
+    }
+    #initialsUnit{
+        height: 35px;
+        font-family: 1.1rem;
+        width: 19%;
+    }
+    .lowerFirst{
+        padding: 10px 16px;
+    }
+
+    #cof{
+        width: 77%;
+        height: 39px;
+        border-radius: 11px;
+        border: none;
+        padding: 0px 10px;
+        font-family: 'Comic Relief';
+        font-size: 1.1rem;
+        color: rgb(255, 246, 235);
+        background-color: rgba(255, 255, 255, 0.22);
+    }
+    #initialsUnits{
+        height: 39px;
+        font-size: 1rem;
+        width: 21.6%;
+    }
+    .answer{
+        font-size: 1.7rem;
+    }
+
+    .reset, .compute{
+        border-radius: 15px;
+        font-size: 2rem;
+        height: 80%;
+
+    }
+    .answerContainer{
+        border-radius: 15px;
+    }
+    #special2{
+        font-size: 1.4rem;
+    }
+    .ha{
+        font-size: 1rem;
+    }
+
+
+    #special2{
+        font-size: 1.4rem;
+    }
+    #special{
+        font-size: 1rem;
+    }
+    #special3{
+        font-size: 1.2rem;
+    }
+}
+
+/* Small: phones 480px–767px */
+@media (min-width: 480px) and (max-width: 767px) {
+    .mainContainer {
+        /* background-color: yellow; */
+    }
+
+    #sizeTemp{
+        font-size: 2rem;
+    }
+    .mainContainer{
+        width: 100%;
+        height: 100lvh;
+        display: grid;
+        gap: 0.8rem;
+        grid-template-columns: none;
+        grid-template-rows: 0.36fr 4fr;
+        padding: 100px 15px 15px 15px;
+    }
+    .leftNav{
+        /* height: 80px; */
+        height: 100%;
+        gap: 0.8rem;
+        display: grid;
+        grid-template-rows: none;
+        grid-template-columns: 1fr 3fr;
+    }
+    .back{
+        border-radius: 15px;
+    }
+    .choices{
+        border-radius: 15px;
+        padding: 10px 0px;
+    }
+
+
+    .back p{
+        color: white;
+        font-family: "Comic Relief";
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    .rightProper{
+        display: grid;
+        gap: 0.8rem;
+        grid-template-columns: none;
+        grid-template-rows: 1.2fr 4fr;
+    }
+    .title{
+        padding: 0px;
+        height: 100%;
+        background-color: rgba(148, 126, 120, 0.36);
+        border-radius: 20px;
+        gap: 0.8rem;
+        padding: 10px;
+        grid-template-rows: none;
+        grid-template-columns: 1fr 1fr;
+        border: 2px solid #BD8484;
+
+    }
+    .titlePart1, .titlePart2{
+        gap: 0.8rem;
+    }
+    .tempItems{
+        font-size: 1.6rem;
+        border-radius: 10px;
+    }
+
+
+    .name{
+        padding-top: 0px;
+        font-size: 1.8rem;
+    }
+    .left1, .right1, .lowerFirst{
+        border-radius: 20px;
+    }
+    .left1, .right1{
+        padding: 10px 11px;
+    }
+    #initials{
+        width: 80%;
+        height: 49px;
+        border-radius: 10px;
+        border: none;
+        padding: 0px 10px;
+        font-family: 'Comic Relief';
+        font-size: 1rem;
+        color: rgb(255, 246, 235);
+        background-color: rgba(255, 255, 255, 0.22);
+    }
+    #initialsUnit{
+        height: 49px;
+        font-family: 1.1rem;
+        width: 16%;
+    }
+    .lowerFirst{
+        padding: 10px 16px;
+    }
+
+    .inputName{
+        font-size: 1.9rem;
+    }
+    #cof{
+        width: 86%;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        padding: 0px 10px;
+        font-family: 'Comic Relief';
+        font-size: 1rem;
+        color: rgb(255, 246, 235);
+        background-color: rgba(255, 255, 255, 0.22);
+    }
+    #initialsUnits{
+        height: 40px;
+        font-family: 1.1rem;
+        width: 12%;
+    }
+    .answer{
+        font-size: 1.7rem;
+    }
+    .finalAnswer{
+        font-size: 1.3rem;
+        height: 40px;
+    }
+    .reset, .compute{
+        border-radius: 12px;
+        font-size: 2rem;
+
+    }
+    .answerContainer{
+        border-radius: 15px;
+    }
+    .choices p{
+        color: white;
+        font-family: "Passion One";
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    .computationArea{
+        padding: 10px;
+    }
+
+    .ha{
+        font-size: 1.4rem;
+    }
+
+    #special2{
+        font-size: 1.5rem;
+    }
+    #special{
+        font-size: 1.3rem;
+    }
+    #special3{
+        font-size: 1.3rem;
+    }
+}
+
+/* Medium: tablets 768px–991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .mainContainer {
+        /* background-color: purple; */
+    }
+    .choices p{
+        font-size: 3rem;
+    }
+    .tempItems{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #432100;
+        color: rgb(255, 246, 235);
+        font-family: "Passion One";
+        font-size: 1rem;
+        border-radius: 22px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.984);
+    }
+
+
+
+    .leftNav{
+        height: 100%;
+        gap: 0.8rem;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+    .rightProper{
+        display: grid;
+        gap: 0.8rem;
+        grid-template-columns: none;
+        grid-template-rows: 0.1fr 2fr;
+    }
+    .title{
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        border: 2px solid #BD8484;
+        gap: 0.8rem;
+        grid-template-rows: none;
+        padding: 10px 40px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .titlePart1{
+        gap: 0.6rem;
+    }
+    .titlePart2{
+        gap: 0.6rem;
+    }
+    .tempItems{
+        border-radius: 10px;
+        padding: 4px 0px;
+        font-size: 1.7rem;
+        box-shadow: 1px 1px 2px black;
+    }
+    .name{
+        padding-top: 0px;
+        font-size: 1.6rem;
+    }
+    .left1, .right1, .lowerFirst{
+        border-radius: 20px;
+    }
+    .left1, .right1{
+        padding: 15px 16px;
+    }
+    #initials{
+        width: 80%;
+        height: 49px;
+        border-radius: 10px;
+        border: none;
+        padding: 0px 20px;
+        font-family: 'Comic Relief';
+        font-size: 1.1rem;
+        color: rgb(255, 246, 235);
+        background-color: rgba(255, 255, 255, 0.22);
+    }
+    #initialsUnit{
+        height: 49px;
+        font-family: 1.1rem;
+        width: 18%;
+    }
+    .lowerFirst{
+        padding: 10px 20px;
+    }
+
+    .inputName{
+        font-size: 1.5rem;
+    }
+    #cof{
+        width: 89%;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        padding: 0px 20px;
+        font-family: 'Comic Relief';
+        font-size: 1.1rem;
+        color: rgb(255, 246, 235);
+        background-color: rgba(255, 255, 255, 0.22);
+    }
+    #initialsUnits{
+        height: 40px;
+        font-family: 1.1rem;
+        width: 10%;
+    }
+    .answer{
+        font-size: 1.8rem;
+    }
+    .finalAnswer{
+        font-size: 1.3rem;
+        height: 40px;
+    }
+    .reset, .compute{
+        border-radius: 12px;
+        font-size: 2rem;
+
+    }
+    .choices p{
+        color: white;
+        font-family: "Passion One";
+        font-size: 3rem;
+        text-align: center;
+    }
+    .computationArea{
+        padding: 13px;
+    }
+    #special2{
+        font-size: 1.7rem;
+    }
+    #special{
+        font-size: 1.7rem;
+    }
+    #special3{
+        font-size: 1.6rem;
+    }
+    #sizeTemp{
+        font-size: 2rem;
+    }
+}
+
+
+/* Large: laptops 992px–1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .mainContainer {
+        /* background-color: brown; */
+    }
+
+    .tempItems{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #432100;
+        color: rgb(255, 246, 235);
+        font-family: "Passion One";
+        font-size: 1.6rem;
+        border-radius: 22px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.984);
+    }
+    #initialsUnit{
+        font-size: 0.9rem;
+    }
+    #special{
+        font-size: 1.6rem;
+    }
+    #special3{
+        font-size: 1.9rem;
+    }
+    
+}
+
+/* Extra Large: desktops ≥ 1200px */
+@media (min-width: 1200px) {
+    .mainContainer {
+    }
+}
+

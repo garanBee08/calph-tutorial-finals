@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Conversion Calculator</title>
+    <link rel="icon" type="image/png" href="/Heat and Temperature/Images/fireTabLogo.png">
+    <link rel="apple-touch-icon" href="/Heat and Temperature/Images/fireTabLogo.png">
+
+    <link rel="stylesheet" href="/Heat and Temperature/Styles/navbar.css">
+    <link rel="stylesheet" href="/Heat and Temperature/Styles/unitConversion3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>    
+</head>
+<body>
+     <nav class="navbar">
+        <a href="/Heat and Temperature/Screens/dashboard.html">
+        <div class="left">
+            <div class="logoImage">
+                <img id="logoPic" src="/Heat and Temperature/Images/gr3_Logo.png">
+            </div>
+            <div class="teamName">
+                <p>Luminara</p>
+            </div>
+        </div>
+        </a>
+        <div class="middle"></div>
+        <div class="right">
+            <ul>
+                <li class="items"><a href="/Heat and Temperature/Screens/dashboard.html"><span class="material-symbols-outlined">home</span></a></li>
+                <li class="items"><a href="/Heat and Temperature/Screens/mainContent.html"><span class="material-symbols-outlined">lightbulb_2</span></a></li>
+                <li class="items"><a href="/Heat and Temperature/Screens/devs.html"><span class="material-symbols-outlined">diversity_3</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mainContainer">
+        <div class="leftNav">
+            <a href = "/Heat and Temperature/Screens/mainCalculator.html">
+                <div class="back">
+                    <p>Back</p>
+                </div>
+            </a>
+            <div class="choices">
+                <p>TEMPERATURE CONVERSION</p>
+            </div>
+        </div>
+        <div class="rightProper">
+            <div class="title">
+                <div class="titlePart1">
+                    <a href = "/Heat and Temperature/Screens/unitConversion.html"><div id="special2" class="tempItems">Celsius to Fahrenheit</div></a>
+                    <a href = "/Heat and Temperature/Screens/unitConversion2.html"><div id = "special3" class="tempItems">Fahrenheit to Celsius</div></a>
+                </div>
+                <div class="titlePart2">
+                    <a href = "/Heat and Temperature/Screens/unitConversion3.html"><div id = "special4" class="tempItems">Celsius to Kelvin</div></a>
+                    <a href = "/Heat and Temperature/Screens/unitConversion4.html"><div id ="special" class="tempItems">Kelvin to Celsius</div></a>
+                </div>
+            </div>
+            <div class="computationArea">
+                <div class="inputTemp">
+                    <div class="inputName">Kelvin</div>
+                    <div class="inputField">
+                        <input type="text" id="celsiusInput" placeholder="Enter temperature in K">
+                    </div>
+                </div>
+                <div class="answerContainer">
+                    <div class="answer">Answer:</div>
+                    <div class="answerField">
+                        <div class="finalAnswer">—</div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="reset">Reset</div>
+                    <div class="compute">Compute</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src = "/Heat and Temperature/Scripts/unitConversion4.js"></script>
+</body>
+</html>
