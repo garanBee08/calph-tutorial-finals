@@ -38,6 +38,107 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* 🔹 Logout Button (Fixed at Top-Left) */
+.logout-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 2px solid white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.3s ease;
+  backdrop-filter: blur(3px);
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* 🔹 Modal Background */
+.logout-modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* 🔹 Modal Content Box */
+.logout-modal-content {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 30px 40px;
+  text-align: center;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.3s ease;
+}
+
+/* 🔹 Buttons inside the Modal */
+.logout-modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.confirm-btn, .cancel-btn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.confirm-btn {
+  background: #0077ff;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background: #005fd4;
+}
+
+.cancel-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* 🔹 Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 
 /* Gradient background (reversed: light → dark right side) */
 /* Gradient background — darkest (right), softest (left) */
