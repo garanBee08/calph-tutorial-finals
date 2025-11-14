@@ -64,7 +64,7 @@ h1, h2, h3 {
 }
 
 .nav-back-btn:hover {
-    transform: scale(1.10);
+    transform: scale(1.06);
     background: #313863;
 }
 
@@ -75,6 +75,50 @@ h1, h2, h3 {
 .nav-back-btn span {
     font-size: 28px;
 }
+
+/* Tooltip for Back Button */
+.back-container .nav-back-btn {
+  position: relative;
+}
+
+/* Tooltip bubble */
+.back-container .nav-back-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50px; /* distance from button */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(252, 252, 252, 0.37);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  transform-origin: left center;
+}
+
+/* Tooltip arrow */
+.back-container .nav-back-btn::before {
+  content: '';
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: rgba(252, 252, 252, 0.37);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+/* Reveal tooltip on hover */
+.back-container .nav-back-btn:hover::after,
+.back-container .nav-back-btn:hover::before {
+  opacity: 1;
+}
+
 
 
 .menubar .menu {
