@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-image: url(/assets/images/auth_bg.jfif);
+  background-image: url(/vectors/assets/images/auth_bg.jfif);
   background-size: cover;
   color: #fff;
   display: flex;
@@ -115,7 +115,7 @@ body {
 .welcome-image {
     height: 100%;
     width: 40%;
-    background-image: url(/assets/images/homepage_bg.jfif);
+    background-image: url(/vectors/assets/images/homepage_bg.jfif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -466,15 +466,15 @@ body {
 
 }
 .first .podium-rank {
-  background-image: url(/assets/images/1ST.png);
+  background-image: url(/vectors/assets/images/1ST.png);
 }
 
 .second .podium-rank {
-  background-image: url(/assets/images/2ND.png);
+  background-image: url(/vectors/assets/images/2ND.png);
 }
 
 .third .podium-rank {
-  background-image: url(/assets/images/3RD.png);
+  background-image: url(/vectors/assets/images/3RD.png);
 }
 
 @media (max-width: 479px) {
