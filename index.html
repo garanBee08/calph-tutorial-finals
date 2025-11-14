@@ -4,60 +4,383 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Auth — Login / Sign Up</title>
-
-  <!-- Material icons for the eye -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="/auth.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      font-family: 'Poppins', sans-serif;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated gradient background */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.8) 0%, 
+        rgba(118, 75, 162, 0.8) 25%,
+        rgba(240, 147, 251, 0.8) 50%,
+        rgba(102, 126, 234, 0.8) 75%,
+        rgba(118, 75, 162, 0.8) 100%);
+      animation: gradient-shift 15s ease infinite;
+      z-index: 0;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-25%, -25%); }
+    }
+
+    .main-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      height: 80vh;
+      max-height: 600px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      border-radius: 30px;
+      overflow: hidden;
+    }
+
+    .left-panel {
+      flex: 1;
+      background: rgba(135, 206, 250, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-right: none;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      color: white;
+      position: relative;
+    }
+
+    .left-panel::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      animation: glow-pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .left-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .left-panel h1 {
+      font-size: 48px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .left-panel h1 .highlight {
+      font-weight: 600;
+      color: #a8d5ff;
+    }
+
+    .left-panel p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 300;
+      max-width: 500px;
+    }
+
+    .right-panel {
+      flex: 0 0 480px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-left: none;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 50px;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .auth-form h2 {
+      color: white;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      font-size: 15px;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .password-field {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .password-field input {
+      margin-bottom: 0;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      user-select: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+      transition: color 0.3s ease;
+    }
+
+    .toggle-password:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 16px;
+      margin-top: 10px;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(0);
+    }
+
+    .small {
+      margin-top: 25px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+    }
+
+    .small a {
+      color: #a8d5ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .small a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+      }
+      
+      .left-panel {
+        border-radius: 30px 30px 0 0;
+        padding: 40px 30px;
+      }
+      
+      .left-panel h1 {
+        font-size: 32px;
+      }
+      
+      .right-panel {
+        flex: 1;
+        border-radius: 0 0 30px 30px;
+        padding: 40px 30px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="left-bg-container">
-
-  </div>
-  <div class="right-bg-container">
-    <div class="auth-container">
-
-      <!-- LOGIN FORM (shown first) -->
-      <form id="login-form" class="auth-form" autocomplete="off">
-        <h2>Login</h2>
-
-        <input type="text" id="login-email" placeholder="Email" required />
-        <div class="password-field">
-          <input type="password" id="login-password" placeholder="Password" required />
-          <span class="material-symbols-rounded toggle-password" data-target="login-password">visibility_off</span>
-        </div>
-
-        <button id="login-btn" type="submit">Login</button>
-
-        <p class="small">Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
-      </form>
-
-      <!-- SIGNUP FORM (hidden initially) -->
-      <form id="signup-form" class="auth-form hidden" autocomplete="off">
-        <h2>Create account</h2>
-
-        <input type="text" id="signup-name" placeholder="Name" required />
-        <input type="text" id="signup-username" placeholder="Username" required />
-        <input type="email" id="signup-email" placeholder="Email" required />
-
-        <div class="password-field">
-          <input type="password" id="signup-password" placeholder="Password" required />
-          <span class="material-symbols-rounded toggle-password" data-target="signup-password">visibility_off</span>
-        </div>
-
-        <div class="password-field">
-          <input type="password" id="signup-confirm" placeholder="Confirm password" required />
-          <span class="material-symbols-rounded toggle-password" data-target="signup-confirm">visibility_off</span>
-        </div>
-
-        <button id="signup-btn" type="submit">Sign Up</button>
-
-        <p class="small">Already have an account? <a href="#" id="show-login">Login</a></p>
-      </form>
-
+  <div class="main-container">
+    <div class="left-panel">
+      <div class="left-content">
+        <h1>Welcome <span class="highlight">to Website</span></h1>
+        <p>Dive into the fascinating world of Scalars and Vectors, Heat and Temperature, and Sound and Waves—where every quantity, movement, and vibration tells a story about how our physical world works.</p>
+      </div>
     </div>
 
+    <div class="right-panel">
+      <div class="auth-container">
+        <!-- LOGIN FORM (shown first) -->
+        <form id="login-form" class="auth-form" autocomplete="off">
+          <h2>User Login</h2>
+
+          <input type="text" id="login-email" placeholder="Username/Email" required />
+          <div class="password-field">
+            <input type="password" id="login-password" placeholder="Password" required />
+            <span class="material-symbols-rounded toggle-password" data-target="login-password">visibility_off</span>
+          </div>
+
+          <button type="submit">Log in</button>
+
+          <p class="small"><a href="#" id="show-signup">Sign up</a></p>
+        </form>
+
+        <!-- SIGNUP FORM (hidden initially) -->
+        <form id="signup-form" class="auth-form hidden" autocomplete="off">
+          <h2>Create Account</h2>
+
+          <input type="text" id="signup-name" placeholder="Name" required />
+          <input type="text" id="signup-username" placeholder="Username" required />
+          <input type="email" id="signup-email" placeholder="Email" required />
+
+          <div class="password-field">
+            <input type="password" id="signup-password" placeholder="Password" required />
+            <span class="material-symbols-rounded toggle-password" data-target="signup-password">visibility_off</span>
+          </div>
+
+          <div class="password-field">
+            <input type="password" id="signup-confirm" placeholder="Confirm password" required />
+            <span class="material-symbols-rounded toggle-password" data-target="signup-confirm">visibility_off</span>
+          </div>
+
+          <button type="submit">Sign Up</button>
+
+          <p class="small">Already have an account? <a href="#" id="show-login">Login</a></p>
+        </form>
+      </div>
+    </div>
   </div>
-  
-  <script type="module" src="/auth.js"></script>
+
+  <script>
+    // Toggle between login and signup forms
+    document.getElementById('show-signup').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('login-form').classList.add('hidden');
+      document.getElementById('signup-form').classList.remove('hidden');
+    });
+
+    document.getElementById('show-login').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('signup-form').classList.add('hidden');
+      document.getElementById('login-form').classList.remove('hidden');
+    });
+
+    // Toggle password visibility
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+      icon.addEventListener('click', () => {
+        const targetId = icon.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+        
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.textContent = 'visibility';
+        } else {
+          input.type = 'password';
+          icon.textContent = 'visibility_off';
+        }
+      });
+    });
+
+    // Form submissions (placeholder)
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      console.log('Login:', { email, password });
+      alert('Login functionality would go here!');
+    });
+
+    document.getElementById('signup-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('signup-name').value;
+      const username = document.getElementById('signup-username').value;
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      const confirm = document.getElementById('signup-confirm').value;
+      
+      if (password !== confirm) {
+        alert('Passwords do not match!');
+        return;
+      }
+      
+      console.log('Signup:', { name, username, email, password });
+      alert('Signup functionality would go here!');
+    });
+  </script>
 </body>
 </html>
