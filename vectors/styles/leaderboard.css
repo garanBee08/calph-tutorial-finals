@@ -9,7 +9,7 @@ body {
     display: flex;
     overflow-y: hidden;
     height: 100vh;
-    background-image: url(/assets/images/homepage_bg.jfif);
+    background-image: url(/vectors/assets/images/homepage_bg.jfif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -284,15 +284,15 @@ body {
 }
 
 .podium1 .rank-medal {
-    background-image: url(/assets/images/1ST.png);
+    background-image: url(/vectors/assets/images/1ST.png);
 }
 
 .podium2 .rank-medal {
-    background-image: url(/assets/images/2ND.png);
+    background-image: url(/vectors/assets/images/2ND.png);
 }
 
 .podium3 .rank-medal {
-    background-image: url(/assets/images/3RD.png);
+    background-image: url(/vectors/assets/images/3RD.png);
 }
 
 /* ✅ POINTS DISPLAY - Hidden */
