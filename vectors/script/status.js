@@ -49,8 +49,8 @@ function updateLessonStatus(progress, prefix) {
       const element = document.getElementById(`status-${prefix}-${key}`);
       if (element) {
         element.style.backgroundImage = progress[key]
-          ? "url(/assets/images/check.png)"
-          : "url(/assets/images/not_check.png)";
+          ? "url(/vectors/assets/images/check.png)"
+          : "url(/vectors/assets/images/not_check.png)";
       }
     }
   });

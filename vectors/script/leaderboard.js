@@ -96,7 +96,7 @@ function renderLeaderboard(list) {
             return `
             <div class="podium-slot ${podiumClasses[i]}">
               <div class="podium-profile">
-                <img src="/assets/images/profile_placeholder.png" class="pic-podium" alt="${p.name}">
+                <img src="/vectors/assets/images/profile_placeholder.png" class="pic-podium" alt="${p.name}">
                 <h3 class="user-name">${p.name}</h3>
               </div>
               <div class="podium-box">
@@ -134,7 +134,7 @@ function renderLeaderboard(list) {
             <div class="leaderboard-row">
               <div class="rank">${i + 4}</div>
               <div class="user-info">
-                <img src="/assets/images/profile_placeholder.png" class="leaderboard-pic" alt="${user.name}">
+                <img src="/vectors/assets/images/profile_placeholder.png" class="leaderboard-pic" alt="${user.name}">
                 <div class="user-text">
                   <div class="name">${user.name}</div>
                   <div class="username">@${user.username}</div>

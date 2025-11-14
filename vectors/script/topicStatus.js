@@ -1,4 +1,5 @@
-import { supabase } from '/script/supabaseClient.js';
+import { supabase } from "./supabaseClient.js";
+
 
 document.addEventListener('DOMContentLoaded', async () => {
   const buttons = document.querySelectorAll('.mark-complete-btn');

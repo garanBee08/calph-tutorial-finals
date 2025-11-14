@@ -14,7 +14,7 @@ async function logoutUser() {
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
     document.getElementById("logoutModal").style.display = "none";
-    window.location.href = "index.html"; // redirect after logout
+    window.location.href = "/index.html"; // redirect after logout
   } catch (err) {
     console.error("Logout failed:", err.message);
     alert("Logout failed: " + err.message);

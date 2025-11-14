@@ -2,7 +2,7 @@
 // auth.js — Email/Password Auth + Profile Insert
 // ================================
 
-import { supabase } from "../script/supabaseClient.js";
+import { supabase } from "./supabaseClient";
 
 
 // ---------- DOM ELEMENTS ----------
@@ -53,7 +53,7 @@ document.querySelectorAll(".toggle-password").forEach((el) => {
   const { data } = await supabase.auth.getSession();
   if (data?.session) {
     // Already logged in
-    window.location.href = "dashboard.html";
+    window.location.href = "mainDashboard.html";
   }
 })();
 
@@ -135,5 +135,5 @@ loginForm?.addEventListener("submit", async (ev) => {
   }
 
   // Success
-  window.location.href = "dashboard.html";
+  window.location.href = "mainDashboard.html";
 });

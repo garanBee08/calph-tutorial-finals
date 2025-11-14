@@ -266,7 +266,7 @@ function renderDashboardLeaderboard(top3, container) {
 
       return `
         <div class="podium ${positions[index]}">
-          <img src="/assets/images/profile_placeholder.png" class="podium-pic" alt="${user.name}">
+          <img src="/vectors/assets/images/profile_placeholder.png" class="podium-pic" alt="${user.name}">
           <div class="podium-info">
             <p class="name">${user.name}</p>
             <p class="username">@${user.username}</p>

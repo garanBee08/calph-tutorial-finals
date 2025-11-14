@@ -326,6 +326,8 @@
     </div>
   </div>
 
+  <script type="module" src="auth.js"></script>
+
   <script>
     // Toggle between login and signup forms
     document.getElementById('show-signup').addEventListener('click', (e) => {
@@ -362,7 +364,6 @@
       const email = document.getElementById('login-email').value;
       const password = document.getElementById('login-password').value;
       console.log('Login:', { email, password });
-      alert('Login functionality would go here!');
     });
 
     document.getElementById('signup-form').addEventListener('submit', (e) => {
@@ -379,7 +380,6 @@
       }
       
       console.log('Signup:', { name, username, email, password });
-      alert('Signup functionality would go here!');
     });
   </script>
 </body>

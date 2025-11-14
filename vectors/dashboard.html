@@ -139,7 +139,7 @@
           <h2>Your Profile</h2>
 
           <div class="profile-container">
-            <img id="profile-container-pic" class="profile-container-pic" src="/assets/images/profile_placeholder.png" alt="Profile Picture">
+            <img id="profile-container-pic" class="profile-container-pic" src="/vectors/assets/images/profile_placeholder.png" alt="Profile Picture">
             <h3 id="user-name">Loading...</h3>
             <p id="profile-username">---</p>
           </div>
@@ -200,7 +200,7 @@
   
   <script type="module">
     // 🧩 Supabase setup for user profile
-    import { supabase } from "../script/supabaseClient.js";
+    import { supabase } from "./script/supabaseClient.js";
 
     document.addEventListener("DOMContentLoaded", async () => {
       const welcomeHeader = document.querySelector(".welcome-text h1");

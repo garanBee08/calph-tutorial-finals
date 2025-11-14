@@ -29,7 +29,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
     background-size: cover;
-    background-image: url(/assets/images/auth_bg.jfif);
+    background-image: url(/vectors/assets/images/auth_bg.jfif);
     color: white;
     line-height: 1.6;
     overflow-x: hidden;

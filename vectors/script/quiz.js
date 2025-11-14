@@ -1,4 +1,4 @@
-import { supabase } from "../script/supabaseClient.js";
+import { supabase } from "./supabaseClient.js";
 
 const quizButtons = document.querySelectorAll(".quiz-btn");
 const modal = document.getElementById("quiz-modal");

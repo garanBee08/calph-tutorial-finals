@@ -1,5 +1,6 @@
 import { supabase } from "./supabaseClient.js";
 
+
 document.addEventListener("DOMContentLoaded", async () => {
   const user = await getCurrentUser();
   if (!user) return;
