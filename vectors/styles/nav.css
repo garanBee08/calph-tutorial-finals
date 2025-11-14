@@ -32,7 +32,50 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
 }
+
+.back-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.middle {
+  flex-grow: 1;
+}
+
+.back-container .door {
+  font-size: 24px;
+}
+.nav-back-btn {
+    background: #cacaca3b;
+    border: 1px solid #c5c3d1;
+    color: white;
+    width: 39px;
+    height: 39px;
+    border-radius: 50%; /* makes it round */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.nav-back-btn:hover {
+    transform: scale(1.10);
+    background: #313863;
+}
+
+.nav-back-btn:active {
+    transform: scale(1.05);
+}
+
+.nav-back-btn span {
+    font-size: 28px;
+}
+
 
 .menubar .menu {
   list-style: none;
@@ -51,6 +94,7 @@ h1, h2, h3 {
   padding-top: 7px;
   border-radius: 6px;
 }
+
 
 .menu li .material-symbols-rounded:hover {
   font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
