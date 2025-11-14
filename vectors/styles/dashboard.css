@@ -545,6 +545,41 @@ body {
     }
 }
 
+/* Wrap the image so the button can be positioned relative to it */
+.profile-pic-wrapper {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* Edit button styling */
+.edit-profile-pic-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(-10%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: #1d388b;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: 0.2s ease;
+}
+
+/* Hover effect */
+.edit-profile-pic-btn:hover {
+    background: #2f4ecf;
+}
+
+.edit-profile-pic-btn span {
+    font-size: 20px;
+}
 
 
 @media (min-width: 480px) and (max-width: 767px) {
